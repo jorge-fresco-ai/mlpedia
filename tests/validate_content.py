@@ -19,7 +19,7 @@ assert len(advanced) == 41, f"Expected 41 new entries, got {len(advanced)}"
 assert len(concepts) == 40, f"Expected 40 concepts, got {len(concepts)}"
 assert len({x["id"] for x in classic}) == 65
 assert len({x["id"] for x in advanced}) == 41
-assert len({x["id"] for x in concepts}) == 15
+assert len({x["id"] for x in concepts}) == 40
 assert sum(x["area"] == "Deep Learning" for x in advanced) == 26
 assert sum(x["area"] == "Reinforcement Learning" for x in advanced) == 15
 assert all(x["reference"].strip() for x in advanced), "Missing references"
