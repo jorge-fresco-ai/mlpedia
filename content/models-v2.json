@@ -1015,7 +1015,7 @@
     "assumptions": "Relaciones de vecindad informativas y atención local aprendible.",
     "preprocessing": "Control de cabezas, self-loops y máscaras; particionar por nodos/grafos según caso.",
     "uses": "Clasificación de nodos y representaciones relacionales.",
-    "advantages": "Pesos de vecinos adaptativos.",
+    "advantages": "Aprende pesos diferenciados por vecino y permite representar contribuciones heterogéneas dentro de cada vecindario, sin fijar una media uniforme.",
     "disadvantages": "Coste de memoria/aristas; pesos de atención no explican causalidad.",
     "characteristics": "Familia: Redes de grafos. Paradigma: Depende del objetivo. Tarea: Clasificación de nodos / grafos. Principio: Pondera vecinos mediante atención aprendida; los pesos no equivalen automáticamente a explicaciones causales.",
     "functioning": "Pondera vecinos mediante atención aprendida; los pesos no equivalen automáticamente a explicaciones causales.\n\nFormulación representativa: hᵢ′ = σ(Σⱼ∈N(i) αᵢⱼ W hⱼ)\n\nEntrenamiento: Optimización de mensajes y coeficientes de atención con gradientes.",
