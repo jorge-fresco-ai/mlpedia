@@ -1,46 +1,58 @@
-# MLpedia — Biblioteca interactiva de Machine Learning
+# MLpedia — Catálogo técnico y laboratorios interactivos
 
-**Web:** https://jorge-fresco-ai.github.io/mlpedia/ (disponible al activar GitHub Pages).
+**Web:** https://jorge-fresco-ai.github.io/mlpedia/
 
-Biblioteca interactiva en español basada en la obra original **_MLpedia: Guía de Modelos de Machine Learning_**, de **Jorge Fresco** (2026), material docente del Máster en Inteligencia Artificial.
+MLpedia reúne las **65 fichas originales de Machine Learning clásico** con **31 nuevas fichas** de Deep Learning (16) y Reinforcement Learning (15), **15 conceptos** y **6 laboratorios**. Está orientada a consulta técnica y docencia en español.
 
-## Funciones
+## Navegación
 
-- 65 fichas de modelos y técnicas.
-- Filtros por aprendizaje supervisado o no supervisado, tarea (regresión, clasificación, clustering, reducción dimensional, anomalías y reglas de asociación) y familia.
-- Búsqueda, comparación de hasta tres modelos y favoritos locales.
-- Fichas con descripción, supuestos, preprocesamiento, hiperparámetros, métricas, pros/contras y ejemplos de Python.
-- Notas editoriales de corrección técnica.
+| Sección | Ruta | Funcionalidad |
+| --- | --- | --- |
+| ML clásico | [index.html](./index.html) | 65 fichas del documento fuente, búsqueda, filtros, favoritos, comparador y ejemplos Python |
+| DL y RL | [explorar.html](./explorar.html) | 31 fichas nuevas con fórmulas, entrenamiento, métricas, limitaciones, código y demostraciones |
+| Laboratorios | [laboratorios.html](./laboratorios.html) | MLP, convoluciones, atención, bandits, GridWorld y objetivos DQN/PPO |
+| Conceptos | [conceptos.html](./conceptos.html) | 15 conceptos transversales |
+| Rutas | [rutas.html](./rutas.html) | 3 recorridos progresivos con progreso local |
 
-## Uso
+### Qué se ejecuta realmente
 
-Abre `index.html` en el navegador o utiliza el enlace de GitHub Pages. La web es HTML, CSS y JavaScript, sin backend. Los favoritos quedan guardados en el navegador; los ejemplos Python no se ejecutan en la web.
+- **MLP:** aprendizaje SGD con backpropagation sobre XOR; gráficos y predicciones calculados, sin validación externa en ese ejemplo pequeño.
+- **Convoluciones:** correlación cruzada 2D y salida calculada a partir de kernel y stride.
+- **Atención:** producto escalado QKᵀ, softmax y combinación ponderada de V sobre vectores ilustrativos.
+- **Bandits:** interacción con recompensas Bernoulli, estrategias ε-greedy y UCB1, pseudo-regret.
+- **GridWorld:** Q-Learning y SARSA tabulares en JavaScript con retorno, éxito y política.
+- **DQN/PPO:** visualización de fórmulas y objetivos; **no entrena redes de Deep RL**.
 
-## Publicación con GitHub Pages
+Una demostración compacta está disponible dentro de las fichas asociadas. La vista compacta y el laboratorio completo **comparten la lógica de cálculo**, y GridWorld conserva sus parámetros en el enlace hacia la vista completa.
 
-En **Settings → Pages → Build and deployment**: selecciona **Deploy from a branch**, `main`, `/ (root)` y pulsa **Save**. La página se servirá desde `index.html`.
+## Desarrollo y publicación
 
-## Estructura
+La web pública está en `main`. Se publica mediante **GitHub Pages**, sin backend.
 
-```text
-index.html  # Aplicación
-README.md   # Documentación
-LICENSE     # MIT para código / CC BY 4.0 para contenido
-.nojekyll   # Ignora Jekyll
+Las fichas de DL/RL se almacenan en `content/models-v2.json` y los conceptos en `content/concepts-v2.json`. Los laboratorios comparten motor en `src/laboratorios.js` y `labs/gridworld.js`.
+
+Para desarrollo local:
+
+```bash
+git clone https://github.com/jorge-fresco-ai/mlpedia.git
+cd mlpedia
+python3 -m http.server 8000
 ```
 
-## Fuente original y licencia
+Abre http://localhost:8000/. Es necesario usar HTTP local, ya que las fichas nuevas se cargan con `fetch` desde archivos JSON.
 
-**Obra original:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Material docente del Máster en Inteligencia Artificial. Documento original aportado por su autor para esta adaptación interactiva.
+**Limitaciones:** Los códigos Python son ejemplos o fragmentos de referencia; no todos son programas de entrenamiento completos ni han sido ejecutados en CI. Las demostraciones no sustituyen benchmarks con múltiples semillas, separación de datos y validación estadística. La persistencia de favoritos y rutas se limita al navegador.
 
-**Cambios realizados:** conversión a una interfaz web, reorganización navegable, filtros, búsqueda, comparador, favoritos y anotaciones técnicas.
+## Obra original y atribución
 
-**Textos y contenidos educativos originales:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.es). Se permite compartir, adaptar y reutilizar, incluso comercialmente, con atribución a Jorge Fresco, enlace a la licencia e indicación de modificaciones, sin sugerir que el autor avala la reutilización.
+**Documento fuente de las 65 fichas originales:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Material docente del Máster en Inteligencia Artificial, proporcionado por su autor para esta adaptación.
 
-**Código original de la aplicación:** [Licencia MIT](./LICENSE). Permite usar, modificar y redistribuir el código conservando el aviso de copyright y licencia.
+**Aportaciones de esta web:** reorganización del material en catálogo con filtros; anotaciones editoriales; nuevas fichas técnicas de DL y RL sintetizadas a partir de bibliografía especializada citada en cada ficha; conceptos, rutas y laboratorios. **Las 31 nuevas fichas no proceden literalmente del PDF original.**
 
-Los materiales de terceros, si los hubiera, mantienen sus derechos y licencias correspondientes.
+## Licencias
 
-**Cita sugerida:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Adaptación web interactiva: MLpedia. https://github.com/jorge-fresco-ai/mlpedia
+- **Código original de la aplicación:** [MIT](./LICENSE).
+- **Textos educativos originales:** [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Se permite usar y adaptar, incluso comercialmente, **atribuyendo a Jorge Fresco, indicando los cambios y enlazando la licencia**.
+- Cualquier material de terceros mantiene sus derechos y condiciones propias.
 
-**Autor:** Jorge Fresco · https://github.com/jorge-fresco-ai
+Autor: **Jorge Fresco** · [GitHub](https://github.com/jorge-fresco-ai).
