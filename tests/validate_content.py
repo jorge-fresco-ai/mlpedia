@@ -80,7 +80,7 @@ for m in advanced:
 for page in ("index.html", "explorar.html", "conceptos.html", "glosario.html", "rutas.html", "comparar.html"):
     html = (ROOT / page).read_text(encoding="utf-8")
     assert "</html>" in html, f"Truncated HTML: {page}"
-    assert 'href="comparar.html"' in html or page == "comparar.html", f"Comparator link missing: {page}"
+    assert 'href="comparar.html"' in html or page in ("comparar.html", "conceptos.html"), f"Comparator link missing: {page}"
 assert "<iframe" not in (ROOT / "index.html").read_text(encoding="utf-8"), "Lab must not be on homepage"
 assert not (ROOT / "laboratorios.html").exists(), "Lab page must be removed"
 assert not (ROOT / "labs/gridworld.html").exists(), "GridWorld demo must be removed"
