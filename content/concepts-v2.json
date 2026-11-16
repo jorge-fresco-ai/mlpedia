@@ -1249,8 +1249,18 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-15",
+      "ml-34",
+      "ml-45",
+      "ml-47",
+      "ml-52",
+      "ml-53",
+      "ml-54",
+      "v2-04",
+      "v2-35"
+    ],
+    "matchCount": 9
   },
   {
     "id": "g-052",
@@ -1302,8 +1312,15 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-23",
+      "ml-63",
+      "ml-64",
+      "ml-65",
+      "v2-15",
+      "v2-16"
+    ],
+    "matchCount": 6
   },
   {
     "id": "g-056",
@@ -1313,8 +1330,11 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "v2-15",
+      "v2-16"
+    ],
+    "matchCount": 2
   },
   {
     "id": "g-057",
@@ -1359,8 +1379,12 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-40",
+      "ml-42",
+      "v2-23"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-061",
@@ -1408,8 +1432,10 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-3"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-065",
@@ -1465,8 +1491,12 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-29",
+      "ml-59",
+      "ml-62"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-070",
@@ -1608,8 +1638,33 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-1",
+      "ml-2",
+      "ml-3",
+      "ml-4",
+      "ml-5",
+      "ml-6",
+      "ml-14",
+      "ml-15",
+      "ml-16",
+      "ml-17",
+      "ml-18",
+      "ml-19",
+      "ml-20",
+      "ml-21",
+      "ml-33",
+      "ml-34",
+      "ml-35",
+      "ml-36",
+      "ml-37",
+      "ml-38",
+      "ml-39",
+      "ml-40",
+      "ml-41",
+      "ml-42"
+    ],
+    "matchCount": 43
   },
   {
     "id": "g-083",
@@ -1619,8 +1674,11 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-14",
+      "ml-33"
+    ],
+    "matchCount": 2
   },
   {
     "id": "g-084",
@@ -1928,8 +1986,14 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-14",
+      "ml-54",
+      "ml-56",
+      "ml-57",
+      "v2-36"
+    ],
+    "matchCount": 5
   },
   {
     "id": "g-106",
@@ -1939,8 +2003,13 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-15",
+      "ml-34",
+      "ml-49",
+      "ml-59"
+    ],
+    "matchCount": 4
   },
   {
     "id": "g-107",
@@ -2011,8 +2080,13 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-7",
+      "ml-10",
+      "ml-29",
+      "ml-30"
+    ],
+    "matchCount": 4
   },
   {
     "id": "g-112",
@@ -2060,8 +2134,10 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "v2-02"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-115",
@@ -2111,8 +2187,10 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "v2-28"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-118",
@@ -2717,8 +2795,10 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "v2-12"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-162",
@@ -2741,8 +2821,12 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "v2-13",
+      "v2-36",
+      "v2-37"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-164",
@@ -2785,8 +2869,22 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-2",
+      "ml-19",
+      "ml-20",
+      "ml-21",
+      "ml-22",
+      "ml-23",
+      "ml-24",
+      "ml-25",
+      "ml-27",
+      "ml-33",
+      "ml-41",
+      "ml-54",
+      "ml-63"
+    ],
+    "matchCount": 13
   },
   {
     "id": "g-168",
@@ -3271,8 +3369,28 @@
     "formula": "",
     "related": "",
     "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-7",
+      "ml-13",
+      "ml-14",
+      "ml-17",
+      "ml-18",
+      "ml-21",
+      "ml-22",
+      "ml-26",
+      "ml-29",
+      "ml-30",
+      "ml-32",
+      "ml-34",
+      "ml-39",
+      "ml-40",
+      "ml-46",
+      "ml-47",
+      "ml-60",
+      "v2-06",
+      "v2-13"
+    ],
+    "matchCount": 19
   },
   {
     "id": "g-208",
@@ -3282,8 +3400,33 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-1",
+      "ml-2",
+      "ml-4",
+      "ml-6",
+      "ml-7",
+      "ml-8",
+      "ml-10",
+      "ml-15",
+      "ml-18",
+      "ml-19",
+      "ml-21",
+      "ml-22",
+      "ml-26",
+      "ml-28",
+      "ml-29",
+      "ml-33",
+      "ml-35",
+      "ml-38",
+      "ml-43",
+      "ml-44",
+      "ml-46",
+      "ml-48",
+      "ml-50",
+      "ml-52"
+    ],
+    "matchCount": 31
   },
   {
     "id": "g-209",
@@ -3326,8 +3469,14 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-2",
+      "ml-3",
+      "ml-4",
+      "ml-16",
+      "ml-18"
+    ],
+    "matchCount": 5
   },
   {
     "id": "g-213",
@@ -3348,8 +3497,10 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-51"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-215",
@@ -3436,8 +3587,11 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-23",
+      "ml-24"
+    ],
+    "matchCount": 2
   },
   {
     "id": "g-223",
@@ -3469,8 +3623,12 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-52",
+      "ml-53",
+      "ml-54"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-226",
@@ -3480,8 +3638,11 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-53",
+      "ml-54"
+    ],
+    "matchCount": 2
   },
   {
     "id": "g-227",
@@ -3491,8 +3652,13 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-43",
+      "ml-44",
+      "ml-45",
+      "ml-53"
+    ],
+    "matchCount": 4
   },
   {
     "id": "g-228",
@@ -3502,8 +3668,12 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-63",
+      "ml-64",
+      "ml-65"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-229",
@@ -3513,8 +3683,12 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-63",
+      "ml-64",
+      "ml-65"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-230",
@@ -3524,8 +3698,10 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-65"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-231",
@@ -3535,8 +3711,15 @@
     "formula": "support(A)=|{T:A⊆T}|/N",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-15",
+      "ml-34",
+      "ml-60",
+      "ml-63",
+      "ml-64",
+      "ml-65"
+    ],
+    "matchCount": 6
   },
   {
     "id": "g-232",
@@ -3546,8 +3729,12 @@
     "formula": "confidence(A⇒B)=support(A∪B)/support(A)",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-63",
+      "ml-64",
+      "ml-65"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-233",
@@ -3557,8 +3744,12 @@
     "formula": "lift(A⇒B)=confidence(A⇒B)/support(B)",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-63",
+      "ml-64",
+      "ml-65"
+    ],
+    "matchCount": 3
   },
   {
     "id": "g-234",
@@ -3568,8 +3759,10 @@
     "formula": "",
     "related": "",
     "source": "Ampliación terminológica MLpedia para consulta técnica.",
-    "modelIds": [],
-    "matchCount": 0
+    "modelIds": [
+      "ml-6"
+    ],
+    "matchCount": 1
   },
   {
     "id": "g-235",
