@@ -118,5 +118,205 @@
     "description": "Añade incentivo para mantener políticas estocásticas. SAC optimiza una recompensa que incorpora entropía con temperatura α.",
     "formula": "J = E[Σ(r+αH(π(·|s)))]",
     "related": "SAC, A2C, PPO"
+  },
+  {
+    "id": "c-16",
+    "name": "Train/validation/test y data leakage",
+    "area": "DL",
+    "description": "Separar conjuntos antes de ajustar transformaciones o elegir hiperparámetros; en datos temporales/grupos usar particiones que respeten dependencia. Una métrica en test no debe usarse iterativamente para diseñar el modelo.",
+    "formula": "Train → selección por validación → evaluación final en test",
+    "related": "Cualquier modelo"
+  },
+  {
+    "id": "c-17",
+    "name": "Sesgo-varianza y curvas de aprendizaje",
+    "area": "DL",
+    "description": "Distingue error por falta de capacidad, varianza de estimación y ruido; comparar curvas train/validation evita diagnosticar sobreajuste solo con una métrica.",
+    "formula": "E[(ŷ−y)²] = Bias² + Variance + irreducible noise [caso MSE]",
+    "related": "MLP, CNN, GCN"
+  },
+  {
+    "id": "c-18",
+    "name": "Batch Normalization y Layer Normalization",
+    "area": "DL",
+    "description": "Normalizan activaciones de maneras distintas: BatchNorm usa estadísticas del lote (y estimaciones para inferencia), LayerNorm normaliza dimensiones de la muestra.",
+    "formula": "y = γ (x−μ)/√(σ²+ε)+β",
+    "related": "ResNet, Transformer"
+  },
+  {
+    "id": "c-19",
+    "name": "Residual connections",
+    "area": "DL",
+    "description": "Permiten aprender una corrección F(x) respecto a x y facilitan optimización de arquitecturas profundas.",
+    "formula": "y = F(x)+x",
+    "related": "ResNet, Transformer"
+  },
+  {
+    "id": "c-20",
+    "name": "Vanishing y exploding gradients",
+    "area": "DL",
+    "description": "La propagación por muchas capas o pasos temporales multiplica Jacobianos: puede reducir o amplificar los gradientes. Clipping, residualidad y puertas ayudan según caso.",
+    "formula": "∂hₜ/∂hₖ=∏ⱼ Jⱼ [esquema]",
+    "related": "RNN, LSTM, GRU, MLP"
+  },
+  {
+    "id": "c-21",
+    "name": "Tokenización, embeddings y posición",
+    "area": "DL",
+    "description": "La tokenización convierte texto en unidades discretas; embeddings las representan en vectores. Información posicional permite distinguir secuencias sin recurrencia explícita.",
+    "formula": "e(tokenᵢ)+posᵢ",
+    "related": "Transformer, BERT, GPT"
+  },
+  {
+    "id": "c-22",
+    "name": "Máscaras de atención",
+    "area": "DL",
+    "description": "La máscara causal impide que un token atienda posiciones futuras; las máscaras de padding evitan atender posiciones de relleno.",
+    "formula": "scoreᵢⱼ=−∞ cuando j>i [causal]",
+    "related": "GPT, Transformer"
+  },
+  {
+    "id": "c-23",
+    "name": "Fine-tuning, LoRA y PEFT",
+    "area": "DL",
+    "description": "Fine-tuning ajusta parámetros preentrenados; LoRA modela actualizaciones de rango reducido y reduce parámetros entrenables, con coste de inferencia según despliegue.",
+    "formula": "W′=W+BA, rank(BA) ≪ min(d,k)",
+    "related": "BERT, GPT, ViT"
+  },
+  {
+    "id": "c-24",
+    "name": "Data augmentation",
+    "area": "DL",
+    "description": "Transformaciones que preservan etiqueta o semántica deseada para ampliar variabilidad durante entrenamiento; augmentations inapropiadas pueden distorsionar el objetivo.",
+    "formula": "x′ = T(x), y′≈y",
+    "related": "CNN, SimCLR, ViT"
+  },
+  {
+    "id": "c-25",
+    "name": "Aprendizaje contrastivo y negativos",
+    "area": "DL",
+    "description": "Aprende embeddings a partir de similitudes entre positivos y negativos, evitando representaciones colapsadas; la elección de negativos determina qué invariancias se adquieren.",
+    "formula": "NT-Xent / InfoNCE",
+    "related": "SimCLR, CLIP, Siamese"
+  },
+  {
+    "id": "c-26",
+    "name": "Transfer learning y linear probing",
+    "area": "DL",
+    "description": "Reutiliza un encoder preentrenado y evalúa con una cabeza lineal o ajusta capas del backbone. Las particiones deben evitar fugas entre origen y destino.",
+    "formula": "z=f_pretrained(x); ŷ=g(z)",
+    "related": "ResNet, BERT, CLIP"
+  },
+  {
+    "id": "c-27",
+    "name": "Calibración y fiabilidad probabilística",
+    "area": "DL",
+    "description": "La exactitud no implica probabilidades bien calibradas. Reliability diagrams, Brier score y ECE permiten examinar la confianza predictiva.",
+    "formula": "Brier = (1/n)Σ(pᵢ−yᵢ)² [binario]",
+    "related": "MLP, ResNet, Transformer"
+  },
+  {
+    "id": "c-28",
+    "name": "Over-smoothing y over-squashing en GNN",
+    "area": "DL",
+    "description": "El intercambio repetido de mensajes puede hacer indistinguibles las representaciones (over-smoothing) o comprimir demasiada información en cuellos de botella (over-squashing).",
+    "formula": "H⁽ˡ⁺¹⁾=AGG(H⁽ˡ⁾,A) [esquema]",
+    "related": "GCN, GAT, GraphSAGE"
+  },
+  {
+    "id": "c-29",
+    "name": "Teacher forcing y exposure bias",
+    "area": "DL",
+    "description": "Durante entrenamiento autoregresivo puede utilizarse la secuencia real previa, mientras que en inferencia se condiciona en predicciones propias, creando desajuste.",
+    "formula": "p(yₜ | y₍ₜ, x)",
+    "related": "RNN, LSTM, Transformer"
+  },
+  {
+    "id": "c-30",
+    "name": "ELBO y divergencia KL",
+    "area": "DL",
+    "description": "En VAE, maximizar una cota inferior del log-likelihood combina reconstrucción y regularización probabilística del posterior aproximado.",
+    "formula": "ELBO=Eq[log p(x|z)]−KL(q(z|x)||p(z))",
+    "related": "VAE, Autoencoder"
+  },
+  {
+    "id": "c-31",
+    "name": "Guidance y proceso de difusión",
+    "area": "DL",
+    "description": "Los modelos de difusión aprenden a invertir un proceso de ruido; classifier-free guidance combina estimaciones condicionales e incondicionales durante muestreo.",
+    "formula": "ε_guided = ε_uncond + w(ε_cond−ε_uncond)",
+    "related": "Modelos de difusión"
+  },
+  {
+    "id": "c-32",
+    "name": "Evaluación de retrieval y embeddings",
+    "area": "DL",
+    "description": "Para búsqueda semántica, usar recall@k, MRR y nDCG con particiones por entidad cuando sea necesario. La similitud coseno no garantiza equivalencia semántica.",
+    "formula": "cos(u,v)=u·v/(||u||||v||)",
+    "related": "CLIP, Siamese, SimCLR"
+  },
+  {
+    "id": "c-33",
+    "name": "Markov reward, termination y truncation",
+    "area": "RL",
+    "description": "En Gymnasium, terminated indica estado terminal del MDP y truncated interrupción externa; confundirlos puede introducir sesgo al calcular targets con bootstrap.",
+    "formula": "target = r + γ (1−terminated) V(s′)",
+    "related": "Q-Learning, DQN, PPO"
+  },
+  {
+    "id": "c-34",
+    "name": "Reward shaping y reward hacking",
+    "area": "RL",
+    "description": "Cambiar las recompensas modifica incentivos; el agente puede explotar atajos no deseados. Shaping potencial preserva políticas óptimas bajo condiciones concretas.",
+    "formula": "F(s,s′)=γΦ(s′)−Φ(s)",
+    "related": "GridWorld, PPO, SAC"
+  },
+  {
+    "id": "c-35",
+    "name": "Descuento y horizonte efectivo",
+    "area": "RL",
+    "description": "γ determina el peso de recompensas futuras, pero su selección interactúa con terminación, recompensa y horizonte de observación.",
+    "formula": "Gₜ=Σₖ γᵏrₜ₊ₖ₊₁",
+    "related": "Value Iteration, Q-Learning, DQN"
+  },
+  {
+    "id": "c-36",
+    "name": "Bias-variance en Actor-Critic",
+    "area": "RL",
+    "description": "El crítico reduce la varianza de gradientes de política a cambio de sesgo si su valor está mal estimado; GAE permite ajustar el compromiso.",
+    "formula": "Âᵍᵃᵉₜ=Σₗ(γλ)ˡδₜ₊ₗ",
+    "related": "A2C, PPO"
+  },
+  {
+    "id": "c-37",
+    "name": "Offline RL y distribution shift",
+    "area": "RL",
+    "description": "Aprende de un dataset estático sin interaccionar; estimaciones de acciones fuera de la distribución de datos pueden quedar artificialmente optimistas.",
+    "formula": "D={(s,a,r,s′)}",
+    "related": "DQN, SAC"
+  },
+  {
+    "id": "c-38",
+    "name": "Model-based vs model-free RL",
+    "area": "RL",
+    "description": "Model-based utiliza o aprende un modelo de transición/recompensa para planificar; model-free aprende directamente políticas o funciones de valor.",
+    "formula": "P(s′|s,a), R(s,a)",
+    "related": "Value Iteration, PPO, DQN"
+  },
+  {
+    "id": "c-39",
+    "name": "Importancia de múltiples semillas",
+    "area": "RL",
+    "description": "Los resultados de RL suelen variar fuertemente con inicialización, exploración y entornos; reportar promedios, dispersión y presupuestos comparables.",
+    "formula": "media ± intervalo de confianza entre semillas",
+    "related": "DQN, PPO, SAC"
+  },
+  {
+    "id": "c-40",
+    "name": "Entornos y seguridad de evaluación",
+    "area": "RL",
+    "description": "Distinguir entrenamiento y evaluación, evitar fuga de la política en el entorno de prueba y limitar acciones potencialmente peligrosas en despliegues reales.",
+    "formula": "π_train ≠ protocolo de evaluación",
+    "related": "PPO, TD3, SAC"
   }
 ]
