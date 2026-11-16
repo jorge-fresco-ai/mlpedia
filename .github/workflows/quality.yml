@@ -1,0 +1,40 @@
+name: MLpedia static quality checks
+
+on:
+  push:
+    branches: [main, develop, "fix/**", "feature/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate content and Python snippet syntax
+        run: python tests/validate_content.py
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          node --check src/laboratorios.js
+          node --check labs/gridworld.js
+          python - <<'PY'
+          import pathlib, re
+          for name in ['index.html','explorar.html','conceptos.html','rutas.html','comparar.html','laboratorios.html']:
+              source=pathlib.Path(name).read_text()
+              matches=re.findall(r'<script(?:\s+[^>]*)?>([\s\S]*?)</script>',source)
+              for i, script in enumerate(matches):
+                  if script.strip():
+                      pathlib.Path(f'/tmp/mlpedia-inline-{i}.js').write_text(script)
+                      import subprocess
+                      subprocess.run(['node','--check',f'/tmp/mlpedia-inline-{i}.js'],check=True)
+          PY
