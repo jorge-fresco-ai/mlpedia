@@ -11,13 +11,25 @@ function quick(el){const v=el.dataset.quick;$('task').value=v; if(v && !$('task'
 function resetFilters(){$('learning').value='';$('task').value='';$('search').value='';$('favonly').checked=false;$('reviewonly').checked=false;$('order').value='original';updateLists();$('family').value='';document.querySelectorAll('[data-quick]').forEach(x=>x.classList.toggle('on',!x.dataset.quick));applyFilters();}
 function toggleFav(id){favorites.has(id)?favorites.delete(id):favorites.add(id);try{localStorage.setItem('mlpedia:favorites',JSON.stringify([...favorites]));}catch(e){}applyFilters();if(active===id)showModel(id,activeTab)}
 function toggleCompare(id,checked){if(checked&&!compare.includes(id)){if(compare.length>=3){alert('Puedes comparar un máximo de tres modelos.');applyFilters();return;}compare.push(id)}else if(!checked)compare=compare.filter(x=>x!==id);applyFilters();}
+let TERM_LOOKUP=new Map(),TERM_RX=null;
+function glossaryInline(value){
+ const raw=String(value??"");if(!TERM_RX)return escapeHTML(raw);
+ return raw.split(TERM_RX).map((segment,i)=>{
+  if(i%2===0)return escapeHTML(segment);
+  const term=TERM_LOOKUP.get(segment.toLowerCase());
+  return term?'<a href="glosario.html#'+encodeURIComponent(term.id)+'" title="Consultar término en el glosario">'+escapeHTML(segment)+'</a>':escapeHTML(segment);
+ }).join("");
+}
 function section(m,k){
  let v=m.sections[k];if(!v)return '';
  const listKeys=new Set(['Supuestos del modelo','Características principales','Requisitos / Preprocesamiento recomendado','Hiperparámetros clave','Usos principales','Métricas recomendadas','Ventajas','Desventajas','Limitaciones típicas']);
  if(listKeys.has(k)){
-   const bullets=String(v).split(/\s*[●•]\s*/).map(x=>x.trim()).filter(Boolean);
-   const elements=bullets.length>1?bullets:[String(v).trim()];
-   return '<div class="section"><h4>'+escapeHTML(k)+'</h4><ul class="classic-bullets">'+elements.map(x=>'<li>'+escapeHTML(x)+'</li>').join('')+'</ul></div>';
+  const raw=String(v);
+  const marked=/[●•]/.test(raw);
+  const pieces=marked?raw.split(/[●•]/).map(x=>x.trim()).filter(Boolean):[raw.trim()];
+  let intro="",bullets=pieces;
+  if(marked&&!/^[●•]/.test(raw.trim())&&pieces.length>1){intro=pieces[0];bullets=pieces.slice(1);}
+  return '<div class="section"><h4>'+escapeHTML(k)+'</h4>'+(intro?'<p class="body">'+glossaryInline(intro)+'</p>':'')+'<ul class="classic-bullets">'+bullets.map(x=>'<li>'+glossaryInline(x)+'</li>').join('')+'</ul></div>';
  }
  return '<div class="section"><h4>'+escapeHTML(k)+'</h4><div class="body">'+escapeHTML(v)+'</div></div>';
 }
@@ -28,4 +40,12 @@ function copyText(id){const m=DATA.find(x=>x.id===id);const v=[m.name,m.descript
 function openCompare(){active='comparison';let list=compare.map(id=>DATA.find(m=>m.id===id));$('drawerContent').innerHTML=`<div class="drawerheader"><span class="eyebrow">Comparador de modelos</span><button class="btn" onclick="closeDrawer()">✕ Cerrar</button></div><h2>Comparación de modelos</h2><p class="drawerintro">Selecciona hasta tres modelos desde el catálogo. La comparación muestra la información de sus fichas originales.</p>${list.length?`<button class="btn" onclick="compare=[];applyFilters();openCompare()">Vaciar selección</button><div class="comparegrid">${list.map(m=>`<div class="compareitem"><h3>${escapeHTML(m.name)}</h3>${tags(m)}<dl>${[['Descripción','Descripción'],['Supuestos','Supuestos del modelo'],['Preprocesamiento','Requisitos / Preprocesamiento recomendado'],['Hiperparámetros','Hiperparámetros clave'],['Métricas','Métricas recomendadas'],['Limitaciones','Desventajas']].map(([label,key])=>`<dt>${label}</dt><dd>${escapeHTML(m.sections[key]||'—')}</dd>`).join('')}</dl><button class="btn" onclick="showModel(${m.id})">Abrir ficha</button></div>`).join('')}</div>`:'<div class="empty">Aún no has seleccionado modelos para comparar.</div>'}`;$('overlay').classList.add('open');document.body.style.overflow='hidden';$('drawer').scrollTop=0;}
 function randomModel(){showModel(DATA[Math.floor(Math.random()*DATA.length)].id)}
 $('learning').addEventListener('change',()=>{updateLists();applyFilters()});$('task').addEventListener('change',()=>{updateLists();applyFilters()});updateLists();applyFilters();const requested=location.hash.match(/^#ml-([0-9]+)$/);if(requested)showModel(Number(requested[1]));
+fetch("content/concepts-v2.json").then(r=>r.ok?r.json():[]).then(terms=>{
+ for(const t of terms){if(t.name.length>=3)TERM_LOOKUP.set(t.name.toLowerCase(),t);}
+ for(const [alias,name] of Object.entries({"F1":"F1-score","R²":"R² (coeficiente de determinación)"})){const x=terms.find(t=>t.name===name);if(x)TERM_LOOKUP.set(alias.toLowerCase(),x);}
+ const variants=[...TERM_LOOKUP.keys()].filter(x=>x.length>=3||x==="r²"||x==="f1").sort((a,b)=>b.length-a.length);
+ const rxEscape=x=>x.split("").map(c=>"\\^$.*+?()[]{}|".includes(c)?"\\"+c:c).join("");
+ TERM_RX=variants.length?new RegExp("("+variants.map(rxEscape).join("|")+")","gi"):null;
+}).catch(()=>{});
+
 </script></body></html>
