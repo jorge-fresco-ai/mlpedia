@@ -698,10 +698,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Graph Convolutional Network (GCN): requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Requiere: pip install torch torch-geometric\nimport torch\nfrom torch_geometric.nn import GCNConv\nclass GCN(torch.nn.Module):\n    def __init__(self, n_features, hidden, n_classes):\n        super().__init__()\n        self.c1 = GCNConv(n_features, hidden)\n        self.c2 = GCNConv(hidden, n_classes)\n    def forward(self, x, edge_index):\n        return self.c2(self.c1(x, edge_index).relu(), edge_index)\n# Construir data.x, data.edge_index, data.y, máscaras y optimizador.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-33",
@@ -720,10 +720,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Graph Attention Network (GAT): requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Requiere: pip install torch torch-geometric\nfrom torch import nn\nfrom torch_geometric.nn import GATConv\nclass GAT(nn.Module):\n    def __init__(self, in_channels, hidden, out_channels):\n        super().__init__()\n        self.g1=GATConv(in_channels, hidden, heads=4)\n        self.g2=GATConv(hidden*4, out_channels, heads=1, concat=False)\n    def forward(self, x, edges):\n        return self.g2(self.g1(x,edges).elu(),edges)\n# Entrenar con máscaras y separación correcta por nodos o grafos.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-34",
@@ -742,10 +742,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de GraphSAGE: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Requiere: pip install torch torch-geometric\nfrom torch import nn\nfrom torch_geometric.nn import SAGEConv\nclass Sage(nn.Module):\n    def __init__(self, n_in, n_hidden, n_out):\n        super().__init__()\n        self.layers=nn.ModuleList([SAGEConv(n_in,n_hidden), SAGEConv(n_hidden,n_out)])\n    def forward(self,x,edges):\n        x=self.layers[0](x,edges).relu()\n        return self.layers[1](x,edges)\n# Para grafos grandes, usar NeighborLoader y validar nodos no vistos.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-35",
@@ -764,10 +764,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Siamese Network: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "import torch\nfrom torch import nn\nencoder=nn.Sequential(nn.Linear(32,64),nn.ReLU(),nn.Linear(64,16))\na,b=torch.randn(8,32),torch.randn(8,32)\ndistance=torch.nn.functional.pairwise_distance(encoder(a),encoder(b))\n# Construir pares y etiquetas; aplicar una loss contrastiva adecuada.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-36",
@@ -786,10 +786,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de SimCLR: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "import torch\nimport torch.nn.functional as F\ndef nt_xent(z1,z2,tau=0.2):\n    z=F.normalize(torch.cat([z1,z2],dim=0),dim=1)\n    n=z1.size(0)\n    sim=z@z.T/tau\n    sim.fill_diagonal_(-float(\"inf\"))\n    target=(torch.arange(2*n,device=z.device)+n)%(2*n)\n    return F.cross_entropy(sim,target)\n# Las vistas z1/z2 deben proceder de augmentations distintas.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-37",
@@ -808,10 +808,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de CLIP: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Requiere: pip install transformers pillow torch\n# Inferencia: descarga de pesos preentrenados.\nfrom transformers import CLIPModel, CLIPProcessor\nfrom PIL import Image\nmodel=CLIPModel.from_pretrained(\"openai/clip-vit-base-patch32\")\nprocessor=CLIPProcessor.from_pretrained(\"openai/clip-vit-base-patch32\")\n# inputs=processor(text=[...],images=[...],return_tensors=\"pt\",padding=True)\n# logits=model(**inputs).logits_per_image",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-38",
@@ -830,10 +830,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Temporal Convolutional Network (TCN): requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "import torch\nfrom torch import nn\n# Bloque causal simple; un TCN completo añade residualidad y varios bloques.\nclass CausalConv(nn.Module):\n    def __init__(self,n_in,n_out,kernel=3,dilation=2):\n        super().__init__()\n        self.pad=(kernel-1)*dilation\n        self.conv=nn.Conv1d(n_in,n_out,kernel,dilation=dilation,padding=self.pad)\n    def forward(self,x):\n        return self.conv(x)[...,:-self.pad] if self.pad else self.conv(x)\nprint(CausalConv(4,8)(torch.randn(2,4,30)).shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-39",
@@ -852,10 +852,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Deep Sets: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "import torch\nfrom torch import nn\nclass DeepSets(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.phi=nn.Sequential(nn.Linear(6,32),nn.ReLU())\n        self.rho=nn.Sequential(nn.Linear(32,16),nn.ReLU(),nn.Linear(16,1))\n    def forward(self,x):\n        return self.rho(self.phi(x).sum(dim=1))\n# x: [batch, elementos_del_conjunto, features]\nprint(DeepSets()(torch.randn(4,10,6)).shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-40",
@@ -874,10 +874,10 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Neural ODE: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Requiere: pip install torch torchdiffeq\nimport torch\nfrom torch import nn\nfrom torchdiffeq import odeint\nclass Dynamics(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.f=nn.Sequential(nn.Linear(4,32),nn.Tanh(),nn.Linear(32,4))\n    def forward(self,t,y):\n        return self.f(y)\nt=torch.linspace(0,1,11)\nstates=odeint(Dynamics(),torch.randn(5,4),t)\nprint(states.shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   },
   {
     "id": "v2-41",
@@ -896,9 +896,9 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Esquema conceptual de Normalizing Flow: requiere elegir dataset, implementación y dependencia especializada.\n# Consulte el artículo citado para el entrenamiento completo.",
+    "code": "# Fragmento didáctico de transformación afín invertible.\nimport torch\nx=torch.randn(64,2)\nscale=torch.tensor([1.2,0.7])\nshift=torch.tensor([0.1,-0.3])\nz=(x-shift)/scale\nbase=torch.distributions.Normal(0.,1.).log_prob(z).sum(-1)\nlog_prob=base-torch.log(scale.abs()).sum()\n# El flujo completo aprende parámetros y encadena transforms invertibles.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Esquema conceptual; no es código ejecutable ni pseudocódigo de entrenamiento completo."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
   }
 ]
