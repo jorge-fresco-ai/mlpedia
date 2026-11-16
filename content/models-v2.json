@@ -15,7 +15,9 @@
     "reference": "Rosenblatt (1958), The perceptron",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from sklearn.linear_model import Perceptron\nfrom sklearn.datasets import make_classification\nX, y = make_classification(n_samples=300, random_state=42)\nmodel = Perceptron(max_iter=1000, tol=1e-3, random_state=42)\nmodel.fit(X, y)\nprint(model.score(X, y))  # Evaluación ilustrativa sobre train",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-02",
@@ -33,7 +35,9 @@
     "reference": "Rumelhart, Hinton & Williams (1986), Learning representations by back-propagating errors",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "mlp"
+    "lab": "mlp",
+    "code": "import torch\nfrom torch import nn\ntorch.manual_seed(42)\nX = torch.tensor([[0.,0.],[0.,1.],[1.,0.],[1.,1.]])\ny = torch.tensor([[0.],[1.],[1.],[0.]])\nmodel = nn.Sequential(nn.Linear(2,8), nn.Tanh(), nn.Linear(8,1))\nopt = torch.optim.Adam(model.parameters(), lr=.03)\nloss_fn = nn.BCEWithLogitsLoss()\nfor epoch in range(1000):\n    loss = loss_fn(model(X), y)\n    opt.zero_grad()\n    loss.backward()\n    opt.step()\nprint(torch.sigmoid(model(X)).detach())",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-03",
@@ -51,7 +55,9 @@
     "reference": "Hinton & Salakhutdinov (2006), Reducing the dimensionality of data with neural networks",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "import torch\nfrom torch import nn\nencoder = nn.Sequential(nn.Linear(20,8), nn.ReLU(), nn.Linear(8,3))\ndecoder = nn.Sequential(nn.Linear(3,8), nn.ReLU(), nn.Linear(8,20))\nx = torch.randn(16,20)\nreconstruction = decoder(encoder(x))\nloss = nn.MSELoss()(reconstruction, x)\nloss.backward()  # Ejemplo de una actualización, falta optimizador",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-04",
@@ -69,7 +75,9 @@
     "reference": "LeCun et al. (1998), Gradient-based learning applied to document recognition",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "convolutions"
+    "lab": "convolutions",
+    "code": "import torch\nfrom torch import nn\ncnn = nn.Sequential(nn.Conv2d(1,8,3,padding=1),nn.ReLU(),\n                    nn.MaxPool2d(2),nn.Flatten(),nn.Linear(8*14*14,10))\nlogits = cnn(torch.randn(4,1,28,28))\nprint(logits.shape)  # [4,10]",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-05",
@@ -87,7 +95,9 @@
     "reference": "He et al. (2016), Deep Residual Learning for Image Recognition",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from torchvision.models import resnet18\nimport torch\nmodel = resnet18(weights=None, num_classes=3)\nlogits = model(torch.randn(2,3,224,224))\nprint(logits.shape)\n# Para datos pequeños, entrenar desde cero puede ser insuficiente.",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-06",
@@ -105,7 +115,9 @@
     "reference": "Ronneberger et al. (2015), U-Net: Convolutional Networks for Biomedical Image Segmentation",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Ejemplo de arquitectura U-Net usando una librería externa opcional:\n# pip install segmentation-models-pytorch\nimport segmentation_models_pytorch as smp\nmodel = smp.Unet(encoder_name=\"resnet18\",\n                 encoder_weights=None,in_channels=3,classes=1)\n# loss de segmentación y máscaras alineadas requeridas",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-07",
@@ -123,7 +135,9 @@
     "reference": "Dosovitskiy et al. (2021), An Image is Worth 16x16 Words",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from torchvision.models import vit_b_16\nimport torch\nmodel = vit_b_16(weights=None, num_classes=5)\nlogits = model(torch.randn(2,3,224,224))\nprint(logits.shape)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-08",
@@ -141,7 +155,9 @@
     "reference": "Elman (1990), Finding Structure in Time",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "import torch\nfrom torch import nn\nrnn=nn.RNN(input_size=6,hidden_size=16,batch_first=True)\noutput,last=rnn(torch.randn(8,20,6))\nprint(output.shape,last.shape)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-09",
@@ -159,7 +175,9 @@
     "reference": "Hochreiter & Schmidhuber (1997), Long Short-Term Memory",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "import torch\nfrom torch import nn\nlstm=nn.LSTM(input_size=6,hidden_size=16,batch_first=True)\noutput,(h,c)=lstm(torch.randn(8,20,6))\nprint(output.shape,h.shape,c.shape)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-10",
@@ -177,7 +195,9 @@
     "reference": "Cho et al. (2014), Learning Phrase Representations using RNN Encoder–Decoder",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "import torch\nfrom torch import nn\ngru=nn.GRU(input_size=6,hidden_size=16,batch_first=True)\noutput,last=gru(torch.randn(8,20,6))\nprint(output.shape,last.shape)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-11",
@@ -195,7 +215,9 @@
     "reference": "Vaswani et al. (2017), Attention Is All You Need",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "attention"
+    "lab": "attention",
+    "code": "import torch\nfrom torch import nn\nlayer=nn.TransformerEncoderLayer(d_model=32,nhead=4,batch_first=True)\nencoder=nn.TransformerEncoder(layer,num_layers=2)\ntokens=torch.randn(2,12,32)\ncontextual=encoder(tokens)\nprint(contextual.shape)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-12",
@@ -213,7 +235,9 @@
     "reference": "Devlin et al. (2019), BERT: Pre-training of Deep Bidirectional Transformers",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Ejemplo de inferencia; requiere descargar los pesos del modelo.\nfrom transformers import AutoTokenizer, AutoModel\nname=\"bert-base-uncased\"\ntokenizer=AutoTokenizer.from_pretrained(name)\nmodel=AutoModel.from_pretrained(name)\nbatch=tokenizer(\"Machine learning\",return_tensors=\"pt\")\nhidden_states=model(**batch).last_hidden_state\nprint(hidden_states.shape)",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-13",
@@ -231,7 +255,9 @@
     "reference": "Radford et al. (2018), Improving Language Understanding by Generative Pre-Training",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Ejemplo de inferencia; requiere descargar los pesos del modelo.\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nname=\"distilgpt2\"\ntokenizer=AutoTokenizer.from_pretrained(name)\nmodel=AutoModelForCausalLM.from_pretrained(name)\ninputs=tokenizer(\"Deep learning\",return_tensors=\"pt\")\noutput=model.generate(**inputs,max_new_tokens=12,\n                      pad_token_id=tokenizer.eos_token_id)\nprint(tokenizer.decode(output[0]))",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-14",
@@ -249,7 +275,9 @@
     "reference": "Kingma & Welling (2014), Auto-Encoding Variational Bayes",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Fragmento PyTorch: función objetivo VAE.\n# mu, logvar son parámetros de q(z|x); recon es salida del decoder.\nimport torch\ndef vae_loss(recon,x,mu,logvar):\n    reconstruction=((recon-x)**2).sum(dim=1).mean()\n    kl=-0.5*(1+logvar-mu.pow(2)-logvar.exp()).sum(dim=1).mean()\n    return reconstruction+kl",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-15",
@@ -267,7 +295,9 @@
     "reference": "Goodfellow et al. (2014), Generative Adversarial Nets",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Fragmento PyTorch: pérdidas de una GAN logística.\nimport torch\nfrom torch.nn import functional as F\n# fake_logits = D(G(z)); real_logits = D(x_real)\ndef discriminator_loss(real_logits,fake_logits):\n    return F.softplus(-real_logits).mean()+F.softplus(fake_logits).mean()\ndef generator_loss(fake_logits):\n    return F.softplus(-fake_logits).mean()\n# En entrenamiento real se alternan actualizaciones D/G.",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-16",
@@ -285,7 +315,9 @@
     "reference": "Ho et al. (2020), Denoising Diffusion Probabilistic Models",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Ejemplo de inferencia con modelo preentrenado (no entrenamiento).\n# Requiere instalar diffusers, torch y descargar pesos.\nfrom diffusers import DDPMPipeline\n# pipe = DDPMPipeline.from_pretrained(\"google/ddpm-cifar10-32\")\n# images = pipe(batch_size=1).images\n# El entrenamiento DDPM requiere un denoiser y schedule de ruido.",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-17",
@@ -303,7 +335,9 @@
     "reference": "Bellman (1957), Dynamic Programming",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Pseudocódigo: necesita P[s][a] como lista (prob,next,reward).\nV = [0.0 for _ in states]\nfor iteration in range(max_iterations):\n    V_new = [\n        max(sum(p*(r+gamma*V[sp]) for p,sp,r in P[s][a])\n            for a in actions[s])\n        for s in states\n    ]\n    if max(abs(x-y) for x,y in zip(V,V_new)) < tolerance:\n        V=V_new\n        break\n    V=V_new",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-18",
@@ -321,7 +355,9 @@
     "reference": "Sutton & Barto (2018), Reinforcement Learning: An Introduction, cap. 4",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Pseudocódigo de evaluación + mejora de política.\n# P y R son las transiciones y recompensas del MDP conocido.\npolicy = initial_policy\nwhile True:\n    V = evaluate_policy(P, R, policy, gamma)\n    new_policy = improve_policy(P, R, V, gamma)\n    if new_policy == policy:\n        break\n    policy = new_policy",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-19",
@@ -339,7 +375,9 @@
     "reference": "Sutton & Barto (2018), cap. 5",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Pseudocódigo Monte Carlo first-visit:\nreturns = defaultdict(list)\nfor episode in sampled_episodes:\n    G = 0\n    for t in reversed(range(len(episode))):\n        s,a,r = episode[t]\n        G = gamma*G + r\n        if (s,a) not in [(x[0],x[1]) for x in episode[:t]]:\n            returns[(s,a)].append(G)\n            Q[s,a] = sum(returns[(s,a)])/len(returns[(s,a)])",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-20",
@@ -357,7 +395,9 @@
     "reference": "Rummery & Niranjan (1994), On-Line Q-Learning Using Connectionist Systems",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "gridworld"
+    "lab": "gridworld",
+    "code": "# Actualización SARSA (fragmento dentro de un bucle de interacción):\n# a_next se ha muestreado de la política de comportamiento.\ntarget = reward if terminated else reward + gamma*Q[next_state, next_action]\nQ[state, action] += alpha * (target-Q[state, action])",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-21",
@@ -375,7 +415,9 @@
     "reference": "Watkins & Dayan (1992), Q-learning",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "gridworld"
+    "lab": "gridworld",
+    "code": "# Actualización Q-learning (fragmento dentro del episodio):\ntarget = reward if terminated else reward + gamma*max(Q[next_state])\nQ[state, action] += alpha * (target-Q[state, action])\n# En Gymnasium: separar terminated de truncated al definir bootstrap.",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-22",
@@ -393,7 +435,9 @@
     "reference": "Sutton & Barto (2018), cap. 6",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Expected SARSA (política epsilon-greedy, con empates tratados).\nimport numpy as np\nq_next = np.asarray(Q[next_state], dtype=float)\ngreedy = np.flatnonzero(q_next == q_next.max())\nprobs = np.full(len(q_next), epsilon/len(q_next))\nprobs[greedy] += (1-epsilon)/len(greedy)\ntarget = reward if terminated else reward + gamma*np.dot(probs,q_next)",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-23",
@@ -411,7 +455,9 @@
     "reference": "Mnih et al. (2015), Human-level control through deep reinforcement learning",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "deep-rl"
+    "lab": "deep-rl",
+    "code": "# Entrenamiento DQN real mediante Stable-Baselines3.\nfrom stable_baselines3 import DQN\nmodel=DQN(\"MlpPolicy\",\"CartPole-v1\",\n          learning_rate=1e-3,buffer_size=50000,\n          verbose=0,seed=42)\nmodel.learn(total_timesteps=20000)\n# Evaluar aparte con Monitor / evaluate_policy.",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-24",
@@ -429,7 +475,9 @@
     "reference": "van Hasselt, Guez & Silver (2016), Deep Reinforcement Learning with Double Q-learning",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Fragmento para Double DQN (PyTorch), no bucle completo.\n# online y target son redes Q; next_obs es batch.\nwith torch.no_grad():\n    actions = online(next_obs).argmax(dim=1,keepdim=True)\n    q_next = target(next_obs).gather(1,actions).squeeze(1)\n    y = reward + gamma*(1-done.float())*q_next",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-25",
@@ -447,7 +495,9 @@
     "reference": "Wang et al. (2016), Dueling Network Architectures for Deep Reinforcement Learning",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# Fragmento de la cabeza dueling, no agente completo.\nimport torch\nfrom torch import nn\nclass DuelingHead(nn.Module):\n    def __init__(self, features, actions):\n        super().__init__()\n        self.value=nn.Linear(features,1)\n        self.advantage=nn.Linear(features,actions)\n    def forward(self,h):\n        a=self.advantage(h)\n        return self.value(h)+a-a.mean(dim=-1,keepdim=True)",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-26",
@@ -465,7 +515,9 @@
     "reference": "Williams (1992), Simple Statistical Gradient-Following Algorithms",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# REINFORCE: loss de gradiente de política.\n# log_probs_t guardados durante un episodio;\n# returns_t retornos descontados del mismo episodio.\nimport torch\ndef reinforce_loss(log_probs_t,returns_t):\n    return -(torch.stack(log_probs_t)*returns_t).sum()\n# Requiere optimizer.step() tras backward().",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-27",
@@ -483,7 +535,9 @@
     "reference": "Mnih et al. (2016), Asynchronous Methods for Deep Reinforcement Learning (A3C antecedente)",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "# A2C: algoritmo sincrónico actor-critic.\nfrom stable_baselines3 import A2C\nagent=A2C(\"MlpPolicy\",\"CartPole-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=20000)",
+    "codeNote": "Fragmento o pseudocódigo señalado en el propio ejemplo. Puede requerir variables, dependencias o código adicional."
   },
   {
     "id": "v2-28",
@@ -501,7 +555,9 @@
     "reference": "Schulman et al. (2017), Proximal Policy Optimization Algorithms",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": "deep-rl"
+    "lab": "deep-rl",
+    "code": "from stable_baselines3 import PPO\nagent=PPO(\"MlpPolicy\",\"CartPole-v1\",\n          learning_rate=3e-4,n_steps=2048,seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-29",
@@ -519,7 +575,9 @@
     "reference": "Lillicrap et al. (2016), Continuous control with deep reinforcement learning",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from stable_baselines3 import DDPG\nfrom stable_baselines3.common.noise import NormalActionNoise\nimport numpy as np\nnoise=NormalActionNoise(mean=np.zeros(1),sigma=.1*np.ones(1))\nagent=DDPG(\"MlpPolicy\",\"Pendulum-v1\",\n           action_noise=noise,seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-30",
@@ -537,7 +595,9 @@
     "reference": "Fujimoto, van Hoof & Meger (2018), Addressing Function Approximation Error in Actor-Critic Methods",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from stable_baselines3 import TD3\nagent=TD3(\"MlpPolicy\",\"Pendulum-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   },
   {
     "id": "v2-31",
@@ -555,6 +615,8 @@
     "reference": "Haarnoja et al. (2018), Soft Actor-Critic",
     "level": "Intermedio-avanzado",
     "source": "Ampliación MLpedia 2.0. Síntesis técnica original; no procede de la guía MLpedia de 65 fichas.",
-    "lab": null
+    "lab": null,
+    "code": "from stable_baselines3 import SAC\nagent=SAC(\"MlpPolicy\",\"Pendulum-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
+    "codeNote": "Ejemplo ilustrativo de uso. Requiere dependencias y validación de entorno; no se ha ejecutado en esta publicación."
   }
 ]
