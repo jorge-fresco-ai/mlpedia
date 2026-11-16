@@ -2,7 +2,7 @@
 
 **Web pública:** https://jorge-fresco-ai.github.io/mlpedia/
 
-MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico procedentes de la guía inicial, 26 de Deep Learning y 15 de Reinforcement Learning), **40 conceptos técnicos**, **5 rutas de aprendizaje** y un **comparador transversal** de hasta tres modelos. Está orientada a docencia y consulta técnica en español.
+MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico procedentes de la guía inicial, 26 de Deep Learning y 15 de Reinforcement Learning), **295 términos de glosario**, **5 rutas de aprendizaje** y un **comparador transversal** de hasta tres modelos. Está orientada a docencia y consulta técnica en español.
 
 ## Secciones
 
@@ -11,7 +11,7 @@ MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico pr
 | ML clásico | [index.html](index.html) | 65 fichas, filtros, favoritos y consulta de código |
 | Deep Learning y RL | [explorar.html](explorar.html) | 41 fichas con la misma estructura visual que ML clásico: filtros laterales, búsqueda, categorías, favoritos, comparación y cuatro pestañas técnicas |
 | ★ Comparador | [comparar.html](comparar.html) | Contrastar de dos a tres modelos de cualquier área por paradigma, supuestos, métrica, método y limitaciones |
-| Conceptos | [conceptos.html](conceptos.html) | 40 conceptos sobre optimización, redes, atención, grafos, generación y RL |
+| Glosario | [glosario.html](glosario.html) | 295 términos de estadística, métricas, ML, DL, RL, NLP, preprocesamiento, interpretabilidad y MLOps; búsqueda, filtros y enlaces a fichas |
 | Rutas | [rutas.html](rutas.html) | 5 itinerarios con objetivos, módulos, enlaces específicos y progreso local |
 
 Los laboratorios y simuladores se retiraron deliberadamente para priorizar la experiencia de referencia y aprendizaje guiado.
@@ -20,13 +20,13 @@ Los laboratorios y simuladores se retiraron deliberadamente para priorizar la ex
 
 La ampliación incluye arquitectura de grafos (GCN, GAT, GraphSAGE), aprendizaje métrico y contrastivo (Siamese, SimCLR), multimodalidad (CLIP), secuencias convolucionales (TCN), conjuntos (Deep Sets), ecuaciones diferenciales neuronales (Neural ODE) y modelos probabilísticos invertibles (Normalizing Flows).
 
-Las 41 fichas incluyen supuestos, funcionamiento, características, preprocesamiento, entrenamiento, hiperparámetros explicados, usos, evaluación, ventajas, inconvenientes, limitaciones, referencias y código Python. Los ejemplos que requieren contexto adicional se identifican como fragmentos y siguen pendientes de validación de ejecución.
+Las 41 fichas incluyen los 13 apartados de las fichas clásicas (Tipo, Descripción, Supuestos, Características, Cómo funciona, Requisitos/Preprocesamiento, Hiperparámetros, Usos, Métricas, Ventajas, Desventajas, Limitaciones y Código Python), además de formulación, entrenamiento y referencias. Los campos enumerativos se presentan con listas HTML semánticas y, cuando hay coincidencia, enlaces al megaglosario. Los ejemplos que requieren contexto adicional se identifican como fragmentos y siguen pendientes de validación de ejecución.
 
 Se distinguen arquitectura, familia, tarea y paradigma; una arquitectura como Transformer o GCN no pertenece por definición a un único paradigma.
 
 ## Validación y límites
 
-Las fichas de DL/RL se encuentran en `content/models-v2.json`, las 65 originales se exportan a `content/models-classic.json` para permitir la comparación transversal y los conceptos están en `content/concepts-v2.json`.
+Las fichas de DL/RL se encuentran en `content/models-v2.json`, las 65 originales se exportan a `content/models-classic.json` para permitir la comparación transversal y el megaglosario está en `content/concepts-v2.json` (nombre del archivo conservado por compatibilidad). La ruta antigua `conceptos.html` redirige a `glosario.html` sin perder el identificador del término.
 
 El workflow de GitHub Actions comprueba integridad de datos y sintaxis Python y JavaScript; **estas comprobaciones no equivalen a ejecutar el entrenamiento de los modelos ni validan las dependencias**. Los fragmentos de Python incluyen su tipo y un estado de validación. Las rutas y favoritos usan almacenamiento del navegador.
 
@@ -44,7 +44,7 @@ Abrir http://localhost:8000/ (algunas páginas cargan datos mediante `fetch` y r
 
 **Obra de referencia de los 65 modelos originales:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Material docente de referencia.
 
-Las 41 fichas añadidas, las rutas, los conceptos y la interfaz son una ampliación y **no constituyen texto extraído literalmente del PDF inicial**. Las fichas nuevas citan artículos y bibliografía de referencia; esos trabajos conservan sus derechos.
+Las 41 fichas añadidas, las rutas, el megaglosario y la interfaz son una ampliación y **no constituyen texto extraído literalmente del PDF inicial**. Las fichas nuevas citan artículos y bibliografía de referencia; esos trabajos conservan sus derechos.
 
 ## Licencias
 

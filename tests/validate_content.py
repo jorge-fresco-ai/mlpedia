@@ -16,10 +16,10 @@ advanced = load("content/models-v2.json")
 concepts = load("content/concepts-v2.json")
 assert len(classic) == 65, f"Expected 65 original entries, got {len(classic)}"
 assert len(advanced) == 41, f"Expected 41 new entries, got {len(advanced)}"
-assert len(concepts) == 40, f"Expected 40 concepts, got {len(concepts)}"
+assert len(concepts) >= 290, f"Expected megaglossary of at least 290 entries, got {len(concepts)}"
 assert len({x["id"] for x in classic}) == 65
 assert len({x["id"] for x in advanced}) == 41
-assert len({x["id"] for x in concepts}) == 40
+assert len({x["id"] for x in concepts}) == len(concepts)
 assert sum(x["area"] == "Deep Learning" for x in advanced) == 26
 assert sum(x["area"] == "Reinforcement Learning" for x in advanced) == 15
 assert all(x["reference"].strip() for x in advanced), "Missing references"
@@ -48,19 +48,44 @@ for marker in ('id="filters"', 'id="search"', 'id="grid"',
                'Concepto', 'Uso y evaluación', 'Ventajas y límites',
                'Código Python', 'Copiar resumen', 'Copiar Python'):
     assert marker in expanded_ui, f"Missing DL/RL UI component: {marker}"
+BULLET_FIELDS = (
+    "assumptions", "characteristics", "preprocessing",
+    "hyperparameters", "training", "uses", "metrics",
+    "advantages", "disadvantages", "limitationsTypical",
+)
+for model in advanced:
+    bullets = model.get("bulletSections")
+    assert isinstance(bullets, dict), f"No bullet sections: {model['name']}"
+    for field in BULLET_FIELDS:
+        values = bullets.get(field)
+        assert isinstance(values, list) and values and all(
+            isinstance(x, str) and x.strip() for x in values
+        ), f"Empty/missing bullet list: {model['name']}.{field}"
+for term in concepts:
+    assert term["name"].strip() and len(term["description"].strip()) >= 30, f"Invalid glossary: {term}"
+    assert term.get("area"), f"No glossary area: {term['name']}"
+assert any(x["name"] == "RMSE" and "√" in x.get("formula", "") for x in concepts)
+assert any(x["name"] == "SMOTE" for x in concepts)
+assert any(x["name"] == "SHAP" for x in concepts)
+glossary_ui = (ROOT / "glosario.html").read_text(encoding="utf-8")
+assert 'id="search"' in glossary_ui and 'id="categories"' in glossary_ui
+assert 'id="alphabet"' in glossary_ui and 'id="cards"' in glossary_ui
+assert "glosario.html" in expanded_ui and "technical-bullets" in expanded_ui
+for page in ("index.html", "explorar.html", "rutas.html", "comparar.html"):
+    assert 'href="glosario.html"' in (ROOT / page).read_text(encoding="utf-8")
 for m in advanced:
     code = m.get("code", "")
     assert code, f"Missing advanced Python: {m['name']}"
     ast.parse(code, filename=f"advanced-{m['id']}")
-for page in ("index.html", "explorar.html", "conceptos.html", "rutas.html", "comparar.html"):
+for page in ("index.html", "explorar.html", "conceptos.html", "glosario.html", "rutas.html", "comparar.html"):
     html = (ROOT / page).read_text(encoding="utf-8")
     assert "</html>" in html, f"Truncated HTML: {page}"
-    assert 'href="comparar.html"' in html or page == "comparar.html", f"Comparator link missing: {page}"
+    assert 'href="comparar.html"' in html or page in ("comparar.html", "conceptos.html"), f"Comparator link missing: {page}"
 assert "<iframe" not in (ROOT / "index.html").read_text(encoding="utf-8"), "Lab must not be on homepage"
 assert not (ROOT / "laboratorios.html").exists(), "Lab page must be removed"
 assert not (ROOT / "labs/gridworld.html").exists(), "GridWorld demo must be removed"
 assert not (ROOT / "src/laboratorios.js").exists(), "Lab engine must be removed"
 assert "content/models-classic.json" in (ROOT / "comparar.html").read_text(encoding="utf-8")
 assert "content/models-v2.json" in (ROOT / "comparar.html").read_text(encoding="utf-8")
-print(f"OK: {len(classic)+len(advanced)} Python snippets parse, {len(concepts)} concepts, 5 pages")
+print(f"OK: {len(classic)+len(advanced)} Python snippets parse, {len(concepts)} glossary entries, 6 pages")
 print("NOTICE: AST check is syntax only; it does not execute Python examples.")
