@@ -1,0 +1,122 @@
+[
+  {
+    "id": "c-1",
+    "name": "Backpropagation",
+    "area": "DL",
+    "description": "Regla de la cadena aplicada a un grafo computacional para calcular derivadas del objetivo respecto a parámetros. En redes feedforward propaga derivadas de la salida a las capas anteriores.",
+    "formula": "∂L/∂Wₗ = (∂L/∂hₗ)(∂hₗ/∂Wₗ)",
+    "related": "MLP, CNN, RNN, Transformer"
+  },
+  {
+    "id": "c-2",
+    "name": "Funciones de activación",
+    "area": "DL",
+    "description": "Introducen no linealidad entre transformaciones afines. ReLU y GELU son habituales; sigmoid/tanh aparecen en puertas recurrentes.",
+    "formula": "ReLU(x)=max(0,x)",
+    "related": "MLP, CNN, LSTM, GRU"
+  },
+  {
+    "id": "c-3",
+    "name": "Optimizadores SGD y Adam",
+    "area": "DL",
+    "description": "Actualizan parámetros a partir del gradiente. Adam incorpora estimaciones adaptativas de momentos, pero no garantiza mejor generalización.",
+    "formula": "θₜ₊₁ = θₜ − η ∇L(θₜ) [SGD]",
+    "related": "MLP, CNN, Transformer"
+  },
+  {
+    "id": "c-4",
+    "name": "Regularización y generalización",
+    "area": "DL",
+    "description": "Weight decay, dropout, data augmentation y parada temprana controlan diferentes fuentes de sobreajuste. Hay que separar entrenamiento, validación y test.",
+    "formula": "L_total = L_task + λ||θ||² [L2]",
+    "related": "MLP, ResNet, Transformer"
+  },
+  {
+    "id": "c-5",
+    "name": "Self-attention",
+    "area": "DL",
+    "description": "Calcula combinaciones ponderadas de representaciones a partir de consultas Q, claves K y valores V. Los pesos no son explicaciones causales por sí mismos.",
+    "formula": "softmax(QKᵀ/√dₖ)V",
+    "related": "Transformer, BERT, ViT"
+  },
+  {
+    "id": "c-6",
+    "name": "Autoregresión y teacher forcing",
+    "area": "DL",
+    "description": "En generación secuencial, se factoriza la probabilidad de una secuencia en predicciones condicionales. Teacher forcing utiliza tokens reales previos al entrenar.",
+    "formula": "p(x₁:ₜ)=∏ₜ p(xₜ|x₍ₜ)",
+    "related": "GPT, RNN, LSTM"
+  },
+  {
+    "id": "c-7",
+    "name": "MDP y propiedad de Markov",
+    "area": "RL",
+    "description": "Un proceso de decisión de Markov se define por estados, acciones, transición, recompensa y factor de descuento. El estado debe resumir información relevante para la dinámica.",
+    "formula": "MDP=(S,A,P,R,γ)",
+    "related": "Value Iteration, Policy Iteration, Q-Learning"
+  },
+  {
+    "id": "c-8",
+    "name": "Política y función de valor",
+    "area": "RL",
+    "description": "La política asigna acciones a estados (o distribuciones sobre ellas); Vπ valora estados y Qπ pares estado-acción bajo una política.",
+    "formula": "Vπ(s)=Eπ[Σₜ γᵗrₜ | s₀=s]",
+    "related": "Q-Learning, SARSA, PPO"
+  },
+  {
+    "id": "c-9",
+    "name": "Ecuaciones de Bellman",
+    "area": "RL",
+    "description": "Relaciones recursivas que expresan retornos en función de recompensa inmediata y valor futuro. La forma óptima utiliza máximo sobre acciones.",
+    "formula": "Q*(s,a)=E[r+γ maxₐ′Q*(s′,a′)]",
+    "related": "Value Iteration, Q-Learning, DQN"
+  },
+  {
+    "id": "c-10",
+    "name": "Exploración y explotación",
+    "area": "RL",
+    "description": "Equilibrio entre probar acciones con información insuficiente y elegir acciones con valor estimado alto. ε-greedy, UCB y Thompson Sampling ofrecen estrategias distintas.",
+    "formula": "a~Uniforme con prob. ε; argmax Q con prob. 1−ε",
+    "related": "Bandits, Q-Learning, SARSA"
+  },
+  {
+    "id": "c-11",
+    "name": "On-policy y off-policy",
+    "area": "RL",
+    "description": "On-policy estima u optimiza con trayectorias obtenidas por la política objetivo o cercana a ella; off-policy puede aprender de comportamientos distintos.",
+    "formula": "SARSA: on-policy; Q-Learning: off-policy",
+    "related": "SARSA, Q-Learning, DQN, PPO, SAC"
+  },
+  {
+    "id": "c-12",
+    "name": "Bootstrapping y TD error",
+    "area": "RL",
+    "description": "Los métodos TD actualizan estimaciones usando otros valores estimados en vez de esperar al retorno completo. Combina ventajas y sesgos frente a Monte Carlo.",
+    "formula": "δₜ = rₜ+γV(sₜ₊₁)−V(sₜ)",
+    "related": "SARSA, Q-Learning, A2C"
+  },
+  {
+    "id": "c-13",
+    "name": "Experience replay y target network",
+    "area": "RL",
+    "description": "Replay rompe correlaciones temporales de muestras; una red objetivo estabiliza la diana de TD. Son técnicas típicas en DQN.",
+    "formula": "y=r+γ maxₐ Q_target(s′,a)",
+    "related": "DQN, Double DQN, TD3"
+  },
+  {
+    "id": "c-14",
+    "name": "Ventaja y GAE",
+    "area": "RL",
+    "description": "La ventaja mide qué tan buena es una acción respecto al valor medio de su estado. GAE agrega errores TD con descuento temporal para controlar sesgo-varianza.",
+    "formula": "Âₜ = Σₗ (γλ)ˡδₜ₊ₗ",
+    "related": "A2C, PPO"
+  },
+  {
+    "id": "c-15",
+    "name": "Entropy regularization",
+    "area": "RL",
+    "description": "Añade incentivo para mantener políticas estocásticas. SAC optimiza una recompensa que incorpora entropía con temperatura α.",
+    "formula": "J = E[Σ(r+αH(π(·|s)))]",
+    "related": "SAC, A2C, PPO"
+  }
+]
