@@ -1008,7 +1008,7 @@
     "level": "Intermedio-avanzado",
     "source": "Ampliación original MLpedia 2.0; descripción derivada de artículo citado, no del PDF inicial",
     "lab": null,
-    "code": "# Requiere: pip install torch torch-geometric\nfrom torch import nn\nfrom torch_geometric.nn import GATConv\nclass GAT(nn.Module):\n    def __init__(self, in_channels, hidden, out_channels):\n        super().__init__()\n        self.g1=GATConv(in_channels, hidden, heads=4)\n        self.g2=GATConv(hidden*4, out_channels, heads=1, concat=False)\n    def forward(self, x, edges):\n        return self.g2(torch.nn.functional.elu(self.g1(x,edges)),edges)\n# Entrenar con máscaras y separación correcta por nodos o grafos.",
+    "code": "# Requiere: pip install torch torch-geometric\nimport torch\nfrom torch import nn\nfrom torch_geometric.nn import GATConv\nclass GAT(nn.Module):\n    def __init__(self, in_channels, hidden, out_channels):\n        super().__init__()\n        self.g1=GATConv(in_channels, hidden, heads=4)\n        self.g2=GATConv(hidden*4, out_channels, heads=1, concat=False)\n    def forward(self, x, edges):\n        return self.g2(torch.nn.functional.elu(self.g1(x,edges)),edges)\n# Entrenar con máscaras y separación correcta por nodos o grafos.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
     "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
