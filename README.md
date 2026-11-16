@@ -1,38 +1,34 @@
-# MLpedia — Catálogo técnico y laboratorios interactivos
+# MLpedia — Enciclopedia técnica interactiva de Machine Learning
 
-**Web:** https://jorge-fresco-ai.github.io/mlpedia/
+**Web pública:** https://jorge-fresco-ai.github.io/mlpedia/
 
-MLpedia reúne las **65 fichas originales de Machine Learning clásico** con **31 nuevas fichas** de Deep Learning (16) y Reinforcement Learning (15), **15 conceptos** y **6 laboratorios**. Está orientada a consulta técnica y docencia en español.
+MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico procedentes de la guía inicial, 26 de Deep Learning y 15 de Reinforcement Learning), **40 conceptos técnicos**, **5 rutas de aprendizaje** y un **comparador transversal** de hasta tres modelos. Está orientada a docencia y consulta técnica en español.
 
-## Navegación
+## Secciones
 
-| Sección | Ruta | Funcionalidad |
+| Sección | Archivo | Funcionalidad |
 | --- | --- | --- |
-| ML clásico | [index.html](./index.html) | 65 fichas del documento fuente, búsqueda, filtros, favoritos, comparador y ejemplos Python |
-| DL y RL | [explorar.html](./explorar.html) | 31 fichas nuevas con fórmulas, entrenamiento, métricas, limitaciones, código y demostraciones |
-| Comparador transversal | [comparar.html](./comparar.html) | Comparar hasta tres modelos entre los 65 de ML clásico y los 31 de DL/RL |
-| Laboratorios | [laboratorios.html](./laboratorios.html) | MLP, convoluciones, atención, bandits, GridWorld y objetivos DQN/PPO |
-| Conceptos | [conceptos.html](./conceptos.html) | 15 conceptos transversales |
-| Rutas | [rutas.html](./rutas.html) | 3 recorridos progresivos con progreso local |
+| ML clásico | [index.html](index.html) | 65 fichas, filtros, favoritos y consulta de código |
+| Deep Learning y RL | [explorar.html](explorar.html) | 41 fichas con descripción, matemáticas, entrenamiento, métricas, limitaciones, referencias y código |
+| ★ Comparador | [comparar.html](comparar.html) | Contrastar de dos a tres modelos de cualquier área por paradigma, supuestos, métrica, método y limitaciones |
+| Conceptos | [conceptos.html](conceptos.html) | 40 conceptos sobre optimización, redes, atención, grafos, generación y RL |
+| Rutas | [rutas.html](rutas.html) | 5 itinerarios con objetivos, módulos, enlaces específicos y progreso local |
 
-### Qué se ejecuta realmente
+Los laboratorios y simuladores se retiraron deliberadamente para priorizar la experiencia de referencia y aprendizaje guiado.
 
-- **MLP:** aprendizaje SGD con backpropagation sobre XOR; gráficos y predicciones calculados, sin validación externa en ese ejemplo pequeño.
-- **Convoluciones:** correlación cruzada 2D y salida calculada a partir de kernel y stride.
-- **Atención:** producto escalado QKᵀ, softmax y combinación ponderada de V sobre vectores ilustrativos.
-- **Bandits:** interacción con recompensas Bernoulli, estrategias ε-greedy y UCB1, pseudo-regret.
-- **GridWorld:** Q-Learning y SARSA tabulares en JavaScript con retorno, éxito y política.
-- **DQN/PPO:** visualización de fórmulas y objetivos; **no entrena redes de Deep RL**.
+## Nuevos grupos de Deep Learning
 
-Una demostración compacta está disponible dentro de las fichas asociadas. La vista compacta y el laboratorio completo **comparten la lógica de cálculo**, y GridWorld conserva sus parámetros en el enlace hacia la vista completa.
+La ampliación incluye arquitectura de grafos (GCN, GAT, GraphSAGE), aprendizaje métrico y contrastivo (Siamese, SimCLR), multimodalidad (CLIP), secuencias convolucionales (TCN), conjuntos (Deep Sets), ecuaciones diferenciales neuronales (Neural ODE) y modelos probabilísticos invertibles (Normalizing Flows).
 
-## Desarrollo y publicación
+Se distinguen arquitectura, familia, tarea y paradigma; una arquitectura como Transformer o GCN no pertenece por definición a un único paradigma.
 
-La web pública está en `main`. Se publica mediante **GitHub Pages**, sin backend.
+## Validación y límites
 
-Las fichas de DL/RL se almacenan en `content/models-v2.json` y los conceptos en `content/concepts-v2.json`. Los laboratorios comparten motor en `src/laboratorios.js` y `labs/gridworld.js`.
+Las fichas de DL/RL se encuentran en `content/models-v2.json`, las 65 originales se exportan a `content/models-classic.json` para permitir la comparación transversal y los conceptos están en `content/concepts-v2.json`.
 
-Para desarrollo local:
+El workflow de GitHub Actions comprueba integridad de datos y sintaxis Python y JavaScript; **estas comprobaciones no equivalen a ejecutar el entrenamiento de los modelos ni validan las dependencias**. Los fragmentos de Python incluyen su tipo y un estado de validación. Las rutas y favoritos usan almacenamiento del navegador.
+
+Ejecutar localmente:
 
 ```bash
 git clone https://github.com/jorge-fresco-ai/mlpedia.git
@@ -40,22 +36,18 @@ cd mlpedia
 python3 -m http.server 8000
 ```
 
-Abre http://localhost:8000/. Es necesario usar HTTP local, ya que las fichas nuevas se cargan con `fetch` desde archivos JSON.
+Abrir http://localhost:8000/ (algunas páginas cargan datos mediante `fetch` y requieren HTTP).
 
-**Validación de código:** las 96 muestras de Python se analizan sintácticamente mediante AST en CI. Los 31 ejemplos nuevos se etiquetan como fragmentos o ejemplos autónomos y se marcan como pendientes de verificación de ejecución. Esta validación sintáctica NO demuestra que se hayan ejecutado correctamente ni que las dependencias funcionen. El JavaScript se somete también a comprobaciones de sintaxis.
+## Autoría y procedencia
 
-**Limitaciones:** Los códigos Python son ejemplos o fragmentos de referencia; no todos son programas de entrenamiento completos ni han sido ejecutados en CI. Las demostraciones no sustituyen benchmarks con múltiples semillas, separación de datos y validación estadística. La persistencia de favoritos y rutas se limita al navegador.
+**Obra de referencia de los 65 modelos originales:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Material docente de referencia.
 
-## Obra original y atribución
-
-**Documento fuente de las 65 fichas originales:** Fresco, J. (2026). *MLpedia: Guía de Modelos de Machine Learning*. Material docente del Máster en Inteligencia Artificial, proporcionado por su autor para esta adaptación.
-
-**Aportaciones de esta web:** reorganización del material en catálogo con filtros; anotaciones editoriales; nuevas fichas técnicas de DL y RL sintetizadas a partir de bibliografía especializada citada en cada ficha; conceptos, rutas y laboratorios. **Las 31 nuevas fichas no proceden literalmente del PDF original.**
+Las 41 fichas añadidas, las rutas, los conceptos y la interfaz son una ampliación y **no constituyen texto extraído literalmente del PDF inicial**. Las fichas nuevas citan artículos y bibliografía de referencia; esos trabajos conservan sus derechos.
 
 ## Licencias
 
-- **Código original de la aplicación:** [MIT](./LICENSE).
-- **Textos educativos originales:** [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Se permite usar y adaptar, incluso comercialmente, **atribuyendo a Jorge Fresco, indicando los cambios y enlazando la licencia**.
-- Cualquier material de terceros mantiene sus derechos y condiciones propias.
+- Código original de la aplicación: [MIT](LICENSE).
+- Contenido educativo original: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Se permite reutilizar y adaptar atribuyendo a Jorge Fresco, indicando cambios y enlazando la licencia.
+- Los materiales pertenecientes a terceros conservan sus licencias y derechos.
 
-Autor: **Jorge Fresco** · [GitHub](https://github.com/jorge-fresco-ai).
+Autor: Jorge Fresco · [GitHub](https://github.com/jorge-fresco-ai).
