@@ -47,7 +47,7 @@ function initGlossary(list){
  for(const [alias,name] of Object.entries({"F1":"F1-score","R²":"R² (coeficiente de determinación)","IoU":"IoU (Intersection over Union)","PR-AUC":"PR-AUC y Average Precision","KL":"Divergencia KL","GAE":"Ventaja y GAE","PCA":"PCA (Principal Component Analysis)"})){const hit=TERMS.find(t=>t.name===name);if(hit)aliases.set(alias.toLowerCase(),hit);}
  TERM_BY_NAME=aliases;
  const variants=[...aliases.keys()].filter(x=>x.length>=3).sort((a,b)=>b.length-a.length);
- const escapeRx=x=>x.replace(/[.*+?^$()|[\]{}]/g,"\\function section(label,value,formula=false){");
+ const escapeRx=x=>x.split("").map(c=>"\\^$.*+?()[]{}|".includes(c)?"\\"+c:c).join("");
  TERM_PATTERN=variants.length?new RegExp("("+variants.map(escapeRx).join("|")+")","gi"):null;
 }
 function glossaryInline(value){
