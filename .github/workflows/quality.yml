@@ -27,7 +27,7 @@ jobs:
         run: |
           python - <<'PY'
           import pathlib, re
-          for name in ['index.html','explorar.html','conceptos.html','rutas.html','comparar.html']:
+          for name in ['index.html','explorar.html','conceptos.html','glosario.html','rutas.html','comparar.html']:
               source=pathlib.Path(name).read_text()
               matches=re.findall(r'<script(?:\s+[^>]*)?>([\s\S]*?)</script>',source)
               for i, script in enumerate(matches):
