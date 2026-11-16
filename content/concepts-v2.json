@@ -5,7 +5,8 @@
     "area": "DL",
     "description": "Regla de la cadena aplicada a un grafo computacional para calcular derivadas del objetivo respecto a parámetros. En redes feedforward propaga derivadas de la salida a las capas anteriores.",
     "formula": "∂L/∂Wₗ = (∂L/∂hₗ)(∂hₗ/∂Wₗ)",
-    "related": "MLP, CNN, RNN, Transformer"
+    "related": "MLP, CNN, RNN, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-2",
@@ -13,7 +14,8 @@
     "area": "DL",
     "description": "Introducen no linealidad entre transformaciones afines. ReLU y GELU son habituales; sigmoid/tanh aparecen en puertas recurrentes.",
     "formula": "ReLU(x)=max(0,x)",
-    "related": "MLP, CNN, LSTM, GRU"
+    "related": "MLP, CNN, LSTM, GRU",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-3",
@@ -21,7 +23,8 @@
     "area": "DL",
     "description": "Actualizan parámetros a partir del gradiente. Adam incorpora estimaciones adaptativas de momentos, pero no garantiza mejor generalización.",
     "formula": "θₜ₊₁ = θₜ − η ∇L(θₜ) [SGD]",
-    "related": "MLP, CNN, Transformer"
+    "related": "MLP, CNN, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-4",
@@ -29,7 +32,8 @@
     "area": "DL",
     "description": "Weight decay, dropout, data augmentation y parada temprana controlan diferentes fuentes de sobreajuste. Hay que separar entrenamiento, validación y test.",
     "formula": "L_total = L_task + λ||θ||² [L2]",
-    "related": "MLP, ResNet, Transformer"
+    "related": "MLP, ResNet, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-5",
@@ -37,7 +41,8 @@
     "area": "DL",
     "description": "Calcula combinaciones ponderadas de representaciones a partir de consultas Q, claves K y valores V. Los pesos no son explicaciones causales por sí mismos.",
     "formula": "softmax(QKᵀ/√dₖ)V",
-    "related": "Transformer, BERT, ViT"
+    "related": "Transformer, BERT, ViT",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-6",
@@ -45,7 +50,8 @@
     "area": "DL",
     "description": "En generación secuencial, se factoriza la probabilidad de una secuencia en predicciones condicionales. Teacher forcing utiliza tokens reales previos al entrenar.",
     "formula": "p(x₁:ₜ)=∏ₜ p(xₜ|x₍ₜ)",
-    "related": "GPT, RNN, LSTM"
+    "related": "GPT, RNN, LSTM",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-7",
@@ -53,7 +59,8 @@
     "area": "RL",
     "description": "Un proceso de decisión de Markov se define por estados, acciones, transición, recompensa y factor de descuento. El estado debe resumir información relevante para la dinámica.",
     "formula": "MDP=(S,A,P,R,γ)",
-    "related": "Value Iteration, Policy Iteration, Q-Learning"
+    "related": "Value Iteration, Policy Iteration, Q-Learning",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-8",
@@ -61,7 +68,8 @@
     "area": "RL",
     "description": "La política asigna acciones a estados (o distribuciones sobre ellas); Vπ valora estados y Qπ pares estado-acción bajo una política.",
     "formula": "Vπ(s)=Eπ[Σₜ γᵗrₜ | s₀=s]",
-    "related": "Q-Learning, SARSA, PPO"
+    "related": "Q-Learning, SARSA, PPO",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-9",
@@ -69,7 +77,8 @@
     "area": "RL",
     "description": "Relaciones recursivas que expresan retornos en función de recompensa inmediata y valor futuro. La forma óptima utiliza máximo sobre acciones.",
     "formula": "Q*(s,a)=E[r+γ maxₐ′Q*(s′,a′)]",
-    "related": "Value Iteration, Q-Learning, DQN"
+    "related": "Value Iteration, Q-Learning, DQN",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-10",
@@ -77,7 +86,8 @@
     "area": "RL",
     "description": "Equilibrio entre probar acciones con información insuficiente y elegir acciones con valor estimado alto. ε-greedy, UCB y Thompson Sampling ofrecen estrategias distintas.",
     "formula": "a~Uniforme con prob. ε; argmax Q con prob. 1−ε",
-    "related": "Bandits, Q-Learning, SARSA"
+    "related": "Bandits, Q-Learning, SARSA",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-11",
@@ -85,7 +95,8 @@
     "area": "RL",
     "description": "On-policy estima u optimiza con trayectorias obtenidas por la política objetivo o cercana a ella; off-policy puede aprender de comportamientos distintos.",
     "formula": "SARSA: on-policy; Q-Learning: off-policy",
-    "related": "SARSA, Q-Learning, DQN, PPO, SAC"
+    "related": "SARSA, Q-Learning, DQN, PPO, SAC",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-12",
@@ -93,7 +104,8 @@
     "area": "RL",
     "description": "Los métodos TD actualizan estimaciones usando otros valores estimados en vez de esperar al retorno completo. Combina ventajas y sesgos frente a Monte Carlo.",
     "formula": "δₜ = rₜ+γV(sₜ₊₁)−V(sₜ)",
-    "related": "SARSA, Q-Learning, A2C"
+    "related": "SARSA, Q-Learning, A2C",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-13",
@@ -101,7 +113,8 @@
     "area": "RL",
     "description": "Replay rompe correlaciones temporales de muestras; una red objetivo estabiliza la diana de TD. Son técnicas típicas en DQN.",
     "formula": "y=r+γ maxₐ Q_target(s′,a)",
-    "related": "DQN, Double DQN, TD3"
+    "related": "DQN, Double DQN, TD3",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-14",
@@ -109,7 +122,8 @@
     "area": "RL",
     "description": "La ventaja mide qué tan buena es una acción respecto al valor medio de su estado. GAE agrega errores TD con descuento temporal para controlar sesgo-varianza.",
     "formula": "Âₜ = Σₗ (γλ)ˡδₜ₊ₗ",
-    "related": "A2C, PPO"
+    "related": "A2C, PPO",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-15",
@@ -117,7 +131,8 @@
     "area": "RL",
     "description": "Añade incentivo para mantener políticas estocásticas. SAC optimiza una recompensa que incorpora entropía con temperatura α.",
     "formula": "J = E[Σ(r+αH(π(·|s)))]",
-    "related": "SAC, A2C, PPO"
+    "related": "SAC, A2C, PPO",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-16",
@@ -125,7 +140,8 @@
     "area": "DL",
     "description": "Separar conjuntos antes de ajustar transformaciones o elegir hiperparámetros; en datos temporales/grupos usar particiones que respeten dependencia. Una métrica en test no debe usarse iterativamente para diseñar el modelo.",
     "formula": "Train → selección por validación → evaluación final en test",
-    "related": "Cualquier modelo"
+    "related": "Cualquier modelo",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-17",
@@ -133,7 +149,8 @@
     "area": "DL",
     "description": "Distingue error por falta de capacidad, varianza de estimación y ruido; comparar curvas train/validation evita diagnosticar sobreajuste solo con una métrica.",
     "formula": "E[(ŷ−y)²] = Bias² + Variance + irreducible noise [caso MSE]",
-    "related": "MLP, CNN, GCN"
+    "related": "MLP, CNN, GCN",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-18",
@@ -141,7 +158,8 @@
     "area": "DL",
     "description": "Normalizan activaciones de maneras distintas: BatchNorm usa estadísticas del lote (y estimaciones para inferencia), LayerNorm normaliza dimensiones de la muestra.",
     "formula": "y = γ (x−μ)/√(σ²+ε)+β",
-    "related": "ResNet, Transformer"
+    "related": "ResNet, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-19",
@@ -149,7 +167,8 @@
     "area": "DL",
     "description": "Permiten aprender una corrección F(x) respecto a x y facilitan optimización de arquitecturas profundas.",
     "formula": "y = F(x)+x",
-    "related": "ResNet, Transformer"
+    "related": "ResNet, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-20",
@@ -157,7 +176,8 @@
     "area": "DL",
     "description": "La propagación por muchas capas o pasos temporales multiplica Jacobianos: puede reducir o amplificar los gradientes. Clipping, residualidad y puertas ayudan según caso.",
     "formula": "∂hₜ/∂hₖ=∏ⱼ Jⱼ [esquema]",
-    "related": "RNN, LSTM, GRU, MLP"
+    "related": "RNN, LSTM, GRU, MLP",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-21",
@@ -165,7 +185,8 @@
     "area": "DL",
     "description": "La tokenización convierte texto en unidades discretas; embeddings las representan en vectores. Información posicional permite distinguir secuencias sin recurrencia explícita.",
     "formula": "e(tokenᵢ)+posᵢ",
-    "related": "Transformer, BERT, GPT"
+    "related": "Transformer, BERT, GPT",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-22",
@@ -173,7 +194,8 @@
     "area": "DL",
     "description": "La máscara causal impide que un token atienda posiciones futuras; las máscaras de padding evitan atender posiciones de relleno.",
     "formula": "scoreᵢⱼ=−∞ cuando j>i [causal]",
-    "related": "GPT, Transformer"
+    "related": "GPT, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-23",
@@ -181,7 +203,8 @@
     "area": "DL",
     "description": "Fine-tuning ajusta parámetros preentrenados; LoRA modela actualizaciones de rango reducido y reduce parámetros entrenables, con coste de inferencia según despliegue.",
     "formula": "W′=W+BA, rank(BA) ≪ min(d,k)",
-    "related": "BERT, GPT, ViT"
+    "related": "BERT, GPT, ViT",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-24",
@@ -189,7 +212,8 @@
     "area": "DL",
     "description": "Transformaciones que preservan etiqueta o semántica deseada para ampliar variabilidad durante entrenamiento; augmentations inapropiadas pueden distorsionar el objetivo.",
     "formula": "x′ = T(x), y′≈y",
-    "related": "CNN, SimCLR, ViT"
+    "related": "CNN, SimCLR, ViT",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-25",
@@ -197,7 +221,8 @@
     "area": "DL",
     "description": "Aprende embeddings a partir de similitudes entre positivos y negativos, evitando representaciones colapsadas; la elección de negativos determina qué invariancias se adquieren.",
     "formula": "NT-Xent / InfoNCE",
-    "related": "SimCLR, CLIP, Siamese"
+    "related": "SimCLR, CLIP, Siamese",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-26",
@@ -205,7 +230,8 @@
     "area": "DL",
     "description": "Reutiliza un encoder preentrenado y evalúa con una cabeza lineal o ajusta capas del backbone. Las particiones deben evitar fugas entre origen y destino.",
     "formula": "z=f_pretrained(x); ŷ=g(z)",
-    "related": "ResNet, BERT, CLIP"
+    "related": "ResNet, BERT, CLIP",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-27",
@@ -213,7 +239,8 @@
     "area": "DL",
     "description": "La exactitud no implica probabilidades bien calibradas. Reliability diagrams, Brier score y ECE permiten examinar la confianza predictiva.",
     "formula": "Brier = (1/n)Σ(pᵢ−yᵢ)² [binario]",
-    "related": "MLP, ResNet, Transformer"
+    "related": "MLP, ResNet, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-28",
@@ -221,7 +248,8 @@
     "area": "DL",
     "description": "El intercambio repetido de mensajes puede hacer indistinguibles las representaciones (over-smoothing) o comprimir demasiada información en cuellos de botella (over-squashing).",
     "formula": "H⁽ˡ⁺¹⁾=AGG(H⁽ˡ⁾,A) [esquema]",
-    "related": "GCN, GAT, GraphSAGE"
+    "related": "GCN, GAT, GraphSAGE",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-29",
@@ -229,7 +257,8 @@
     "area": "DL",
     "description": "Durante entrenamiento autoregresivo puede utilizarse la secuencia real previa, mientras que en inferencia se condiciona en predicciones propias, creando desajuste.",
     "formula": "p(yₜ | y₍ₜ, x)",
-    "related": "RNN, LSTM, Transformer"
+    "related": "RNN, LSTM, Transformer",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-30",
@@ -237,7 +266,8 @@
     "area": "DL",
     "description": "En VAE, maximizar una cota inferior del log-likelihood combina reconstrucción y regularización probabilística del posterior aproximado.",
     "formula": "ELBO=Eq[log p(x|z)]−KL(q(z|x)||p(z))",
-    "related": "VAE, Autoencoder"
+    "related": "VAE, Autoencoder",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-31",
@@ -245,7 +275,8 @@
     "area": "DL",
     "description": "Los modelos de difusión aprenden a invertir un proceso de ruido; classifier-free guidance combina estimaciones condicionales e incondicionales durante muestreo.",
     "formula": "ε_guided = ε_uncond + w(ε_cond−ε_uncond)",
-    "related": "Modelos de difusión"
+    "related": "Modelos de difusión",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-32",
@@ -253,7 +284,8 @@
     "area": "DL",
     "description": "Para búsqueda semántica, usar recall@k, MRR y nDCG con particiones por entidad cuando sea necesario. La similitud coseno no garantiza equivalencia semántica.",
     "formula": "cos(u,v)=u·v/(||u||||v||)",
-    "related": "CLIP, Siamese, SimCLR"
+    "related": "CLIP, Siamese, SimCLR",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-33",
@@ -261,7 +293,8 @@
     "area": "RL",
     "description": "En Gymnasium, terminated indica estado terminal del MDP y truncated interrupción externa; confundirlos puede introducir sesgo al calcular targets con bootstrap.",
     "formula": "target = r + γ (1−terminated) V(s′)",
-    "related": "Q-Learning, DQN, PPO"
+    "related": "Q-Learning, DQN, PPO",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-34",
@@ -269,7 +302,8 @@
     "area": "RL",
     "description": "Cambiar las recompensas modifica incentivos; el agente puede explotar atajos no deseados. Shaping potencial preserva políticas óptimas bajo condiciones concretas.",
     "formula": "F(s,s′)=γΦ(s′)−Φ(s)",
-    "related": "GridWorld, PPO, SAC"
+    "related": "GridWorld, PPO, SAC",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-35",
@@ -277,7 +311,8 @@
     "area": "RL",
     "description": "γ determina el peso de recompensas futuras, pero su selección interactúa con terminación, recompensa y horizonte de observación.",
     "formula": "Gₜ=Σₖ γᵏrₜ₊ₖ₊₁",
-    "related": "Value Iteration, Q-Learning, DQN"
+    "related": "Value Iteration, Q-Learning, DQN",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-36",
@@ -285,7 +320,8 @@
     "area": "RL",
     "description": "El crítico reduce la varianza de gradientes de política a cambio de sesgo si su valor está mal estimado; GAE permite ajustar el compromiso.",
     "formula": "Âᵍᵃᵉₜ=Σₗ(γλ)ˡδₜ₊ₗ",
-    "related": "A2C, PPO"
+    "related": "A2C, PPO",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-37",
@@ -293,7 +329,8 @@
     "area": "RL",
     "description": "Aprende de un dataset estático sin interaccionar; estimaciones de acciones fuera de la distribución de datos pueden quedar artificialmente optimistas.",
     "formula": "D={(s,a,r,s′)}",
-    "related": "DQN, SAC"
+    "related": "DQN, SAC",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-38",
@@ -301,7 +338,8 @@
     "area": "RL",
     "description": "Model-based utiliza o aprende un modelo de transición/recompensa para planificar; model-free aprende directamente políticas o funciones de valor.",
     "formula": "P(s′|s,a), R(s,a)",
-    "related": "Value Iteration, PPO, DQN"
+    "related": "Value Iteration, PPO, DQN",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-39",
@@ -309,7 +347,8 @@
     "area": "RL",
     "description": "Los resultados de RL suelen variar fuertemente con inicialización, exploración y entornos; reportar promedios, dispersión y presupuestos comparables.",
     "formula": "media ± intervalo de confianza entre semillas",
-    "related": "DQN, PPO, SAC"
+    "related": "DQN, PPO, SAC",
+    "source": "Concepto original MLpedia 2.0"
   },
   {
     "id": "c-40",
@@ -317,6 +356,1870 @@
     "area": "RL",
     "description": "Distinguir entrenamiento y evaluación, evitar fuga de la política en el entorno de prueba y limitar acciones potencialmente peligrosas en despliegues reales.",
     "formula": "π_train ≠ protocolo de evaluación",
-    "related": "PPO, TD3, SAC"
+    "related": "PPO, TD3, SAC",
+    "source": "Concepto original MLpedia 2.0"
+  },
+  {
+    "id": "g-001",
+    "name": "Media aritmética",
+    "area": "Estadística",
+    "description": "Suma de observaciones dividida por su número; es sensible a valores extremos.",
+    "formula": "x̄ = Σxᵢ/n",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-002",
+    "name": "Mediana",
+    "area": "Estadística",
+    "description": "Valor central de una muestra ordenada; robusta frente a valores extremos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-003",
+    "name": "Varianza",
+    "area": "Estadística",
+    "description": "Media de los desvíos cuadráticos respecto a la media; distingue varianza poblacional y muestral.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-004",
+    "name": "Desviación estándar",
+    "area": "Estadística",
+    "description": "Raíz cuadrada de la varianza, expresada en las unidades originales.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-005",
+    "name": "Cuantil y percentil",
+    "area": "Estadística",
+    "description": "Umbral bajo el cual cae una proporción dada de la distribución.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-006",
+    "name": "Distribución normal",
+    "area": "Estadística",
+    "description": "Distribución continua simétrica parametrizada por media y desviación estándar.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-007",
+    "name": "Distribución Bernoulli",
+    "area": "Estadística",
+    "description": "Distribución de una variable binaria con probabilidad p de éxito.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-008",
+    "name": "Distribución binomial",
+    "area": "Estadística",
+    "description": "Número de éxitos en n ensayos Bernoulli independientes de probabilidad constante.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-009",
+    "name": "Covarianza",
+    "area": "Estadística",
+    "description": "Medida de variación conjunta entre dos variables, dependiente de su escala.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-010",
+    "name": "Correlación de Pearson",
+    "area": "Estadística",
+    "description": "Asociación lineal estandarizada entre dos variables; no demuestra causalidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-011",
+    "name": "Correlación de Spearman",
+    "area": "Estadística",
+    "description": "Correlación de rangos para asociaciones monótonas, no necesariamente lineales.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-012",
+    "name": "Intervalo de confianza",
+    "area": "Estadística",
+    "description": "Procedimiento que genera intervalos con una cobertura nominal a largo plazo bajo sus supuestos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-013",
+    "name": "Valor p",
+    "area": "Estadística",
+    "description": "Probabilidad, suponiendo la hipótesis nula y el modelo, de observar un estadístico al menos tan extremo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-014",
+    "name": "Potencia estadística",
+    "area": "Estadística",
+    "description": "Probabilidad de rechazar una hipótesis nula falsa para un efecto especificado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-015",
+    "name": "Bootstrap",
+    "area": "Estadística",
+    "description": "Remuestreo con reemplazo para estimar variabilidad, sesgo o intervalos de un estadístico.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-016",
+    "name": "Sesgo de selección",
+    "area": "Estadística",
+    "description": "Distorsión cuando la muestra seleccionada no representa la población objetivo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-017",
+    "name": "Confounding (confusión causal)",
+    "area": "Estadística",
+    "description": "Una variable afecta conjuntamente a la exposición y al resultado, distorsionando su asociación observada.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-018",
+    "name": "Teorema de Bayes",
+    "area": "Estadística",
+    "description": "Actualiza probabilidades de hipótesis con evidencia combinando verosimilitud y prior.",
+    "formula": "P(A|B)=P(B|A)P(A)/P(B)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-019",
+    "name": "Entropía de Shannon",
+    "area": "Estadística",
+    "description": "Incertidumbre esperada de una variable discreta según su distribución.",
+    "formula": "H(X)=−Σp(x)log p(x)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-020",
+    "name": "Información mutua",
+    "area": "Estadística",
+    "description": "Reducción de incertidumbre sobre una variable al conocer otra; cero para independencia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-021",
+    "name": "Divergencia KL",
+    "area": "Estadística",
+    "description": "Diferencia dirigida entre distribuciones; no es una distancia simétrica.",
+    "formula": "D_KL(P||Q)=E_P[log(P/Q)]",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-022",
+    "name": "Divergencia Jensen-Shannon",
+    "area": "Estadística",
+    "description": "Divergencia simétrica y acotada derivada de KL respecto a una mezcla de distribuciones.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-023",
+    "name": "MAE",
+    "area": "Métricas · Regresión",
+    "description": "Media del error absoluto; conserva las unidades del objetivo y es menos sensible a outliers que MSE.",
+    "formula": "MAE=(1/n)Σ|yᵢ−ŷᵢ|",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-024",
+    "name": "MSE",
+    "area": "Métricas · Regresión",
+    "description": "Media del error cuadrático; penaliza con fuerza errores grandes.",
+    "formula": "MSE=(1/n)Σ(yᵢ−ŷᵢ)²",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-025",
+    "name": "RMSE",
+    "area": "Métricas · Regresión",
+    "description": "Raíz del MSE; cuantifica error típico en unidades de la variable objetivo y penaliza errores grandes.",
+    "formula": "RMSE=√[(1/n)Σ(yᵢ−ŷᵢ)²]",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-026",
+    "name": "R² (coeficiente de determinación)",
+    "area": "Métricas · Regresión",
+    "description": "Proporción de varianza respecto al baseline de la media en una definición habitual; puede ser negativo fuera de muestra.",
+    "formula": "R²=1−SS_res/SS_tot",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-027",
+    "name": "MAPE",
+    "area": "Métricas · Regresión",
+    "description": "Media del error porcentual absoluto; no se comporta bien con objetivos cero o próximos a cero.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-028",
+    "name": "SMAPE",
+    "area": "Métricas · Regresión",
+    "description": "Variante porcentual simétrica basada en magnitudes de observado y predicho; tiene convenciones distintas para ceros.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-029",
+    "name": "Pinball loss",
+    "area": "Métricas · Regresión",
+    "description": "Pérdida asimétrica usada en regresión cuantílica; penaliza según el cuantil τ.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-030",
+    "name": "Matriz de confusión",
+    "area": "Métricas · Clasificación",
+    "description": "Tabla de predichos frente a reales; permite identificar TP, FP, TN y FN.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-031",
+    "name": "Accuracy (exactitud)",
+    "area": "Métricas · Clasificación",
+    "description": "Fracción total de predicciones correctas; puede engañar con clases desequilibradas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-032",
+    "name": "Precision (precisión positiva)",
+    "area": "Métricas · Clasificación",
+    "description": "Proporción de positivos predichos que son realmente positivos.",
+    "formula": "Precision=TP/(TP+FP)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-033",
+    "name": "Recall (sensibilidad)",
+    "area": "Métricas · Clasificación",
+    "description": "Proporción de positivos reales recuperados por el modelo.",
+    "formula": "Recall=TP/(TP+FN)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-034",
+    "name": "Specificity (especificidad)",
+    "area": "Métricas · Clasificación",
+    "description": "Proporción de negativos reales clasificados correctamente.",
+    "formula": "Specificity=TN/(TN+FP)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-035",
+    "name": "F1-score",
+    "area": "Métricas · Clasificación",
+    "description": "Media armónica de precision y recall; ignora verdaderos negativos.",
+    "formula": "F1=2PR/(P+R)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-036",
+    "name": "Fβ-score",
+    "area": "Métricas · Clasificación",
+    "description": "Generalización de F1 que pondera recall respecto a precision mediante β.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-037",
+    "name": "Balanced accuracy",
+    "area": "Métricas · Clasificación",
+    "description": "Promedio de recall por clase; útil para clases desequilibradas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-038",
+    "name": "ROC-AUC",
+    "area": "Métricas · Clasificación",
+    "description": "Área bajo curva TPR frente a FPR a través de umbrales; no equivale al rendimiento a un umbral concreto.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-039",
+    "name": "PR-AUC y Average Precision",
+    "area": "Métricas · Clasificación",
+    "description": "Resumen de precision-recall al variar el umbral, especialmente informativo con positivos poco frecuentes; AP y AUC trapezoidal no son idénticos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-040",
+    "name": "Log loss / Cross-entropy",
+    "area": "Métricas · Clasificación",
+    "description": "Pérdida logarítmica que evalúa probabilidades predichas; castiga confianza equivocada.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-041",
+    "name": "Brier score",
+    "area": "Métricas · Clasificación",
+    "description": "Media del error cuadrático de probabilidad para eventos binarios; evalúa precisión probabilística.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-042",
+    "name": "MCC (Matthews correlation coefficient)",
+    "area": "Métricas · Clasificación",
+    "description": "Coeficiente que utiliza las cuatro celdas de una matriz de confusión binaria; robusto ante ciertos desequilibrios.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-043",
+    "name": "Top-k accuracy",
+    "area": "Métricas · Clasificación",
+    "description": "Fracción de casos cuya etiqueta verdadera se encuentra entre las k predicciones más probables.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-044",
+    "name": "Silhouette score",
+    "area": "Métricas · Agrupamiento",
+    "description": "Compara cohesión intra-clúster y separación respecto a otro clúster próximo; depende de distancia elegida.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-045",
+    "name": "Davies–Bouldin index",
+    "area": "Métricas · Agrupamiento",
+    "description": "Promedio de similitud máxima entre clusters; menor suele indicar mejor separación según la métrica.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-046",
+    "name": "Calinski–Harabasz index",
+    "area": "Métricas · Agrupamiento",
+    "description": "Relación entre dispersión inter-clúster e intra-clúster, ajustada por tamaño muestral y número de grupos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-047",
+    "name": "Adjusted Rand Index (ARI)",
+    "area": "Métricas · Agrupamiento",
+    "description": "Similitud entre dos particiones ajustada por coincidencias debidas al azar.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-048",
+    "name": "Normalized Mutual Information (NMI)",
+    "area": "Métricas · Agrupamiento",
+    "description": "Coincidencia informativa normalizada entre dos asignaciones de clusters.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-049",
+    "name": "IoU (Intersection over Union)",
+    "area": "Métricas · Visión",
+    "description": "Intersección dividida por unión de dos regiones; común en detección y segmentación.",
+    "formula": "IoU=|A∩B|/|A∪B|",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-050",
+    "name": "Dice coefficient",
+    "area": "Métricas · Visión",
+    "description": "Solapamiento entre máscaras; equivalente a F1 en el caso binario sobre píxeles.",
+    "formula": "Dice=2|A∩B|/(|A|+|B|)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-051",
+    "name": "mAP (mean Average Precision)",
+    "area": "Métricas · Visión",
+    "description": "Promedio de Average Precision según clases o umbrales IoU; debe indicarse el protocolo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-052",
+    "name": "Perplexity",
+    "area": "Métricas · Generación",
+    "description": "Exponencial de la cross-entropy media de tokens; depende de tokenizador y distribución de evaluación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-053",
+    "name": "BLEU",
+    "area": "Métricas · Generación",
+    "description": "Métrica de similitud n-gram con penalización de brevedad, usada en traducción.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-054",
+    "name": "ROUGE",
+    "area": "Métricas · Generación",
+    "description": "Familia de métricas basadas en solapamiento de unidades textuales, frecuente en resumen.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-055",
+    "name": "FID (Fréchet Inception Distance)",
+    "area": "Métricas · Generación",
+    "description": "Distancia entre distribuciones de features de imágenes reales y generadas bajo aproximación gaussiana.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-056",
+    "name": "KID (Kernel Inception Distance)",
+    "area": "Métricas · Generación",
+    "description": "Distancia basada en MMD entre features reales y generadas; estimador menos sesgado en muestras finitas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-057",
+    "name": "Recall@k",
+    "area": "Métricas · Retrieval",
+    "description": "Fracción de elementos relevantes recuperados entre los primeros k resultados.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-058",
+    "name": "MRR (Mean Reciprocal Rank)",
+    "area": "Métricas · Retrieval",
+    "description": "Promedio del inverso de la posición del primer resultado relevante.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-059",
+    "name": "nDCG",
+    "area": "Métricas · Retrieval",
+    "description": "Ganancia acumulada descontada y normalizada, útil cuando hay grados de relevancia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-060",
+    "name": "Return (retorno acumulado)",
+    "area": "Métricas · RL",
+    "description": "Suma de recompensas a lo largo de un episodio, posiblemente descontada por γ.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-061",
+    "name": "Sample efficiency",
+    "area": "Métricas · RL",
+    "description": "Cantidad de interacciones necesaria para alcanzar un nivel de rendimiento; debe fijarse el protocolo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-062",
+    "name": "Regret",
+    "area": "Métricas · RL",
+    "description": "Diferencia acumulada entre recompensa de la política óptima y la obtenida por una estrategia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-063",
+    "name": "Train/validation/test split",
+    "area": "Evaluación",
+    "description": "Separación de datos para ajuste, selección y evaluación final; debe respetar tiempo, grupos y dependencias.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-064",
+    "name": "K-fold cross-validation",
+    "area": "Evaluación",
+    "description": "Divide datos en k pliegues, alternando validación y entrenamiento; requiere partición apropiada al problema.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-065",
+    "name": "Stratified K-fold",
+    "area": "Evaluación",
+    "description": "Validación cruzada que aproxima las proporciones de clases en cada pliegue.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-066",
+    "name": "Group K-fold",
+    "area": "Evaluación",
+    "description": "Evita que ejemplos del mismo grupo aparezcan en entrenamiento y validación simultáneamente.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-067",
+    "name": "TimeSeriesSplit",
+    "area": "Evaluación",
+    "description": "Particiones cronológicas para evitar entrenar con observaciones posteriores al periodo evaluado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-068",
+    "name": "Data leakage (fuga de información)",
+    "area": "Evaluación",
+    "description": "Uso indebido de información no disponible en predicción, por ejemplo de test o del futuro.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-069",
+    "name": "Overfitting (sobreajuste)",
+    "area": "Evaluación",
+    "description": "Buen rendimiento de entrenamiento que no se generaliza a datos independientes.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-070",
+    "name": "Underfitting (subajuste)",
+    "area": "Evaluación",
+    "description": "Modelo que no captura patrones suficientes ni siquiera en entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-071",
+    "name": "Bias-variance tradeoff",
+    "area": "Evaluación",
+    "description": "Compromiso entre error sistemático y sensibilidad a la muestra, dependiente de estimador y pérdida.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-072",
+    "name": "Learning curve",
+    "area": "Evaluación",
+    "description": "Gráfico de rendimiento train/validación frente a tamaño muestral o pasos de entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-073",
+    "name": "Calibration curve",
+    "area": "Evaluación",
+    "description": "Compara probabilidades predichas con frecuencias observadas por intervalos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-074",
+    "name": "Threshold tuning",
+    "area": "Evaluación",
+    "description": "Selección de umbral de decisión para optimizar una métrica o coste usando validación, no test.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-075",
+    "name": "Cost-sensitive learning",
+    "area": "Evaluación",
+    "description": "Entrenamiento o decisión que penaliza diferencialmente errores según su coste de negocio.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-076",
+    "name": "Class imbalance (desbalanceo)",
+    "area": "Evaluación",
+    "description": "Distribución desigual de etiquetas; influye en métricas, muestreo, objetivos y umbrales.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-077",
+    "name": "Out-of-distribution (OOD)",
+    "area": "Evaluación",
+    "description": "Observaciones alejadas de la distribución representada durante el entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-078",
+    "name": "Distribution shift",
+    "area": "Evaluación",
+    "description": "Cambio entre la distribución de entrenamiento y la de producción o evaluación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-079",
+    "name": "Concept drift",
+    "area": "Evaluación",
+    "description": "Cambio temporal de la relación entre variables predictoras y objetivo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-080",
+    "name": "Missing values (valores ausentes)",
+    "area": "Preprocesamiento",
+    "description": "Datos no observados; el mecanismo de ausencia y su tratamiento afectan a inferencia y predicción.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-081",
+    "name": "Imputación",
+    "area": "Preprocesamiento",
+    "description": "Sustitución de faltantes mediante regla o modelo ajustado solo con datos de entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-082",
+    "name": "StandardScaler (estandarización)",
+    "area": "Preprocesamiento",
+    "description": "Transforma características usando media y desviación estándar del conjunto de entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-083",
+    "name": "MinMaxScaler (escalado min-max)",
+    "area": "Preprocesamiento",
+    "description": "Transforma un rango observado a otro, generalmente [0,1], sensible a extremos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-084",
+    "name": "RobustScaler",
+    "area": "Preprocesamiento",
+    "description": "Escala usando mediana y rango intercuartílico; menos sensible a valores extremos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-085",
+    "name": "One-hot encoding",
+    "area": "Preprocesamiento",
+    "description": "Representa categorías como indicadores binarios; puede aumentar dimensionalidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-086",
+    "name": "Ordinal encoding",
+    "area": "Preprocesamiento",
+    "description": "Asigna códigos enteros a categorías; solo implica orden semántico si existe de verdad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-087",
+    "name": "Target encoding",
+    "area": "Preprocesamiento",
+    "description": "Codifica categorías mediante estadísticas del objetivo; necesita esquema sin fuga de información.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-088",
+    "name": "Feature engineering",
+    "area": "Preprocesamiento",
+    "description": "Construcción de variables a partir de datos disponibles para facilitar modelado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-089",
+    "name": "Feature selection",
+    "area": "Preprocesamiento",
+    "description": "Selección de subconjunto de atributos mediante criterios estadísticos, embebidos o wrappers.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-090",
+    "name": "PCA (Principal Component Analysis)",
+    "area": "Preprocesamiento",
+    "description": "Proyección ortogonal en direcciones de máxima varianza; se ajusta sobre train.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-091",
+    "name": "SMOTE",
+    "area": "Preprocesamiento",
+    "description": "Genera ejemplos sintéticos de clases minoritarias interpolando vecinos; debe aplicarse solo dentro de train/folds.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-092",
+    "name": "Random oversampling",
+    "area": "Preprocesamiento",
+    "description": "Duplica ejemplos de una clase para reequilibrar el entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-093",
+    "name": "Random undersampling",
+    "area": "Preprocesamiento",
+    "description": "Reduce ejemplos de clases frecuentes; ahorra cómputo, pero puede perder información.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-094",
+    "name": "class_weight",
+    "area": "Preprocesamiento",
+    "description": "Pesos de clases en la función de pérdida para ajustar la contribución de cada etiqueta.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-095",
+    "name": "Pipeline de preprocesamiento",
+    "area": "Preprocesamiento",
+    "description": "Encadena transformaciones y estimador para evitar ajustes inconsistentes o fugas entre folds.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-096",
+    "name": "Regularización L1 (Lasso)",
+    "area": "Modelos · ML",
+    "description": "Penaliza suma absoluta de coeficientes y puede producir soluciones dispersas.",
+    "formula": "λΣ|wᵢ|",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-097",
+    "name": "Regularización L2 (Ridge)",
+    "area": "Modelos · ML",
+    "description": "Penaliza norma cuadrática de pesos y favorece coeficientes pequeños.",
+    "formula": "λΣwᵢ²",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-098",
+    "name": "Elastic Net",
+    "area": "Modelos · ML",
+    "description": "Combina penalizaciones L1 y L2, útil con características correlacionadas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-099",
+    "name": "Gradient Boosting",
+    "area": "Modelos · ML",
+    "description": "Ensemble aditivo secuencial que corrige errores usando gradientes de una función objetivo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-100",
+    "name": "Bagging",
+    "area": "Modelos · ML",
+    "description": "Entrena modelos sobre remuestras y agrega predicciones para reducir variabilidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-101",
+    "name": "Stacking",
+    "area": "Modelos · ML",
+    "description": "Combina modelos base mediante un metaestimador entrenado sobre predicciones fuera de muestra.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-102",
+    "name": "Random Forest",
+    "area": "Modelos · ML",
+    "description": "Ensemble de árboles sobre remuestras y subconjuntos de atributos; promedia o vota.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-103",
+    "name": "XGBoost",
+    "area": "Modelos · ML",
+    "description": "Biblioteca de boosting de árboles con optimizaciones de regularización, paralelismo y construcción de splits.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-104",
+    "name": "LightGBM",
+    "area": "Modelos · ML",
+    "description": "Biblioteca de gradient boosting con crecimiento de árboles leaf-wise y agrupación de histogramas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-105",
+    "name": "KNN (k-nearest neighbors)",
+    "area": "Modelos · ML",
+    "description": "Predicción por cercanía de ejemplos bajo una métrica; sensible a escala y dimensionalidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-106",
+    "name": "SVM (Support Vector Machine)",
+    "area": "Modelos · ML",
+    "description": "Método de margen máximo; kernels permiten fronteras no lineales en espacio implícito.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-107",
+    "name": "Kernel trick",
+    "area": "Modelos · ML",
+    "description": "Calcula productos escalares en un espacio de características sin construirlo explícitamente.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-108",
+    "name": "DBSCAN",
+    "area": "Modelos · ML",
+    "description": "Agrupa regiones densas y marca puntos ruidosos usando ε y min_samples.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-109",
+    "name": "K-means",
+    "area": "Modelos · ML",
+    "description": "Minimiza dispersión intra-clúster asignando observaciones a k centroides.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-110",
+    "name": "Isolation Forest",
+    "area": "Modelos · ML",
+    "description": "Detecta anomalías por aislamiento mediante particiones aleatorias sucesivas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-111",
+    "name": "Función de pérdida (loss)",
+    "area": "Optimización",
+    "description": "Objetivo escalar que expresa error o utilidad del modelo para actualizar parámetros.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-112",
+    "name": "Función objetivo",
+    "area": "Optimización",
+    "description": "Criterio matemático que se minimiza o maximiza; puede incluir pérdidas, regularización y restricciones.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-113",
+    "name": "Gradiente",
+    "area": "Optimización",
+    "description": "Vector de derivadas parciales de una función respecto a sus parámetros.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-114",
+    "name": "SGD (Stochastic Gradient Descent)",
+    "area": "Optimización",
+    "description": "Actualización de parámetros con gradientes estimados sobre muestras o minibatches.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-115",
+    "name": "Learning rate",
+    "area": "Optimización",
+    "description": "Tamaño del paso del optimizador; demasiado grande puede desestabilizar y demasiado pequeño ralentizar.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-116",
+    "name": "Batch size",
+    "area": "Optimización",
+    "description": "Número de ejemplos usados en cada actualización de gradiente.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-117",
+    "name": "Epoch (época)",
+    "area": "Optimización",
+    "description": "Recorrido sobre el conjunto de entrenamiento, sujeto a estrategia de muestreo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-118",
+    "name": "Early stopping",
+    "area": "Optimización",
+    "description": "Interrumpe entrenamiento al detenerse la mejora de la métrica de validación seleccionada.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-119",
+    "name": "Gradient clipping",
+    "area": "Optimización",
+    "description": "Limita norma o valores de gradientes para reducir actualizaciones extremas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-120",
+    "name": "Weight decay",
+    "area": "Optimización",
+    "description": "Encoge parámetros mediante regularización o decaimiento desacoplado según optimizador.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-121",
+    "name": "Dropout",
+    "area": "Optimización",
+    "description": "Anula aleatoriamente activaciones durante entrenamiento como técnica de regularización.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-122",
+    "name": "Batch Normalization",
+    "area": "Optimización",
+    "description": "Normalización con estadísticas de minibatch y estimaciones para inferencia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-123",
+    "name": "Layer Normalization",
+    "area": "Optimización",
+    "description": "Normalización dentro de cada ejemplo sobre dimensiones seleccionadas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-124",
+    "name": "Adam",
+    "area": "Optimización",
+    "description": "Optimizador con estimaciones adaptativas del primer y segundo momento del gradiente.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-125",
+    "name": "AdamW",
+    "area": "Optimización",
+    "description": "Variante de Adam con weight decay desacoplado del paso adaptativo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-126",
+    "name": "Momentum",
+    "area": "Optimización",
+    "description": "Acumula información de gradientes anteriores para suavizar y acelerar actualizaciones.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-127",
+    "name": "Scheduler de learning rate",
+    "area": "Optimización",
+    "description": "Regla que ajusta la tasa de aprendizaje durante el entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-128",
+    "name": "Convolución 2D",
+    "area": "Deep Learning",
+    "description": "Operación local con filtros y pesos compartidos; bibliotecas suelen implementar correlación cruzada.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-129",
+    "name": "Stride",
+    "area": "Deep Learning",
+    "description": "Salto entre posiciones del kernel o ventana al recorrer la entrada.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-130",
+    "name": "Padding",
+    "area": "Deep Learning",
+    "description": "Relleno añadido a bordes para controlar tamaño y comportamiento espacial de salida.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-131",
+    "name": "Pooling",
+    "area": "Deep Learning",
+    "description": "Agregación espacial, como max o average, para reducir resolución.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-132",
+    "name": "Receptive field (campo receptivo)",
+    "area": "Deep Learning",
+    "description": "Región de entrada que influye en una activación de una capa.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-133",
+    "name": "ReLU",
+    "area": "Deep Learning",
+    "description": "Activación max(0,x); favorece gradientes no saturados para x positivo.",
+    "formula": "ReLU(x)=max(0,x)",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-134",
+    "name": "GELU",
+    "area": "Deep Learning",
+    "description": "Activación suave basada en ponderar x según una función relacionada con la CDF normal.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-135",
+    "name": "Softmax",
+    "area": "Deep Learning",
+    "description": "Normaliza logits a probabilidades positivas que suman uno.",
+    "formula": "softmax(zᵢ)=eᶻⁱ/Σⱼeᶻʲ",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-136",
+    "name": "Sigmoid",
+    "area": "Deep Learning",
+    "description": "Función logística que transforma reales a (0,1), habitual en salida binaria.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-137",
+    "name": "Embedding",
+    "area": "Deep Learning",
+    "description": "Representación vectorial aprendida o calculada de tokens, categorías, nodos u objetos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-138",
+    "name": "Multi-head attention",
+    "area": "Deep Learning",
+    "description": "Atención con varias proyecciones para capturar relaciones en distintos subespacios.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-139",
+    "name": "Causal mask",
+    "area": "Deep Learning",
+    "description": "Máscara que bloquea posiciones futuras durante atención autoregresiva.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-140",
+    "name": "Positional encoding",
+    "area": "Deep Learning",
+    "description": "Información sobre posición/orden inyectada en representaciones de tokens.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-141",
+    "name": "LoRA",
+    "area": "Deep Learning",
+    "description": "Adaptación de rango bajo que entrena matrices pequeñas para modificar capas preentrenadas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-142",
+    "name": "PEFT",
+    "area": "Deep Learning",
+    "description": "Familia de técnicas que ajustan una fracción de parámetros respecto al modelo base.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-143",
+    "name": "Quantization",
+    "area": "Deep Learning",
+    "description": "Representación de pesos o activaciones con menor precisión para ahorrar memoria y cómputo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-144",
+    "name": "Knowledge distillation",
+    "area": "Deep Learning",
+    "description": "Entrena un modelo estudiante utilizando señales de un modelo profesor.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-145",
+    "name": "Contrastive learning",
+    "area": "Deep Learning",
+    "description": "Aprende representaciones mediante relaciones entre pares positivos y negativos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-146",
+    "name": "InfoNCE",
+    "area": "Deep Learning",
+    "description": "Objetivo contrastivo con softmax que favorece positivos frente a candidatos negativos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-147",
+    "name": "NT-Xent",
+    "area": "Deep Learning",
+    "description": "Pérdida contrastiva normalizada con temperatura, utilizada por SimCLR.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-148",
+    "name": "Triplet loss",
+    "area": "Deep Learning",
+    "description": "Separa la distancia ancla-negativo de ancla-positivo mediante un margen.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-149",
+    "name": "Graph neural network (GNN)",
+    "area": "Deep Learning",
+    "description": "Red que propaga mensajes sobre relaciones representadas por nodos y aristas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-150",
+    "name": "Message passing",
+    "area": "Deep Learning",
+    "description": "Actualización de estados de nodos agregando mensajes de vecinos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-151",
+    "name": "Over-smoothing",
+    "area": "Deep Learning",
+    "description": "Pérdida de distinguibilidad de representaciones nodales tras agregaciones repetidas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-152",
+    "name": "Over-squashing",
+    "area": "Deep Learning",
+    "description": "Compresión excesiva de información de vecindarios amplios a través de cuellos de botella.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-153",
+    "name": "Latent space (espacio latente)",
+    "area": "Deep Learning",
+    "description": "Espacio de representación interna que el modelo utiliza para codificar variaciones.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-154",
+    "name": "ELBO",
+    "area": "Deep Learning",
+    "description": "Cota inferior variacional del log-likelihood utilizada para entrenar VAE.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-155",
+    "name": "Classifier-free guidance",
+    "area": "Deep Learning",
+    "description": "Combinación de predicciones condicionales y no condicionales durante difusión.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-156",
+    "name": "Tokenización",
+    "area": "NLP y LLMs",
+    "description": "Segmentación de texto en unidades discretas compatibles con un vocabulario de modelo.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-157",
+    "name": "Token",
+    "area": "NLP y LLMs",
+    "description": "Unidad de texto procesada por el modelo; no equivale necesariamente a palabra.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-158",
+    "name": "Vocabulary",
+    "area": "NLP y LLMs",
+    "description": "Conjunto de identificadores de tokens reconocidos por un tokenizador.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-159",
+    "name": "Context window",
+    "area": "NLP y LLMs",
+    "description": "Máxima longitud de contexto que un modelo puede procesar en una invocación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-160",
+    "name": "Autoregressive language modeling",
+    "area": "NLP y LLMs",
+    "description": "Factoriza la probabilidad de texto prediciendo cada token desde los anteriores.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-161",
+    "name": "Masked Language Modeling (MLM)",
+    "area": "NLP y LLMs",
+    "description": "Objetivo de preentrenamiento que predice tokens ocultos usando contexto permitido.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-162",
+    "name": "Teacher forcing",
+    "area": "NLP y LLMs",
+    "description": "Durante entrenamiento, alimenta al decodificador con tokens objetivos previos.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-163",
+    "name": "Temperature (muestreo)",
+    "area": "NLP y LLMs",
+    "description": "Escala logits antes de muestrear; cambia concentración de la distribución de salida.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-164",
+    "name": "Top-k sampling",
+    "area": "NLP y LLMs",
+    "description": "Restringe muestreo a los k tokens con mayor puntuación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-165",
+    "name": "Top-p / nucleus sampling",
+    "area": "NLP y LLMs",
+    "description": "Muestrea del conjunto mínimo de tokens cuya probabilidad acumulada alcanza p.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-166",
+    "name": "Hallucination (alucinación)",
+    "area": "NLP y LLMs",
+    "description": "Generación de una afirmación no respaldada por los hechos o fuentes disponibles.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-167",
+    "name": "RAG (Retrieval-Augmented Generation)",
+    "area": "NLP y LLMs",
+    "description": "Recupera documentos externos relevantes y los incorpora como contexto de generación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-168",
+    "name": "Vector database",
+    "area": "NLP y LLMs",
+    "description": "Sistema que indexa representaciones vectoriales para búsquedas por similitud.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-169",
+    "name": "Cosine similarity",
+    "area": "NLP y LLMs",
+    "description": "Similitud angular normalizada entre vectores; depende de calidad de embeddings.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-170",
+    "name": "Fine-tuning",
+    "area": "NLP y LLMs",
+    "description": "Ajuste de parámetros preentrenados con datos o tareas específicas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-171",
+    "name": "MDP",
+    "area": "Reinforcement Learning",
+    "description": "Modelo secuencial con estados, acciones, transiciones, recompensas y descuento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-172",
+    "name": "Política π",
+    "area": "Reinforcement Learning",
+    "description": "Regla o distribución que determina qué acción realizar en cada estado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-173",
+    "name": "Value function V(s)",
+    "area": "Reinforcement Learning",
+    "description": "Retorno esperado desde estado s siguiendo una política.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-174",
+    "name": "Action-value function Q(s,a)",
+    "area": "Reinforcement Learning",
+    "description": "Retorno esperado tras realizar acción a en estado s y seguir una política.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-175",
+    "name": "Ecuación de Bellman",
+    "area": "Reinforcement Learning",
+    "description": "Relación recursiva entre recompensa inmediata y valor futuro.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-176",
+    "name": "Temporal Difference (TD)",
+    "area": "Reinforcement Learning",
+    "description": "Aprende valores con bootstrap a partir de estimaciones del siguiente estado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-177",
+    "name": "TD error",
+    "area": "Reinforcement Learning",
+    "description": "Diferencia entre objetivo temporal y estimación actual de valor.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-178",
+    "name": "On-policy",
+    "area": "Reinforcement Learning",
+    "description": "Aprende o evalúa con datos obtenidos bajo la política objetivo o una variante cercana.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-179",
+    "name": "Off-policy",
+    "area": "Reinforcement Learning",
+    "description": "Aprende objetivos de una política utilizando trayectorias de otra política.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-180",
+    "name": "Epsilon-greedy",
+    "area": "Reinforcement Learning",
+    "description": "Escoge una acción aleatoria con probabilidad ε y una greedy con probabilidad restante.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-181",
+    "name": "Exploration-exploitation",
+    "area": "Reinforcement Learning",
+    "description": "Compromiso entre descubrir valores de acciones y aprovechar valores ya estimados.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-182",
+    "name": "Replay buffer",
+    "area": "Reinforcement Learning",
+    "description": "Memoria de transiciones pasadas para aprendizaje por minibatches.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-183",
+    "name": "Target network",
+    "area": "Reinforcement Learning",
+    "description": "Copia de parámetros usada para estabilizar objetivos bootstrap.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-184",
+    "name": "Advantage function",
+    "area": "Reinforcement Learning",
+    "description": "Diferencia Qπ(s,a)−Vπ(s), que compara una acción con valor esperado del estado.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-185",
+    "name": "GAE",
+    "area": "Reinforcement Learning",
+    "description": "Estimador de ventaja que agrega errores TD a diferentes horizontes controlados por λ.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-186",
+    "name": "Entropy bonus",
+    "area": "Reinforcement Learning",
+    "description": "Término de entrenamiento que fomenta políticas de mayor entropía.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-187",
+    "name": "Termination vs truncation",
+    "area": "Reinforcement Learning",
+    "description": "Terminación pertenece a la dinámica del MDP; truncamiento interrumpe fuera de su condición terminal.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-188",
+    "name": "Reward shaping",
+    "area": "Reinforcement Learning",
+    "description": "Modificación de la señal de recompensa para orientar aprendizaje, con riesgo de objetivos indeseados.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-189",
+    "name": "Offline RL",
+    "area": "Reinforcement Learning",
+    "description": "Aprende políticas a partir de un conjunto fijo de transiciones sin interacción durante el entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-190",
+    "name": "Policy gradient",
+    "area": "Reinforcement Learning",
+    "description": "Estima gradientes de retorno esperado con respecto a parámetros de la política.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-191",
+    "name": "Actor-Critic",
+    "area": "Reinforcement Learning",
+    "description": "Arquitectura que combina política (actor) y estimador de valor (crítico).",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-192",
+    "name": "Reproducibilidad",
+    "area": "MLOps y producción",
+    "description": "Capacidad de repetir experimentos especificando datos, versiones, semillas, configuración y entorno.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-193",
+    "name": "Random seed",
+    "area": "MLOps y producción",
+    "description": "Valor inicial de un generador pseudoaleatorio; ayuda a reproducir ejecuciones, aunque no garantiza determinismo total.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-194",
+    "name": "Data versioning",
+    "area": "MLOps y producción",
+    "description": "Control de versiones de datasets y sus transformaciones para trazabilidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-195",
+    "name": "Experiment tracking",
+    "area": "MLOps y producción",
+    "description": "Registro de configuraciones, métricas y artefactos de ejecuciones de entrenamiento.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-196",
+    "name": "Model registry",
+    "area": "MLOps y producción",
+    "description": "Inventario versionado de modelos, metadatos, estados y artefactos de despliegue.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-197",
+    "name": "Model monitoring",
+    "area": "MLOps y producción",
+    "description": "Seguimiento de calidad, distribución de datos, rendimiento y fallos tras despliegue.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-198",
+    "name": "Training-serving skew",
+    "area": "MLOps y producción",
+    "description": "Diferencia entre datos, preprocesamiento o comportamiento durante entrenamiento e inferencia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-199",
+    "name": "Feature store",
+    "area": "MLOps y producción",
+    "description": "Sistema para gestionar características reutilizables con consistencia entre entrenamiento e inferencia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-200",
+    "name": "A/B testing",
+    "area": "MLOps y producción",
+    "description": "Experimento aleatorizado que compara variantes sobre una métrica y población definidas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-201",
+    "name": "Shadow deployment",
+    "area": "MLOps y producción",
+    "description": "Ejecución paralela de un modelo candidato sin que sus predicciones afecten a decisiones finales.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-202",
+    "name": "Feature importance",
+    "area": "Interpretabilidad",
+    "description": "Puntuación de influencia o utilidad de variables según método; no equivale a efecto causal.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-203",
+    "name": "Permutation importance",
+    "area": "Interpretabilidad",
+    "description": "Mide pérdida de rendimiento al permutar una característica en datos de evaluación.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-204",
+    "name": "SHAP",
+    "area": "Interpretabilidad",
+    "description": "Familia de métodos de atribución basados en valores de Shapley bajo supuestos de background y dependencia.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-205",
+    "name": "LIME",
+    "area": "Interpretabilidad",
+    "description": "Aproxima localmente el comportamiento de un modelo con un sustituto interpretable.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-206",
+    "name": "Partial Dependence Plot (PDP)",
+    "area": "Interpretabilidad",
+    "description": "Promedia predicciones al modificar una variable; puede crear combinaciones irreales con features correlacionadas.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
+  },
+  {
+    "id": "g-207",
+    "name": "ICE (Individual Conditional Expectation)",
+    "area": "Interpretabilidad",
+    "description": "Curvas de predicción por observación al variar una característica, mostrando heterogeneidad.",
+    "formula": "",
+    "related": "",
+    "source": "Glosario de referencia MLpedia: síntesis terminológica para consulta; revisar fuente específica cuando la definición dependa de un protocolo."
   }
 ]
