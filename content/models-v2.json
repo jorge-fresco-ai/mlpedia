@@ -19,7 +19,16 @@
     "code": "from sklearn.linear_model import Perceptron\nfrom sklearn.datasets import make_classification\nX, y = make_classification(n_samples=300, random_state=42)\nmodel = Perceptron(max_iter=1000, tol=1e-3, random_state=42)\nmodel.fit(X, y)\nprint(model.score(X, y))  # Evaluación ilustrativa sobre train",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Linealidad en el espacio original o en las características transformadas; el teorema de convergencia exige separabilidad lineal y presentación reiterada de ejemplos.",
+    "preprocessing": "Codificar variables numéricas y categóricas; normalizar escalas si las magnitudes difieren; separar test antes de explorar el tuning.",
+    "uses": "Clasificación binaria y baseline lineal interpretable.",
+    "advantages": "Entrenamiento online barato, función de decisión comprensible y fácil depuración.",
+    "disadvantages": "No proporciona probabilidades calibradas y la no separabilidad puede impedir convergencia estable.",
+    "characteristics": "Familia: Redes densas. Paradigma: Supervisado. Tarea: Clasificación. Principio: Clasificador lineal con actualización por errores sobre ejemplos etiquetados.",
+    "functioning": "Clasificador lineal con actualización por errores sobre ejemplos etiquetados.\n\nFormulación representativa: w ← w + η(y−ŷ)x\n\nEntrenamiento: Actualización online; converge con separabilidad lineal bajo las condiciones habituales.",
+    "technicalNotes": "Consulta Rosenblatt (1958), The perceptron. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "No modela fronteras no lineales sin transformación de características."
   },
   {
     "id": "v2-02",
@@ -41,7 +50,16 @@
     "code": "import torch\nfrom torch import nn\ntorch.manual_seed(42)\nX = torch.tensor([[0.,0.],[0.,1.],[1.,0.],[1.,1.]])\ny = torch.tensor([[0.],[1.],[1.],[0.]])\nmodel = nn.Sequential(nn.Linear(2,8), nn.Tanh(), nn.Linear(8,1))\nopt = torch.optim.Adam(model.parameters(), lr=.03)\nloss_fn = nn.BCEWithLogitsLoss()\nfor epoch in range(1000):\n    loss = loss_fn(model(X), y)\n    opt.zero_grad()\n    loss.backward()\n    opt.step()\nprint(torch.sigmoid(model(X)).detach())",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Las variables de entrada deben representar suficientemente el problema; no presupone estructura espacial ni orden temporal.",
+    "preprocessing": "Estandarizar variables; codificar categorías; definir split independiente; controlar desequilibrio y faltantes.",
+    "uses": "Tabular no lineal, aproximación de funciones y capas de predicción sobre embeddings.",
+    "advantages": "Capacidad expresiva, flexibilidad de pérdidas y entrenamiento diferenciable end-to-end.",
+    "disadvantages": "Demanda ajuste de arquitectura, regularización y datos; puede sobreajustar con poca muestra.",
+    "characteristics": "Familia: Redes densas. Paradigma: Depende del objetivo. Tarea: Clasificación / Regresión. Principio: Red neuronal feedforward con capas ocultas y activaciones no lineales.",
+    "functioning": "Red neuronal feedforward con capas ocultas y activaciones no lineales.\n\nFormulación representativa: hₗ = φ(Wₗhₗ₋₁+bₗ)\n\nEntrenamiento: Backpropagation y optimizador SGD/Adam; dividir train/valid/test y vigilar regularización.",
+    "technicalNotes": "Consulta Rumelhart, Hinton & Williams (1986), Learning representations by back-propagating errors. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Sensibilidad a escala y a hiperparámetros; sin inductive bias espacial."
   },
   {
     "id": "v2-03",
@@ -63,7 +81,16 @@
     "code": "import torch\nfrom torch import nn\nencoder = nn.Sequential(nn.Linear(20,8), nn.ReLU(), nn.Linear(8,3))\ndecoder = nn.Sequential(nn.Linear(3,8), nn.ReLU(), nn.Linear(8,20))\nx = torch.randn(16,20)\nreconstruction = decoder(encoder(x))\nloss = nn.MSELoss()(reconstruction, x)\nloss.backward()  # Ejemplo de una actualización, falta optimizador",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "El error de reconstrucción debe reflejar características relevantes; la representación depende de la capacidad y del cuello de botella.",
+    "preprocessing": "Normalizar las entradas; evitar fugas entre train/test; reservar datos para validar reconstrucción y utilidad del embedding.",
+    "uses": "Compresión no lineal, denoising, preentrenamiento y detección de anomalías con cautela.",
+    "advantages": "Aprende sin etiquetas externas y permite extraer representaciones compactas.",
+    "disadvantages": "La reconstrucción de anomalías puede ser buena y no detectarlas; latentes no interpretables por defecto.",
+    "characteristics": "Familia: Representación. Paradigma: Autosupervisado. Tarea: Reducción dimensional / Reconstrucción. Principio: Encoder y decoder entrenados para reconstruir entradas; no garantiza embeddings semánticos.",
+    "functioning": "Encoder y decoder entrenados para reconstruir entradas; no garantiza embeddings semánticos.\n\nFormulación representativa: L = ||x−D(E(x))||²\n\nEntrenamiento: Reconstrucción con cuello de botella o regularización; calibrar capacidad para evitar copia trivial.",
+    "technicalNotes": "Consulta Hinton & Salakhutdinov (2006), Reducing the dimensionality of data with neural networks. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Un AE sobredimensionado puede aprender identidad sin estructura útil."
   },
   {
     "id": "v2-04",
@@ -85,7 +112,16 @@
     "code": "import torch\nfrom torch import nn\ncnn = nn.Sequential(nn.Conv2d(1,8,3,padding=1),nn.ReLU(),\n                    nn.MaxPool2d(2),nn.Flatten(),nn.Linear(8*14*14,10))\nlogits = cnn(torch.randn(4,1,28,28))\nprint(logits.shape)  # [4,10]",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Existe estructura espacial local y patrones relativamente reutilizables; una traslación puede cambiar detalles del objetivo.",
+    "preprocessing": "Normalización por canal; cambios geométricos que preserven etiquetas; partición por paciente/escena cuando aplica.",
+    "uses": "Imágenes, espectrogramas, inspección visual y segmentación mediante arquitecturas adaptadas.",
+    "advantages": "Eficiencia por parámetros compartidos y sesgo inductivo espacial.",
+    "disadvantages": "Puede fallar ante cambios de distribución, correlaciones espurias o dependencias globales.",
+    "characteristics": "Familia: Convolucionales. Paradigma: Depende del objetivo. Tarea: Clasificación / Visión. Principio: Compartición de pesos y campos receptivos locales para datos espaciales.",
+    "functioning": "Compartición de pesos y campos receptivos locales para datos espaciales.\n\nFormulación representativa: yᵢⱼ = Σₐᵦ Kₐᵦxᵢ₊ₐ,ⱼ₊ᵦ\n\nEntrenamiento: Convoluciones, activaciones y agregación; entrenar con backpropagation.",
+    "technicalNotes": "Consulta LeCun et al. (1998), Gradient-based learning applied to document recognition. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Coste sobre imágenes grandes; dependencia del sesgo local."
   },
   {
     "id": "v2-05",
@@ -107,7 +143,16 @@
     "code": "from torchvision.models import resnet18\nimport torch\nmodel = resnet18(weights=None, num_classes=3)\nlogits = model(torch.randn(2,3,224,224))\nprint(logits.shape)\n# Para datos pequeños, entrenar desde cero puede ser insuficiente.",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Los bloques residuales tienen dimensiones compatibles para la suma o requieren proyección.",
+    "preprocessing": "Redimensionar y normalizar conforme al backbone; congelar o ajustar capas cuando se transfiere.",
+    "uses": "Clasificación visual y backbone de detección o segmentación.",
+    "advantages": "Facilita optimizar profundidad elevada y reutilizar pesos preentrenados.",
+    "disadvantages": "Requiere memoria y cómputo; no garantiza calibración ni robustez por sí sola.",
+    "characteristics": "Familia: Convolucionales. Paradigma: Depende del objetivo. Tarea: Clasificación / Visión. Principio: Red profunda con conexiones residuales para facilitar el flujo de gradientes.",
+    "functioning": "Red profunda con conexiones residuales para facilitar el flujo de gradientes.\n\nFormulación representativa: y = F(x)+x\n\nEntrenamiento: Bloques residuales, batch normalization y optimización de gradientes.",
+    "technicalNotes": "Consulta He et al. (2016), Deep Residual Learning for Image Recognition. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Memoria y cómputo; la residualidad no evita todos los problemas de generalización."
   },
   {
     "id": "v2-06",
@@ -129,7 +174,16 @@
     "code": "# Ejemplo de arquitectura U-Net usando una librería externa opcional:\n# pip install segmentation-models-pytorch\nimport segmentation_models_pytorch as smp\nmodel = smp.Unet(encoder_name=\"resnet18\",\n                 encoder_weights=None,in_channels=3,classes=1)\n# loss de segmentación y máscaras alineadas requeridas",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Se necesitan correspondencias espaciales entre imagen y máscara; las etiquetas deben tener definición consistente.",
+    "preprocessing": "Alinear imagen-máscara en augmentations, controlar imbalance por píxel y partición por sujeto.",
+    "uses": "Segmentación biomédica, satelital e industrial.",
+    "advantages": "Skip connections retienen detalle local junto a contexto multiescala.",
+    "disadvantages": "Sensibilidad a tamaño de objeto, anotaciones y desplazamientos de dominio.",
+    "characteristics": "Familia: Convolucionales. Paradigma: Habitualmente supervisado. Tarea: Segmentación. Principio: Encoder-decoder con saltos entre niveles para segmentación píxel a píxel.",
+    "functioning": "Encoder-decoder con saltos entre niveles para segmentación píxel a píxel.\n\nFormulación representativa: L = BCE + λ(1−Dice) [ejemplo]\n\nEntrenamiento: Máscaras anotadas, augmentations alineadas en imagen/máscara y validación por sujeto.",
+    "technicalNotes": "Consulta Ronneberger et al. (2015), U-Net: Convolutional Networks for Biomedical Image Segmentation. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Puede perder detalles pequeños; fugas si imágenes del mismo paciente aparecen en train/test."
   },
   {
     "id": "v2-07",
@@ -151,7 +205,16 @@
     "code": "from torchvision.models import vit_b_16\nimport torch\nmodel = vit_b_16(weights=None, num_classes=5)\nlogits = model(torch.randn(2,3,224,224))\nprint(logits.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "La imagen se representa como parches y se requiere codificación de posición; el tamaño define número de tokens.",
+    "preprocessing": "Dividir y normalizar imágenes según patch size; augmentations adecuadas y transferencia desde preentrenamiento.",
+    "uses": "Clasificación visual y backbone para visión multimodal.",
+    "advantages": "Modela relaciones globales entre regiones con atención.",
+    "disadvantages": "Coste de atención aumenta con tokens y rendimiento depende de escala de preentrenamiento.",
+    "characteristics": "Familia: Atención. Paradigma: Depende del objetivo. Tarea: Clasificación / Visión. Principio: Divide la imagen en patches convertidos a tokens y aplica self-attention.",
+    "functioning": "Divide la imagen en patches convertidos a tokens y aplica self-attention.\n\nFormulación representativa: Attention(Q,K,V)=softmax(QKᵀ/√dₖ)V\n\nEntrenamiento: Embedding de patches, codificación posicional y fine-tuning o preentrenamiento.",
+    "technicalNotes": "Consulta Dosovitskiy et al. (2021), An Image is Worth 16x16 Words. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Atención cuadrática en tokens; requiere estrategia de datos/preentrenamiento."
   },
   {
     "id": "v2-08",
@@ -173,7 +236,16 @@
     "code": "import torch\nfrom torch import nn\nrnn=nn.RNN(input_size=6,hidden_size=16,batch_first=True)\noutput,last=rnn(torch.randn(8,20,6))\nprint(output.shape,last.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "La información relevante puede comprimirse recursivamente en un estado oculto; causalidad temporal según arquitectura.",
+    "preprocessing": "Ordenar por tiempo, construir ventanas, padding y máscaras; dividir cronológicamente.",
+    "uses": "Modelado secuencial en series, señales y NLP básico.",
+    "advantages": "Arquitectura natural para procesamiento secuencial y estados incrementales.",
+    "disadvantages": "Dependencias extensas difíciles por gradientes y paralelización limitada.",
+    "characteristics": "Familia: Secuencias. Paradigma: Depende del objetivo. Tarea: Series temporales / NLP. Principio: Estado oculto recurrente que resume entradas anteriores.",
+    "functioning": "Estado oculto recurrente que resume entradas anteriores.\n\nFormulación representativa: hₜ = φ(Wₓxₜ+Wₕhₜ₋₁+b)\n\nEntrenamiento: Backpropagation through time con truncamiento cuando conviene.",
+    "technicalNotes": "Consulta Elman (1990), Finding Structure in Time. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Gradientes que se desvanecen/explotan y secuencialidad limitada."
   },
   {
     "id": "v2-09",
@@ -195,7 +267,16 @@
     "code": "import torch\nfrom torch import nn\nlstm=nn.LSTM(input_size=6,hidden_size=16,batch_first=True)\noutput,(h,c)=lstm(torch.randn(8,20,6))\nprint(output.shape,h.shape,c.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Las puertas filtran memoria, pero la longitud útil sigue condicionada a capacidad y optimización.",
+    "preprocessing": "Ventanas temporales, escalado de variables, máscaras de longitud y partición temporal.",
+    "uses": "Predicción de series, secuencias con memoria y señales.",
+    "advantages": "Las puertas mitigan gradientes desvanecientes frente a RNN simple.",
+    "disadvantages": "Mayor latencia secuencial y coste paramétrico; difícil escalado con contexto masivo.",
+    "characteristics": "Familia: Secuencias. Paradigma: Depende del objetivo. Tarea: Series temporales / NLP. Principio: Celdas recurrentes con puertas para modular memoria de largo plazo.",
+    "functioning": "Celdas recurrentes con puertas para modular memoria de largo plazo.\n\nFormulación representativa: cₜ=fₜ⊙cₜ₋₁+iₜ⊙gₜ\n\nEntrenamiento: BPTT; train/test temporal y control de teacher forcing si aplica.",
+    "technicalNotes": "Consulta Hochreiter & Schmidhuber (1997), Long Short-Term Memory. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Más costosa que RNN simple; memoria a largo plazo no garantizada."
   },
   {
     "id": "v2-10",
@@ -217,7 +298,16 @@
     "code": "import torch\nfrom torch import nn\ngru=nn.GRU(input_size=6,hidden_size=16,batch_first=True)\noutput,last=gru(torch.randn(8,20,6))\nprint(output.shape,last.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Las dependencias relevantes pueden modelarse con dos puertas y estado recurrente.",
+    "preprocessing": "Escalar series y definir longitudes, padding y validación cronológica.",
+    "uses": "Series, NLP y secuencias pequeñas/medianas.",
+    "advantages": "Suele tener menos parámetros que LSTM equivalente y mantiene control de memoria.",
+    "disadvantages": "No existe superioridad universal frente a LSTM; dependencia de secuencias largas.",
+    "characteristics": "Familia: Secuencias. Paradigma: Depende del objetivo. Tarea: Series temporales / NLP. Principio: Recurrente con puertas de actualización y reinicio, sin celda separada.",
+    "functioning": "Recurrente con puertas de actualización y reinicio, sin celda separada.\n\nFormulación representativa: hₜ=(1−zₜ)⊙nₜ+zₜ⊙hₜ₋₁\n\nEntrenamiento: BPTT y optimización por gradiente.",
+    "technicalNotes": "Consulta Cho et al. (2014), Learning Phrase Representations using RNN Encoder–Decoder. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Dependencias muy largas y entrenamiento secuencial siguen siendo retos."
   },
   {
     "id": "v2-11",
@@ -239,7 +329,16 @@
     "code": "import torch\nfrom torch import nn\nlayer=nn.TransformerEncoderLayer(d_model=32,nhead=4,batch_first=True)\nencoder=nn.TransformerEncoder(layer,num_layers=2)\ntokens=torch.randn(2,12,32)\ncontextual=encoder(tokens)\nprint(contextual.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Atención requiere codificación contextual/posicional; la máscara depende del objetivo, no de la arquitectura en sí.",
+    "preprocessing": "Tokenización, truncamiento/ventanas, máscaras de padding o causalidad y splits sin fuga.",
+    "uses": "Texto, multimodalidad, señales y secuencias de diferentes longitudes.",
+    "advantages": "Paralelismo de entrenamiento y modelado de relaciones globales.",
+    "disadvantages": "Atención estándar cuadrática en tokens y gran coste de datos/cómputo.",
+    "characteristics": "Familia: Atención. Paradigma: Depende del objetivo. Tarea: NLP / Secuencias. Principio: Arquitectura con bloques de atención multi-cabeza y feed-forward, sin recurrencia obligatoria.",
+    "functioning": "Arquitectura con bloques de atención multi-cabeza y feed-forward, sin recurrencia obligatoria.\n\nFormulación representativa: Attention(Q,K,V)=softmax(QKᵀ/√dₖ)V\n\nEntrenamiento: Enmascaramiento según objetivo, normalización, residualidad y optimización.",
+    "technicalNotes": "Consulta Vaswani et al. (2017), Attention Is All You Need. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Atención estándar O(n²) respecto a longitud; coste de memoria."
   },
   {
     "id": "v2-12",
@@ -261,7 +360,16 @@
     "code": "# Ejemplo de inferencia; requiere descargar los pesos del modelo.\nfrom transformers import AutoTokenizer, AutoModel\nname=\"bert-base-uncased\"\ntokenizer=AutoTokenizer.from_pretrained(name)\nmodel=AutoModel.from_pretrained(name)\nbatch=tokenizer(\"Machine learning\",return_tensors=\"pt\")\nhidden_states=model(**batch).last_hidden_state\nprint(hidden_states.shape)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "El contexto bidireccional depende de una máscara MLM adecuada durante preentrenamiento.",
+    "preprocessing": "Tokenizar con vocabulario correspondiente y ajustar max_length y máscaras; evitar fugas por documentos duplicados.",
+    "uses": "Clasificación de texto, extracción de entidades, embeddings contextualizados y QA extractivo.",
+    "advantages": "Representaciones contextuales bidireccionales transferibles.",
+    "disadvantages": "No genera texto libre autoregresivo en su configuración encoder original.",
+    "characteristics": "Familia: Transformers. Paradigma: Autosupervisado. Tarea: NLP / Representación. Principio: Modelo encoder bidireccional preentrenado con objetivo de masked language modeling.",
+    "functioning": "Modelo encoder bidireccional preentrenado con objetivo de masked language modeling.\n\nFormulación representativa: L_MLM = −Σ log p(x_mask|contexto)\n\nEntrenamiento: Preentrenamiento MLM y ajuste fino para clasificación, NER o QA.",
+    "technicalNotes": "Consulta Devlin et al. (2019), BERT: Pre-training of Deep Bidirectional Transformers. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "No es modelo autoregresivo generativo; sensibilidad a dominio."
   },
   {
     "id": "v2-13",
@@ -283,7 +391,16 @@
     "code": "# Ejemplo de inferencia; requiere descargar los pesos del modelo.\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nname=\"distilgpt2\"\ntokenizer=AutoTokenizer.from_pretrained(name)\nmodel=AutoModelForCausalLM.from_pretrained(name)\ninputs=tokenizer(\"Deep learning\",return_tensors=\"pt\")\noutput=model.generate(**inputs,max_new_tokens=12,\n                      pad_token_id=tokenizer.eos_token_id)\nprint(tokenizer.decode(output[0]))",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "La predicción causal utiliza solo tokens precedentes en la secuencia de entrenamiento.",
+    "preprocessing": "Tokenización con modelo adecuado, máscara causal, control de longitud y filtrado de datos.",
+    "uses": "Generación de texto, completado, diálogo y modelos de secuencias autoregresivas.",
+    "advantages": "Objetivo simple de predicción siguiente token que escala con datos y cómputo.",
+    "disadvantages": "No garantiza factualidad, seguridad ni ausencia de fugas del dataset.",
+    "characteristics": "Familia: Transformers. Paradigma: Autosupervisado. Tarea: NLP / Generación. Principio: Transformer autoregresivo que predice el siguiente token condicionado al contexto.",
+    "functioning": "Transformer autoregresivo que predice el siguiente token condicionado al contexto.\n\nFormulación representativa: L = −Σₜ log p(xₜ | x₁,…,xₜ₋₁)\n\nEntrenamiento: Preentrenamiento causal y adaptación posterior; evaluación evita contaminación.",
+    "technicalNotes": "Consulta Radford et al. (2018), Improving Language Understanding by Generative Pre-Training. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Alucinaciones, sesgos y coste de inferencia; perplexity no mide factualidad."
   },
   {
     "id": "v2-14",
@@ -305,7 +422,16 @@
     "code": "# Fragmento PyTorch: función objetivo VAE.\n# mu, logvar son parámetros de q(z|x); recon es salida del decoder.\nimport torch\ndef vae_loss(recon,x,mu,logvar):\n    reconstruction=((recon-x)**2).sum(dim=1).mean()\n    kl=-0.5*(1+logvar-mu.pow(2)-logvar.exp()).sum(dim=1).mean()\n    return reconstruction+kl",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Se define prior y aproximación variacional; la distribución generativa depende de likelihood asumida.",
+    "preprocessing": "Escalado consistente, definición de distribución de salida y elección de β/ponderación KL.",
+    "uses": "Generación latente, interpolación y representación probabilística.",
+    "advantages": "Latentes muestreables y objetivo probabilístico entrenable por reparametrización.",
+    "disadvantages": "Posterior collapse y muestras suavizadas bajo likelihoods simples.",
+    "characteristics": "Familia: Generativos. Paradigma: Autosupervisado. Tarea: Generación / Representación. Principio: Autoencoder probabilístico con regularización de la distribución latente.",
+    "functioning": "Autoencoder probabilístico con regularización de la distribución latente.\n\nFormulación representativa: ELBO = E_q[log p(x|z)] − KL(q(z|x)||p(z))\n\nEntrenamiento: Reparametrización y optimización de ELBO.",
+    "technicalNotes": "Consulta Kingma & Welling (2014), Auto-Encoding Variational Bayes. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Posterior collapse y compromiso fidelidad/regularidad."
   },
   {
     "id": "v2-15",
@@ -327,7 +453,16 @@
     "code": "# Fragmento PyTorch: pérdidas de una GAN logística.\nimport torch\nfrom torch.nn import functional as F\n# fake_logits = D(G(z)); real_logits = D(x_real)\ndef discriminator_loss(real_logits,fake_logits):\n    return F.softplus(-real_logits).mean()+F.softplus(fake_logits).mean()\ndef generator_loss(fake_logits):\n    return F.softplus(-fake_logits).mean()\n# En entrenamiento real se alternan actualizaciones D/G.",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Generador y discriminador deben recibir señales de aprendizaje equilibradas; la métrica adversarial elegida importa.",
+    "preprocessing": "Normalizar dominios de imagen, balancear batches y reservar evaluación de diversidad.",
+    "uses": "Síntesis de imágenes, superresolución y traducción de dominios.",
+    "advantages": "Puede producir muestras de gran detalle sin likelihood explícito.",
+    "disadvantages": "Mode collapse y entrenamiento adversarial inestable.",
+    "characteristics": "Familia: Generativos. Paradigma: No supervisado / generativo. Tarea: Generación. Principio: Generador y discriminador entrenados en un juego adversarial.",
+    "functioning": "Generador y discriminador entrenados en un juego adversarial.\n\nFormulación representativa: min_G max_D E[log D(x)] + E[log(1−D(G(z)))]\n\nEntrenamiento: Alternar actualizaciones; controlar estabilidad y diversidad de muestras.",
+    "technicalNotes": "Consulta Goodfellow et al. (2014), Generative Adversarial Nets. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Mode collapse y entrenamiento inestable."
   },
   {
     "id": "v2-16",
@@ -349,7 +484,16 @@
     "code": "# Ejemplo de inferencia con modelo preentrenado (no entrenamiento).\n# Requiere instalar diffusers, torch y descargar pesos.\nfrom diffusers import DDPMPipeline\n# pipe = DDPMPipeline.from_pretrained(\"google/ddpm-cifar10-32\")\n# images = pipe(batch_size=1).images\n# El entrenamiento DDPM requiere un denoiser y schedule de ruido.",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "El proceso de ruido y el denoiser deben corresponder; sampling y guidance modifican la salida.",
+    "preprocessing": "Normalizar imágenes, preparar condicionamiento y controlar ruido, scheduler y split.",
+    "uses": "Generación de imágenes/audio y reconstrucción condicional.",
+    "advantages": "Entrenamiento denoising relativamente estable y diversidad de muestras.",
+    "disadvantages": "Muestreo costoso; guidance fuerte puede perjudicar diversidad.",
+    "characteristics": "Familia: Generativos. Paradigma: Autosupervisado / condicionado. Tarea: Generación. Principio: Modelos que aprenden a revertir un proceso progresivo de perturbación por ruido.",
+    "functioning": "Modelos que aprenden a revertir un proceso progresivo de perturbación por ruido.\n\nFormulación representativa: L = E||ε−ε_θ(xₜ,t)||² [objetivo simplificado]\n\nEntrenamiento: Muestreo de tiempos/ruido y entrenamiento del denoiser.",
+    "technicalNotes": "Consulta Ho et al. (2020), Denoising Diffusion Probabilistic Models. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Muestreo iterativo costoso; dependencia de dataset y condicionamiento."
   },
   {
     "id": "v2-17",
@@ -371,7 +515,16 @@
     "code": "# Pseudocódigo: necesita P[s][a] como lista (prob,next,reward).\nV = [0.0 for _ in states]\nfor iteration in range(max_iterations):\n    V_new = [\n        max(sum(p*(r+gamma*V[sp]) for p,sp,r in P[s][a])\n            for a in actions[s])\n        for s in states\n    ]\n    if max(abs(x-y) for x,y in zip(V,V_new)) < tolerance:\n        V=V_new\n        break\n    V=V_new",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "MDP finito y modelo P/R conocidos; convergencia estándar para γ<1 en estados acotados.",
+    "preprocessing": "Definir estados, acciones válidas, terminales y probabilidades bien normalizadas.",
+    "uses": "Planificación con entornos discretos y demostración de Bellman.",
+    "advantages": "Solución de referencia para MDP pequeño y política derivable explícitamente.",
+    "disadvantages": "Complejidad de barrer estado-acción-transición y dependencia de modelo conocido.",
+    "characteristics": "Familia: Programación dinámica. Paradigma: Por refuerzo. Tarea: Planificación. Principio: Calcula valores óptimos iterando el operador de Bellman en MDP conocido.",
+    "functioning": "Calcula valores óptimos iterando el operador de Bellman en MDP conocido.\n\nFormulación representativa: Vₖ₊₁(s)=maxₐ Σₛ′ P(s′|s,a)[r+γVₖ(s′)]\n\nEntrenamiento: Programación dinámica con modelo de transición y recompensa explícito.",
+    "technicalNotes": "Consulta Bellman (1957), Dynamic Programming. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Requiere modelo de entorno y espacio finito/manejable."
   },
   {
     "id": "v2-18",
@@ -393,7 +546,16 @@
     "code": "# Pseudocódigo de evaluación + mejora de política.\n# P y R son las transiciones y recompensas del MDP conocido.\npolicy = initial_policy\nwhile True:\n    V = evaluate_policy(P, R, policy, gamma)\n    new_policy = improve_policy(P, R, V, gamma)\n    if new_policy == policy:\n        break\n    policy = new_policy",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Se asume dinámica/recompensa conocida y evaluación suficientemente precisa de cada política.",
+    "preprocessing": "Definir transiciones y condiciones terminales; construir política inicial válida.",
+    "uses": "Planificación exacta en MDP tabular.",
+    "advantages": "Alterna evaluación y mejora con interpretación clara.",
+    "disadvantages": "Evaluación de política puede ser costosa para espacios grandes.",
+    "characteristics": "Familia: Programación dinámica. Paradigma: Por refuerzo. Tarea: Planificación. Principio: Alterna evaluación de política y mejora voraz hasta estabilidad.",
+    "functioning": "Alterna evaluación de política y mejora voraz hasta estabilidad.\n\nFormulación representativa: πₖ₊₁(s)=argmaxₐ Q^{πₖ}(s,a)\n\nEntrenamiento: Evaluar Vπ y mejorar política; requiere modelo del MDP.",
+    "technicalNotes": "Consulta Sutton & Barto (2018), Reinforcement Learning: An Introduction, cap. 4. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Evaluación de política puede ser costosa; requiere modelo."
   },
   {
     "id": "v2-19",
@@ -415,7 +577,16 @@
     "code": "# Pseudocódigo Monte Carlo first-visit:\nreturns = defaultdict(list)\nfor episode in sampled_episodes:\n    G = 0\n    for t in reversed(range(len(episode))):\n        s,a,r = episode[t]\n        G = gamma*G + r\n        if (s,a) not in [(x[0],x[1]) for x in episode[:t]]:\n            returns[(s,a)].append(G)\n            Q[s,a] = sum(returns[(s,a)])/len(returns[(s,a)])",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Se necesitan trayectorias completas y exploración suficiente; estimación por retornos muestreados.",
+    "preprocessing": "Definir episodios y terminaciones; registrar estado, acción, recompensa y política de comportamiento.",
+    "uses": "Aprendizaje tabular episódico cuando no se conoce dinámica.",
+    "advantages": "No requiere bootstrap y es conceptualmente simple.",
+    "disadvantages": "Alta varianza, retraso de actualización y problema de episodios largos.",
+    "characteristics": "Familia: Monte Carlo. Paradigma: Por refuerzo. Tarea: Control. Principio: Estima valores de acción mediante retornos de episodios completos.",
+    "functioning": "Estima valores de acción mediante retornos de episodios completos.\n\nFormulación representativa: Q(s,a) ← media de Gₜ observados tras (s,a)\n\nEntrenamiento: Actualizaciones tras terminar episodios; exploración soft/ε-greedy.",
+    "technicalNotes": "Consulta Sutton & Barto (2018), cap. 5. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "No sirve directamente con episodios infinitos no terminantes; alta varianza."
   },
   {
     "id": "v2-20",
@@ -437,7 +608,16 @@
     "code": "# Actualización SARSA (fragmento dentro de un bucle de interacción):\n# a_next se ha muestreado de la política de comportamiento.\ntarget = reward if terminated else reward + gamma*Q[next_state, next_action]\nQ[state, action] += alpha * (target-Q[state, action])",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Aprendizaje on-policy con política de comportamiento; actualización incluye acción seleccionada.",
+    "preprocessing": "Codificar estados y acciones discretos, recompensa, terminales y agenda de ε.",
+    "uses": "Control tabular con exploración y entornos de riesgo.",
+    "advantages": "Aprende valor del comportamiento exploratorio, útil para estudiar seguridad de rutas.",
+    "disadvantages": "Sensibilidad a ε y a α; mala escalabilidad tabular.",
+    "characteristics": "Familia: Temporal Difference. Paradigma: Por refuerzo. Tarea: Control. Principio: Control TD on-policy con actualización a partir de la acción realmente elegida.",
+    "functioning": "Control TD on-policy con actualización a partir de la acción realmente elegida.\n\nFormulación representativa: Q(s,a)←Q(s,a)+α[r+γQ(s′,a′)−Q(s,a)]\n\nEntrenamiento: Interacción ε-greedy; en estados terminales bootstrap cero.",
+    "technicalNotes": "Consulta Rummery & Niranjan (1994), On-Line Q-Learning Using Connectionist Systems. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Sensibilidad al comportamiento exploratorio y tasa de aprendizaje."
   },
   {
     "id": "v2-21",
@@ -459,7 +639,16 @@
     "code": "# Actualización Q-learning (fragmento dentro del episodio):\ntarget = reward if terminated else reward + gamma*max(Q[next_state])\nQ[state, action] += alpha * (target-Q[state, action])\n# En Gymnasium: separar terminated de truncated al definir bootstrap.",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "TD off-policy y estados/acciones discretos en su forma tabular; cobertura suficiente para convergencia.",
+    "preprocessing": "Definir estado discreto, recompensa, condición terminal y política exploratoria.",
+    "uses": "Control tabular, benchmarks de gridworld y base conceptual de DQN.",
+    "advantages": "Actualizaciones online con objetivo greedy sin modelo de transición.",
+    "disadvantages": "Sobreestimación, dependencia de exploración y crecimiento de tabla.",
+    "characteristics": "Familia: Temporal Difference. Paradigma: Por refuerzo. Tarea: Control. Principio: Control TD off-policy que aproxima la función Q óptima en entornos tabulares.",
+    "functioning": "Control TD off-policy que aproxima la función Q óptima en entornos tabulares.\n\nFormulación representativa: Q(s,a)←Q(s,a)+α[r+γmaxₐ′Q(s′,a′)−Q(s,a)]\n\nEntrenamiento: Explorar con ε-greedy y actualizar con objetivo greedy.",
+    "technicalNotes": "Consulta Watkins & Dayan (1992), Q-learning. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "En función aproximadora puede divergir; tabular no escala a espacios enormes."
   },
   {
     "id": "v2-22",
@@ -481,7 +670,16 @@
     "code": "# Expected SARSA (política epsilon-greedy, con empates tratados).\nimport numpy as np\nq_next = np.asarray(Q[next_state], dtype=float)\ngreedy = np.flatnonzero(q_next == q_next.max())\nprobs = np.full(len(q_next), epsilon/len(q_next))\nprobs[greedy] += (1-epsilon)/len(greedy)\ntarget = reward if terminated else reward + gamma*np.dot(probs,q_next)",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "La política π(a|s) debe ser calculable para tomar expectativa sobre acciones.",
+    "preprocessing": "Representar probabilidades de la política correctamente; atender empates argmax y terminales.",
+    "uses": "Control tabular, comparación de variancia TD.",
+    "advantages": "Menor variancia de target que SARSA muestreado en muchos casos.",
+    "disadvantages": "Coste de sumar sobre acciones y error si se modela mal π.",
+    "characteristics": "Familia: Temporal Difference. Paradigma: Por refuerzo. Tarea: Control. Principio: Reemplaza la siguiente acción muestreada por la esperanza bajo la política objetivo.",
+    "functioning": "Reemplaza la siguiente acción muestreada por la esperanza bajo la política objetivo.\n\nFormulación representativa: Q←Q+α[r+γΣₐπ(a|s′)Q(s′,a)−Q]\n\nEntrenamiento: Evaluar esperanza ε-greedy en el siguiente estado.",
+    "technicalNotes": "Consulta Sutton & Barto (2018), cap. 6. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Depende de conocer/calcular probabilidades de la política."
   },
   {
     "id": "v2-23",
@@ -503,7 +701,16 @@
     "code": "# Entrenamiento DQN real mediante Stable-Baselines3.\nfrom stable_baselines3 import DQN\nmodel=DQN(\"MlpPolicy\",\"CartPole-v1\",\n          learning_rate=1e-3,buffer_size=50000,\n          verbose=0,seed=42)\nmodel.learn(total_timesteps=20000)\n# Evaluar aparte con Monitor / evaluate_policy.",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Espacio discreto de acciones y observaciones representables por red Q; distribución de replay relevante.",
+    "preprocessing": "Normalizar observaciones cuando conviene; distinguir terminated/truncated y registrar seeds.",
+    "uses": "Control discreto, Atari y problemas de decisión discretos.",
+    "advantages": "Generaliza Q entre estados y estabiliza con replay/target network.",
+    "disadvantages": "Inestabilidad de bootstrapping off-policy; costo de muestras.",
+    "characteristics": "Familia: Deep Value-Based. Paradigma: Por refuerzo. Tarea: Control. Principio: Q-learning con red neuronal y estabilización mediante replay buffer y target network.",
+    "functioning": "Q-learning con red neuronal y estabilización mediante replay buffer y target network.\n\nFormulación representativa: L = E[(r+γ maxₐ Q_target(s′,a)−Q_online(s,a))²]\n\nEntrenamiento: Replay, target network, ε-greedy, actualización por minibatches.",
+    "technicalNotes": "Consulta Mnih et al. (2015), Human-level control through deep reinforcement learning. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Inestabilidad, sobreestimación y generalmente acciones discretas."
   },
   {
     "id": "v2-24",
@@ -525,7 +732,16 @@
     "code": "# Fragmento para Double DQN (PyTorch), no bucle completo.\n# online y target son redes Q; next_obs es batch.\nwith torch.no_grad():\n    actions = online(next_obs).argmax(dim=1,keepdim=True)\n    q_next = target(next_obs).gather(1,actions).squeeze(1)\n    y = reward + gamma*(1-done.float())*q_next",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Mismo esquema que DQN con dos estimadores para selección/evaluación.",
+    "preprocessing": "Preparar buffer, redes online/target y transición terminal correctamente.",
+    "uses": "Control discreto con sobreestimación de Q.",
+    "advantages": "Reduce sesgo de maximización típico del DQN básico.",
+    "disadvantages": "Puede persistir sobre/subestimación y no elimina inestabilidad.",
+    "characteristics": "Familia: Deep Value-Based. Paradigma: Por refuerzo. Tarea: Control. Principio: Desacopla la elección y la evaluación de la acción para reducir sobreestimación.",
+    "functioning": "Desacopla la elección y la evaluación de la acción para reducir sobreestimación.\n\nFormulación representativa: y=r+γQ_target(s′,argmaxₐQ_online(s′,a))\n\nEntrenamiento: Mantiene DQN y cambia objetivo TD a doble estimador.",
+    "technicalNotes": "Consulta van Hasselt, Guez & Silver (2016), Deep Reinforcement Learning with Double Q-learning. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "No elimina todas las fuentes de inestabilidad."
   },
   {
     "id": "v2-25",
@@ -547,7 +763,16 @@
     "code": "# Fragmento de la cabeza dueling, no agente completo.\nimport torch\nfrom torch import nn\nclass DuelingHead(nn.Module):\n    def __init__(self, features, actions):\n        super().__init__()\n        self.value=nn.Linear(features,1)\n        self.advantage=nn.Linear(features,actions)\n    def forward(self,h):\n        a=self.advantage(h)\n        return self.value(h)+a-a.mean(dim=-1,keepdim=True)",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Se supone que separar valor de estado y ventajas puede aportar señal útil.",
+    "preprocessing": "Igual a DQN, especificando cabezas V/A y normalización de ventaja.",
+    "uses": "Control discreto donde muchas acciones tienen valores similares.",
+    "advantages": "Comparte valor de estado entre acciones.",
+    "disadvantages": "Más complejidad sin mejora garantizada para todas las tareas.",
+    "characteristics": "Familia: Deep Value-Based. Paradigma: Por refuerzo. Tarea: Control. Principio: Arquitectura que separa estimaciones de valor de estado y ventaja de acciones.",
+    "functioning": "Arquitectura que separa estimaciones de valor de estado y ventaja de acciones.\n\nFormulación representativa: Q(s,a)=V(s)+A(s,a)−meanₐ A(s,a)\n\nEntrenamiento: DQN con cabeza de valor y de ventaja combinadas.",
+    "technicalNotes": "Consulta Wang et al. (2016), Dueling Network Architectures for Deep Reinforcement Learning. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "No garantiza mejora frente a DQN en cualquier entorno."
   },
   {
     "id": "v2-26",
@@ -569,7 +794,16 @@
     "code": "# REINFORCE: loss de gradiente de política.\n# log_probs_t guardados durante un episodio;\n# returns_t retornos descontados del mismo episodio.\nimport torch\ndef reinforce_loss(log_probs_t,returns_t):\n    return -(torch.stack(log_probs_t)*returns_t).sum()\n# Requiere optimizer.step() tras backward().",
     "codeNote": "Fragmento o pseudocódigo: no es un programa independiente. Requiere contexto, variables o dependencias indicadas.",
     "codeKind": "fragmento",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Política diferenciable y episodios con retornos observables; la varianza del estimador depende de baseline.",
+    "preprocessing": "Normalizar observaciones/retornos cuando proceda; definir terminaciones y log-probs.",
+    "uses": "Policy gradients para tareas discretas/continuas de baja complejidad.",
+    "advantages": "Optimiza política directamente sin estimar Q explícitamente.",
+    "disadvantages": "Alta varianza y baja eficiencia muestral.",
+    "characteristics": "Familia: Policy Gradient. Paradigma: Por refuerzo. Tarea: Control. Principio: Gradiente de política Monte Carlo usando retornos completos.",
+    "functioning": "Gradiente de política Monte Carlo usando retornos completos.\n\nFormulación representativa: ∇J≈E[Σₜ∇logπ(aₜ|sₜ)Gₜ]\n\nEntrenamiento: Recopilar episodios y actualizar parámetros de la política estocástica.",
+    "technicalNotes": "Consulta Williams (1992), Simple Statistical Gradient-Following Algorithms. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Gradientes de alta varianza; sensible a baselines."
   },
   {
     "id": "v2-27",
@@ -591,7 +825,16 @@
     "code": "# A2C: algoritmo sincrónico actor-critic.\nfrom stable_baselines3 import A2C\nagent=A2C(\"MlpPolicy\",\"CartPole-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=20000)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Actor y crítico diferenciables, retornos/ventajas estimados y muestras on-policy.",
+    "preprocessing": "Monitorizar recompensas y normalizar ventajas; fijar seeds y horizonte.",
+    "uses": "Control on-policy y baseline Actor-Critic.",
+    "advantages": "Reduce varianza respecto a REINFORCE con crítico.",
+    "disadvantages": "Crítico introduce sesgo; sensible a rollout y entropy.",
+    "characteristics": "Familia: Actor-Critic. Paradigma: Por refuerzo. Tarea: Control. Principio: Actor que actualiza política usando ventajas y crítico que estima valor.",
+    "functioning": "Actor que actualiza política usando ventajas y crítico que estima valor.\n\nFormulación representativa: Aₜ≈rₜ+γV(sₜ₊₁)−V(sₜ)\n\nEntrenamiento: Rollouts sincronizados; optimización conjunta de actor y critic.",
+    "technicalNotes": "Consulta Mnih et al. (2016), Asynchronous Methods for Deep Reinforcement Learning (A3C antecedente). La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Sesgo-varianza de ventajas; sensibilidad a horizontes."
   },
   {
     "id": "v2-28",
@@ -613,7 +856,16 @@
     "code": "from stable_baselines3 import PPO\nagent=PPO(\"MlpPolicy\",\"CartPole-v1\",\n          learning_rate=3e-4,n_steps=2048,seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Rollouts recientes de política on-policy y ratio de log-probabilities calculable.",
+    "preprocessing": "Control de escala observacional, recompensas y truncation; monitorizar KL y clipping.",
+    "uses": "Control de robots simulados, juegos y tareas discretas/continuas.",
+    "advantages": "Actualizaciones acotadas heurísticamente mediante clipping, implementación robusta.",
+    "disadvantages": "On-policy requiere muchas muestras; clipping no garantiza constraint de KL.",
+    "characteristics": "Familia: Actor-Critic. Paradigma: Por refuerzo. Tarea: Control. Principio: Método on-policy que limita el tamaño efectivo de actualizaciones mediante objective clipped.",
+    "functioning": "Método on-policy que limita el tamaño efectivo de actualizaciones mediante objective clipped.\n\nFormulación representativa: L^CLIP = E[min(rₜAₜ,clip(rₜ,1−ε,1+ε)Aₜ)]\n\nEntrenamiento: Recolectar rollouts, calcular ventajas (p.ej. GAE), varias épocas de minibatches.",
+    "technicalNotes": "Consulta Schulman et al. (2017), Proximal Policy Optimization Algorithms. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "On-policy implica consumo elevado de experiencias; clipping no garantiza KL estricta."
   },
   {
     "id": "v2-29",
@@ -635,7 +887,16 @@
     "code": "from stable_baselines3 import DDPG\nfrom stable_baselines3.common.noise import NormalActionNoise\nimport numpy as np\nnoise=NormalActionNoise(mean=np.zeros(1),sigma=.1*np.ones(1))\nagent=DDPG(\"MlpPolicy\",\"Pendulum-v1\",\n           action_noise=noise,seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Acciones continuas, actor determinista y critic off-policy diferenciables.",
+    "preprocessing": "Escalar acciones a límites válidos y observaciones; ruido de exploración y replay.",
+    "uses": "Control continuo en simuladores.",
+    "advantages": "Actor determinista eficiente para acciones continuas.",
+    "disadvantages": "Fragilidad y sobreestimación Q; sensible a exploración.",
+    "characteristics": "Familia: Actor-Critic. Paradigma: Por refuerzo. Tarea: Control continuo. Principio: Actor determinista y crítico off-policy, con replay y redes objetivo.",
+    "functioning": "Actor determinista y crítico off-policy, con replay y redes objetivo.\n\nFormulación representativa: ∇J≈E[∇ₐQ(s,a)|ₐ=μ(s) ∇θμ(s)]\n\nEntrenamiento: Ruido exploratorio sobre acciones continuas y optimización actor/critic.",
+    "technicalNotes": "Consulta Lillicrap et al. (2016), Continuous control with deep reinforcement learning. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Sobreestimación y fragilidad de hiperparámetros."
   },
   {
     "id": "v2-30",
@@ -657,7 +918,16 @@
     "code": "from stable_baselines3 import TD3\nagent=TD3(\"MlpPolicy\",\"Pendulum-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Acciones continuas y dos críticos para targets conservadores.",
+    "preprocessing": "Reescalar acciones y normalizar observaciones; definir ruido en target.",
+    "uses": "Control continuo con sesgo de estimación.",
+    "advantages": "Twin critics y actor retrasado mejoran estabilidad frente a DDPG.",
+    "disadvantages": "Hiperparámetros de ruido y policy delay dependen de tarea.",
+    "characteristics": "Familia: Actor-Critic. Paradigma: Por refuerzo. Tarea: Control continuo. Principio: Extiende DDPG con dos críticos, objetivos suavizados y actualización retrasada del actor.",
+    "functioning": "Extiende DDPG con dos críticos, objetivos suavizados y actualización retrasada del actor.\n\nFormulación representativa: y=r+γ min(Q₁,target,Q₂,target)\n\nEntrenamiento: Twin critics, delayed policy updates y target policy smoothing.",
+    "technicalNotes": "Consulta Fujimoto, van Hoof & Meger (2018), Addressing Function Approximation Error in Actor-Critic Methods. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Acciones continuas y ajuste cuidadoso del ruido de target."
   },
   {
     "id": "v2-31",
@@ -679,7 +949,16 @@
     "code": "from stable_baselines3 import SAC\nagent=SAC(\"MlpPolicy\",\"Pendulum-v1\",seed=42,verbose=0)\nagent.learn(total_timesteps=30000)",
     "codeNote": "Ejemplo autónomo en su estructura, pendiente de ejecución y verificación de dependencias; no se presenta como validado en entorno real.",
     "codeKind": "ejemplo",
-    "codeValidation": "pendiente_ejecucion"
+    "codeValidation": "pendiente_ejecucion",
+    "assumptions": "Política estocástica continua, crítico off-policy y objetivo de máxima entropía.",
+    "preprocessing": "Escalar acciones y registrar temperatura/entropía; revisar terminación y recompensas.",
+    "uses": "Control continuo y aprendizaje eficiente a partir de replay.",
+    "advantages": "Exploración estable con objetivo de entropía y buena reutilización de datos.",
+    "disadvantages": "Más componentes y tuning de temperatura; memoria de replay.",
+    "characteristics": "Familia: Actor-Critic. Paradigma: Por refuerzo. Tarea: Control continuo. Principio: Actor-Critic off-policy de máxima entropía; equilibra recompensa y exploración.",
+    "functioning": "Actor-Critic off-policy de máxima entropía; equilibra recompensa y exploración.\n\nFormulación representativa: Jπ = E[α log π(a|s) − Q(s,a)]\n\nEntrenamiento: Replay, twin critics y ajuste opcional automático de temperatura.",
+    "technicalNotes": "Consulta Haarnoja et al. (2018), Soft Actor-Critic. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Implementación compleja y sensibilidad a escalas de recompensa."
   },
   {
     "id": "v2-32",
@@ -701,7 +980,16 @@
     "code": "# Requiere: pip install torch torch-geometric\nimport torch\nfrom torch_geometric.nn import GCNConv\nclass GCN(torch.nn.Module):\n    def __init__(self, n_features, hidden, n_classes):\n        super().__init__()\n        self.c1 = GCNConv(n_features, hidden)\n        self.c2 = GCNConv(hidden, n_classes)\n    def forward(self, x, edge_index):\n        return self.c2(self.c1(x, edge_index).relu(), edge_index)\n# Construir data.x, data.edge_index, data.y, máscaras y optimizador.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Topología de grafo representativa y propiedades locales de intercambio de mensajes.",
+    "preprocessing": "Features y aristas bien formadas; división transductiva/inductiva sin fuga.",
+    "uses": "Predicción de nodos, clasificación de grafos y análisis relacional.",
+    "advantages": "Aprovecha adyacencia con mensajes diferenciables y compartidos.",
+    "disadvantages": "Over-smoothing, escasez de heterofilia modelable y sobrecoste en grafos enormes.",
+    "characteristics": "Familia: Redes de grafos. Paradigma: Depende del objetivo. Tarea: Clasificación de nodos / grafos. Principio: Aprende representaciones de nodos agregando mensajes de vecinos, con normalización de adyacencia y pesos compartidos.",
+    "functioning": "Aprende representaciones de nodos agregando mensajes de vecinos, con normalización de adyacencia y pesos compartidos.\n\nFormulación representativa: H⁽ˡ⁺¹⁾ = σ(D̃⁻¹ᐟ² Ã D̃⁻¹ᐟ² H⁽ˡ⁾ W⁽ˡ⁾)\n\nEntrenamiento: Construir grafo, features, máscaras de train/valid/test y optimizar con backpropagation.",
+    "technicalNotes": "Consulta Kipf & Welling (2017), Semi-Supervised Classification with Graph Convolutional Networks. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Over-smoothing al profundizar; dependencia de homofilia y topología; riesgo de fuga transductiva."
   },
   {
     "id": "v2-33",
@@ -723,7 +1011,16 @@
     "code": "# Requiere: pip install torch torch-geometric\nfrom torch import nn\nfrom torch_geometric.nn import GATConv\nclass GAT(nn.Module):\n    def __init__(self, in_channels, hidden, out_channels):\n        super().__init__()\n        self.g1=GATConv(in_channels, hidden, heads=4)\n        self.g2=GATConv(hidden*4, out_channels, heads=1, concat=False)\n    def forward(self, x, edges):\n        return self.g2(self.g1(x,edges).elu(),edges)\n# Entrenar con máscaras y separación correcta por nodos o grafos.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Relaciones de vecindad informativas y atención local aprendible.",
+    "preprocessing": "Control de cabezas, self-loops y máscaras; particionar por nodos/grafos según caso.",
+    "uses": "Clasificación de nodos y representaciones relacionales.",
+    "advantages": "Pesos de vecinos adaptativos.",
+    "disadvantages": "Coste de memoria/aristas; pesos de atención no explican causalidad.",
+    "characteristics": "Familia: Redes de grafos. Paradigma: Depende del objetivo. Tarea: Clasificación de nodos / grafos. Principio: Pondera vecinos mediante atención aprendida; los pesos no equivalen automáticamente a explicaciones causales.",
+    "functioning": "Pondera vecinos mediante atención aprendida; los pesos no equivalen automáticamente a explicaciones causales.\n\nFormulación representativa: hᵢ′ = σ(Σⱼ∈N(i) αᵢⱼ W hⱼ)\n\nEntrenamiento: Optimización de mensajes y coeficientes de atención con gradientes.",
+    "technicalNotes": "Consulta Veličković et al. (2018), Graph Attention Networks. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Coste dependiente de aristas/cabezas; atención no garantiza interpretabilidad."
   },
   {
     "id": "v2-34",
@@ -745,7 +1042,16 @@
     "code": "# Requiere: pip install torch torch-geometric\nfrom torch import nn\nfrom torch_geometric.nn import SAGEConv\nclass Sage(nn.Module):\n    def __init__(self, n_in, n_hidden, n_out):\n        super().__init__()\n        self.layers=nn.ModuleList([SAGEConv(n_in,n_hidden), SAGEConv(n_hidden,n_out)])\n    def forward(self,x,edges):\n        x=self.layers[0](x,edges).relu()\n        return self.layers[1](x,edges)\n# Para grafos grandes, usar NeighborLoader y validar nodos no vistos.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Propiedades agregables de vecindarios muestreados; inductividad ante nuevos nodos.",
+    "preprocessing": "Sampler, fanout por capa y separación de nodos no observados.",
+    "uses": "Embeddings de nuevos nodos, redes sociales y grafos grandes.",
+    "advantages": "Inductivo y escalable mediante neighbor sampling.",
+    "disadvantages": "Varianza por submuestreo y pérdida de contexto más allá de vecindarios.",
+    "characteristics": "Familia: Redes de grafos. Paradigma: Depende del objetivo. Tarea: Clasificación / Embeddings de grafos. Principio: Agregación inductiva de vecindarios muestreados para generalizar a nodos no vistos.",
+    "functioning": "Agregación inductiva de vecindarios muestreados para generalizar a nodos no vistos.\n\nFormulación representativa: hᵥ⁽ᵏ⁾ = σ(W⁽ᵏ⁾ CONCAT(hᵥ⁽ᵏ⁻¹⁾, AGGₖ(N(v))))\n\nEntrenamiento: Muestreo de vecinos, agregación, pérdida supervisada o de contraste.",
+    "technicalNotes": "Consulta Hamilton, Ying & Leskovec (2017), Inductive Representation Learning on Large Graphs. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Muestreo introduce varianza; la profundidad expande el vecindario efectivo."
   },
   {
     "id": "v2-35",
@@ -767,7 +1073,16 @@
     "code": "import torch\nfrom torch import nn\nencoder=nn.Sequential(nn.Linear(32,64),nn.ReLU(),nn.Linear(64,16))\na,b=torch.randn(8,32),torch.randn(8,32)\ndistance=torch.nn.functional.pairwise_distance(encoder(a),encoder(b))\n# Construir pares y etiquetas; aplicar una loss contrastiva adecuada.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Una métrica aprendida puede preservar semejanza objetivo; se requieren pares/triples informativos.",
+    "preprocessing": "Construir parejas positivas/negativas sin leakage por identidad; escalar features.",
+    "uses": "Verificación, face matching, búsqueda semántica.",
+    "advantages": "Embeddings reutilizables para comparación y recuperación.",
+    "disadvantages": "Depende fuertemente de muestreo y definición de similitud.",
+    "characteristics": "Familia: Aprendizaje métrico. Paradigma: Supervisado / Autosupervisado. Tarea: Similitud / Verificación. Principio: Dos ramas con pesos compartidos generan embeddings comparables mediante distancia o similitud.",
+    "functioning": "Dos ramas con pesos compartidos generan embeddings comparables mediante distancia o similitud.\n\nFormulación representativa: d(x₁,x₂)=||fθ(x₁)−fθ(x₂)||₂\n\nEntrenamiento: Entrenar pares o tríos con contraste o triplet loss; minería de negativos.",
+    "technicalNotes": "Consulta Bromley et al. (1993), Signature Verification using a Siamese Time Delay Neural Network. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Calidad depende del muestreo de pares y del espacio de embeddings."
   },
   {
     "id": "v2-36",
@@ -789,7 +1104,16 @@
     "code": "import torch\nimport torch.nn.functional as F\ndef nt_xent(z1,z2,tau=0.2):\n    z=F.normalize(torch.cat([z1,z2],dim=0),dim=1)\n    n=z1.size(0)\n    sim=z@z.T/tau\n    sim.fill_diagonal_(-float(\"inf\"))\n    target=(torch.arange(2*n,device=z.device)+n)%(2*n)\n    return F.cross_entropy(sim,target)\n# Las vistas z1/z2 deben proceder de augmentations distintas.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Augmentations producen vistas positivas semánticamente coherentes.",
+    "preprocessing": "Aplicar dos augmentations por ejemplo; evitar falsos negativos o batch demasiado limitado.",
+    "uses": "Preentrenamiento visual autosupervisado.",
+    "advantages": "Reduce necesidad de etiquetas al aprender representación.",
+    "disadvantages": "Dependencia de batch, augmentation y negativa accidental.",
+    "characteristics": "Familia: Aprendizaje contrastivo. Paradigma: Autosupervisado. Tarea: Representación / Embeddings. Principio: Aprende representaciones de imágenes acercando dos vistas aumentadas de la misma muestra y separando otras del lote.",
+    "functioning": "Aprende representaciones de imágenes acercando dos vistas aumentadas de la misma muestra y separando otras del lote.\n\nFormulación representativa: ℓᵢⱼ=−log exp(sim(zᵢ,zⱼ)/τ) / Σₖ≠ᵢ exp(sim(zᵢ,zₖ)/τ)\n\nEntrenamiento: Dos augmentations por imagen, encoder, proyector, NT-Xent y evaluación lineal.",
+    "technicalNotes": "Consulta Chen et al. (2020), A Simple Framework for Contrastive Learning of Visual Representations. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Depende mucho de augmentations y tamaño de batch; falsos negativos."
   },
   {
     "id": "v2-37",
@@ -811,7 +1135,16 @@
     "code": "# Requiere: pip install transformers pillow torch\n# Inferencia: descarga de pesos preentrenados.\nfrom transformers import CLIPModel, CLIPProcessor\nfrom PIL import Image\nmodel=CLIPModel.from_pretrained(\"openai/clip-vit-base-patch32\")\nprocessor=CLIPProcessor.from_pretrained(\"openai/clip-vit-base-patch32\")\n# inputs=processor(text=[...],images=[...],return_tensors=\"pt\",padding=True)\n# logits=model(**inputs).logits_per_image",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Pares imagen-texto reflejan alineamiento semántico suficiente.",
+    "preprocessing": "Normalizar imágenes y tokenizar texto con modelos emparejados; limpiar duplicados.",
+    "uses": "Recuperación imagen-texto y clasificación zero-shot.",
+    "advantages": "Representaciones multimodales transferibles.",
+    "disadvantages": "Sesgo de datos pareados, dependencia de prompts y limitaciones de dominios.",
+    "characteristics": "Familia: Multimodal. Paradigma: Contrastivo / Autosupervisado. Tarea: Visión-lenguaje / Recuperación. Principio: Alinea embeddings de imágenes y textos mediante pérdidas contrastivas sobre pares emparejados.",
+    "functioning": "Alinea embeddings de imágenes y textos mediante pérdidas contrastivas sobre pares emparejados.\n\nFormulación representativa: L = (CE(sim(I,T), ids)+CE(sim(T,I),ids))/2\n\nEntrenamiento: Encoders de imagen/texto y contraste bidireccional con negativos del batch.",
+    "technicalNotes": "Consulta Radford et al. (2021), Learning Transferable Visual Models From Natural Language Supervision. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Sesgos de datos pareados; sensibilidad a prompts y dominios."
   },
   {
     "id": "v2-38",
@@ -833,7 +1166,16 @@
     "code": "import torch\nfrom torch import nn\n# Bloque causal simple; un TCN completo añade residualidad y varios bloques.\nclass CausalConv(nn.Module):\n    def __init__(self,n_in,n_out,kernel=3,dilation=2):\n        super().__init__()\n        self.pad=(kernel-1)*dilation\n        self.conv=nn.Conv1d(n_in,n_out,kernel,dilation=dilation,padding=self.pad)\n    def forward(self,x):\n        return self.conv(x)[...,:-self.pad] if self.pad else self.conv(x)\nprint(CausalConv(4,8)(torch.randn(2,4,30)).shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Convoluciones causales y campo receptivo deben cubrir horizonte relevante.",
+    "preprocessing": "Ventanas temporales, escalado sin fuga futura y máscaras de longitud.",
+    "uses": "Pronóstico temporal y clasificación de secuencias.",
+    "advantages": "Paralelizable y con campo receptivo explícito.",
+    "disadvantages": "Campos finitos y dilaciones pueden dejar patrones mal cubiertos.",
+    "characteristics": "Familia: Secuencias. Paradigma: Depende del objetivo. Tarea: Series temporales / Secuencias. Principio: Aplica convoluciones causales y dilatadas con campo receptivo controlable para modelar secuencias.",
+    "functioning": "Aplica convoluciones causales y dilatadas con campo receptivo controlable para modelar secuencias.\n\nFormulación representativa: R=1+(k−1)Σₗdₗ [stride 1]\n\nEntrenamiento: Entrenamiento supervisado con ventanas temporales y validación cronológica.",
+    "technicalNotes": "Consulta Bai, Kolter & Koltun (2018), An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "La ventana receptiva limita historia observable; requiere control de fuga temporal."
   },
   {
     "id": "v2-39",
@@ -855,7 +1197,16 @@
     "code": "import torch\nfrom torch import nn\nclass DeepSets(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.phi=nn.Sequential(nn.Linear(6,32),nn.ReLU())\n        self.rho=nn.Sequential(nn.Linear(32,16),nn.ReLU(),nn.Linear(16,1))\n    def forward(self,x):\n        return self.rho(self.phi(x).sum(dim=1))\n# x: [batch, elementos_del_conjunto, features]\nprint(DeepSets()(torch.randn(4,10,6)).shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "La función objetivo debe ser invariante a permutar elementos.",
+    "preprocessing": "Representar elementos homogéneamente y normalizar agregación según cardinalidad.",
+    "uses": "Clasificación de conjuntos, puntos y lotes no ordenados.",
+    "advantages": "Invariancia a permutación por construcción.",
+    "disadvantages": "La suma puede perder interacciones complejas entre elementos.",
+    "characteristics": "Familia: Arquitecturas invariantes. Paradigma: Depende del objetivo. Tarea: Conjuntos / Agregación. Principio: Modela funciones invariantes a permutaciones con codificación elemento a elemento y agregación simétrica.",
+    "functioning": "Modela funciones invariantes a permutaciones con codificación elemento a elemento y agregación simétrica.\n\nFormulación representativa: f({x₁,…,xₙ}) = ρ(Σᵢφ(xᵢ))\n\nEntrenamiento: Entrenar encoders y agregador sobre conjuntos de tamaño variable.",
+    "technicalNotes": "Consulta Zaheer et al. (2017), Deep Sets. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "La agregación simple puede descartar relaciones importantes."
   },
   {
     "id": "v2-40",
@@ -877,7 +1228,16 @@
     "code": "# Requiere: pip install torch torchdiffeq\nimport torch\nfrom torch import nn\nfrom torchdiffeq import odeint\nclass Dynamics(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.f=nn.Sequential(nn.Linear(4,32),nn.Tanh(),nn.Linear(32,4))\n    def forward(self,t,y):\n        return self.f(y)\nt=torch.linspace(0,1,11)\nstates=odeint(Dynamics(),torch.randn(5,4),t)\nprint(states.shape)",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Dinámica continua razonable y solver estable; tolerancias afectan solución.",
+    "preprocessing": "Normalizar tiempo/estado y revisar valores atípicos; fijar tolerancias de solver.",
+    "uses": "Modelado de sistemas dinámicos y series irregulares.",
+    "advantages": "Profundidad continua y pasos adaptativos.",
+    "disadvantages": "Solvers lentos o inestables; adjoint introduce errores numéricos.",
+    "characteristics": "Familia: Modelos continuos. Paradigma: Depende del objetivo. Tarea: Dinámica / Series temporales. Principio: Representa transformaciones profundas como solución de una ecuación diferencial parametrizada.",
+    "functioning": "Representa transformaciones profundas como solución de una ecuación diferencial parametrizada.\n\nFormulación representativa: dh(t)/dt = fθ(h(t),t)\n\nEntrenamiento: Propagar un solver ODE y diferenciar mediante autodiferenciación o adjoint.",
+    "technicalNotes": "Consulta Chen et al. (2018), Neural Ordinary Differential Equations. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Solvers y tolerancias afectan estabilidad, memoria y tiempo."
   },
   {
     "id": "v2-41",
@@ -899,6 +1259,15 @@
     "code": "# Fragmento didáctico de transformación afín invertible.\nimport torch\nx=torch.randn(64,2)\nscale=torch.tensor([1.2,0.7])\nshift=torch.tensor([0.1,-0.3])\nz=(x-shift)/scale\nbase=torch.distributions.Normal(0.,1.).log_prob(z).sum(-1)\nlog_prob=base-torch.log(scale.abs()).sum()\n# El flujo completo aprende parámetros y encadena transforms invertibles.",
     "codeKind": "fragmento",
     "codeValidation": "pendiente_ejecucion",
-    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas."
+    "codeNote": "Fragmento técnico ilustrativo, no entrenamiento completo. Dependencias y ejecución aún no validadas.",
+    "assumptions": "Transformaciones invertibles con determinantes tratables; densidad base definida.",
+    "preprocessing": "Normalización reversible y validación de log-likelihood en held-out.",
+    "uses": "Densidad explícita y síntesis probabilística.",
+    "advantages": "Likelihood exacta por cambio de variables.",
+    "disadvantages": "Restricción estructural de invertibilidad y Jacobianos costosos.",
+    "characteristics": "Familia: Modelos generativos. Paradigma: No supervisado / Densidad. Tarea: Estimación de densidad / Generación. Principio: Aprende transformaciones invertibles con determinante jacobiano computable para obtener likelihood explícita.",
+    "functioning": "Aprende transformaciones invertibles con determinante jacobiano computable para obtener likelihood explícita.\n\nFormulación representativa: log pX(x)=log pZ(f(x))+log|det Jf(x)|\n\nEntrenamiento: Optimiza log-likelihood con flujos invertibles y distribuciones base.",
+    "technicalNotes": "Consulta Dinh, Sohl-Dickstein & Bengio (2017), Density estimation using Real NVP. La formulación y métricas dependen del objetivo y la variante concreta; evita trasladarlas a cualquier implementación sin revisar sus condiciones.",
+    "limitationsTypical": "Restricción de invertibilidad y coste de Jacobianos."
   }
 ]
