@@ -11,7 +11,7 @@ MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico pr
 | ML clásico | [index.html](index.html) | 65 fichas, filtros, favoritos y consulta de código |
 | Deep Learning y RL | [explorar.html](explorar.html) | 41 fichas con la misma estructura visual que ML clásico: filtros laterales, búsqueda, categorías, favoritos, comparación y cuatro pestañas técnicas |
 | ★ Comparador | [comparar.html](comparar.html) | Contrastar de dos a tres modelos de cualquier área por paradigma, supuestos, métrica, método y limitaciones |
-| Conceptos | [conceptos.html](conceptos.html) | 295 términos sobre optimización, redes, atención, grafos, generación y RL |
+| Glosario | [glosario.html](glosario.html) | 295 términos de estadística, métricas, ML, DL, RL, NLP, preprocesamiento, interpretabilidad y MLOps; búsqueda, filtros y enlaces a fichas |
 | Rutas | [rutas.html](rutas.html) | 5 itinerarios con objetivos, módulos, enlaces específicos y progreso local |
 
 Los laboratorios y simuladores se retiraron deliberadamente para priorizar la experiencia de referencia y aprendizaje guiado.
@@ -26,7 +26,7 @@ Se distinguen arquitectura, familia, tarea y paradigma; una arquitectura como Tr
 
 ## Validación y límites
 
-Las fichas de DL/RL se encuentran en `content/models-v2.json`, las 65 originales se exportan a `content/models-classic.json` para permitir la comparación transversal y los conceptos están en `content/concepts-v2.json`.
+Las fichas de DL/RL se encuentran en `content/models-v2.json`, las 65 originales se exportan a `content/models-classic.json` para permitir la comparación transversal y el megaglosario está en `content/concepts-v2.json` (nombre del archivo conservado por compatibilidad). La ruta antigua `conceptos.html` redirige a `glosario.html` sin perder el identificador del término.
 
 El workflow de GitHub Actions comprueba integridad de datos y sintaxis Python y JavaScript; **estas comprobaciones no equivalen a ejecutar el entrenamiento de los modelos ni validan las dependencias**. Los fragmentos de Python incluyen su tipo y un estado de validación. Las rutas y favoritos usan almacenamiento del navegador.
 
