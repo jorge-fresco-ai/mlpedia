@@ -10,6 +10,7 @@ MLpedia reúne las **65 fichas originales de Machine Learning clásico** con **3
 | --- | --- | --- |
 | ML clásico | [index.html](./index.html) | 65 fichas del documento fuente, búsqueda, filtros, favoritos, comparador y ejemplos Python |
 | DL y RL | [explorar.html](./explorar.html) | 31 fichas nuevas con fórmulas, entrenamiento, métricas, limitaciones, código y demostraciones |
+| Comparador transversal | [comparar.html](./comparar.html) | Comparar hasta tres modelos entre los 65 de ML clásico y los 31 de DL/RL |
 | Laboratorios | [laboratorios.html](./laboratorios.html) | MLP, convoluciones, atención, bandits, GridWorld y objetivos DQN/PPO |
 | Conceptos | [conceptos.html](./conceptos.html) | 15 conceptos transversales |
 | Rutas | [rutas.html](./rutas.html) | 3 recorridos progresivos con progreso local |
@@ -40,6 +41,8 @@ python3 -m http.server 8000
 ```
 
 Abre http://localhost:8000/. Es necesario usar HTTP local, ya que las fichas nuevas se cargan con `fetch` desde archivos JSON.
+
+**Validación de código:** las 96 muestras de Python se analizan sintácticamente mediante AST en CI. Los 31 ejemplos nuevos se etiquetan como fragmentos o ejemplos autónomos y se marcan como pendientes de verificación de ejecución. Esta validación sintáctica NO demuestra que se hayan ejecutado correctamente ni que las dependencias funcionen. El JavaScript se somete también a comprobaciones de sintaxis.
 
 **Limitaciones:** Los códigos Python son ejemplos o fragmentos de referencia; no todos son programas de entrenamiento completos ni han sido ejecutados en CI. Las demostraciones no sustituyen benchmarks con múltiples semillas, separación de datos y validación estadística. La persistencia de favoritos y rutas se limita al navegador.
 
