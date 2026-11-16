@@ -29,6 +29,25 @@ for m in classic:
     code = m["sections"].get("Ejemplo de código", "")
     assert code, f"Missing classic Python: {m['name']}"
     ast.parse(code, filename=f"classic-{m['id']}")
+REQUIRED_FIELDS = [
+    "description", "assumptions", "characteristics", "functioning",
+    "preprocessing", "hyperparameters", "training", "uses", "metrics",
+    "advantages", "disadvantages", "limitationsTypical", "formula",
+    "reference", "code", "codeNote", "codeKind", "codeValidation",
+]
+for model in advanced:
+    missing = [key for key in REQUIRED_FIELDS if not str(model.get(key, "")).strip()]
+    assert not missing, f"Missing detailed fields for {model['name']}: {missing}"
+    assert len(model["hyperparameters"]) >= 80, f"Underdeveloped hyperparameters: {model['name']}"
+    assert len(model["assumptions"]) >= 55, f"Underdeveloped assumptions: {model['name']}"
+    assert len(model["advantages"]) >= 40, f"Missing substantive advantages: {model['name']}"
+    assert len(model["disadvantages"]) >= 40, f"Missing substantive disadvantages: {model['name']}"
+expanded_ui = (ROOT / "explorar.html").read_text(encoding="utf-8")
+for marker in ('id="filters"', 'id="search"', 'id="grid"',
+               'id="favonly"', 'id="reviewonly"',
+               'Concepto', 'Uso y evaluación', 'Ventajas y límites',
+               'Código Python', 'Copiar resumen', 'Copiar Python'):
+    assert marker in expanded_ui, f"Missing DL/RL UI component: {marker}"
 for m in advanced:
     code = m.get("code", "")
     assert code, f"Missing advanced Python: {m['name']}"

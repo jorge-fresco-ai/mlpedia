@@ -9,7 +9,7 @@ MLpedia recopila **106 fichas de modelos y arquitecturas** (65 de ML clásico pr
 | Sección | Archivo | Funcionalidad |
 | --- | --- | --- |
 | ML clásico | [index.html](index.html) | 65 fichas, filtros, favoritos y consulta de código |
-| Deep Learning y RL | [explorar.html](explorar.html) | 41 fichas con descripción, matemáticas, entrenamiento, métricas, limitaciones, referencias y código |
+| Deep Learning y RL | [explorar.html](explorar.html) | 41 fichas con la misma estructura visual que ML clásico: filtros laterales, búsqueda, categorías, favoritos, comparación y cuatro pestañas técnicas |
 | ★ Comparador | [comparar.html](comparar.html) | Contrastar de dos a tres modelos de cualquier área por paradigma, supuestos, métrica, método y limitaciones |
 | Conceptos | [conceptos.html](conceptos.html) | 40 conceptos sobre optimización, redes, atención, grafos, generación y RL |
 | Rutas | [rutas.html](rutas.html) | 5 itinerarios con objetivos, módulos, enlaces específicos y progreso local |
@@ -19,6 +19,8 @@ Los laboratorios y simuladores se retiraron deliberadamente para priorizar la ex
 ## Nuevos grupos de Deep Learning
 
 La ampliación incluye arquitectura de grafos (GCN, GAT, GraphSAGE), aprendizaje métrico y contrastivo (Siamese, SimCLR), multimodalidad (CLIP), secuencias convolucionales (TCN), conjuntos (Deep Sets), ecuaciones diferenciales neuronales (Neural ODE) y modelos probabilísticos invertibles (Normalizing Flows).
+
+Las 41 fichas incluyen supuestos, funcionamiento, características, preprocesamiento, entrenamiento, hiperparámetros explicados, usos, evaluación, ventajas, inconvenientes, limitaciones, referencias y código Python. Los ejemplos que requieren contexto adicional se identifican como fragmentos y siguen pendientes de validación de ejecución.
 
 Se distinguen arquitectura, familia, tarea y paradigma; una arquitectura como Transformer o GCN no pertenece por definición a un único paradigma.
 
